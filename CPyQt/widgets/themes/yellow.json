@@ -1,0 +1,13 @@
+{
+    "CButton": {
+        "corner_radius": 6,
+        "border_width": 0,
+        "background_color": ["#DDDA20","#E4E247"],
+        "text_color": ["white","white"],
+        "border_color": ["#3E454A", "#949A9F"],
+        "hover_color": ["#B5B21A","#8D8B15"],
+        "pressed_color": ["#2A2ABB","#212196"],
+        "disabled_background_color": ["",""],
+        "disabled_text_color": ["",""]
+    }
+}
