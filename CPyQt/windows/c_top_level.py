@@ -1,14 +1,13 @@
 from platform import system, release
 from typing import Union, Tuple, Optional, Any
 
-from PySide6 import QtWidgets, QtGui, QtCore
+from ..appearance import ModeManager
 
-from c_main_window import CMainWindow
+from PySide6 import QtWidgets, QtGui, QtCore
 
 class CTopLevel(QtWidgets.QWidget):
      def __init__(
                 self,
-                master: Optional[Any] = None,
                 title: str = "CTopLevel",
                 icon: Optional[str] = None,
                 width: int = 300,
@@ -18,11 +17,9 @@ class CTopLevel(QtWidgets.QWidget):
                 bg: Union[str, Tuple[str, str]] = None,
                 opacity: float = 1.0,
                 style: Optional[str] = None,
-                theme: str = "system"
                 ):
           super().__init__()
 
-          self._master = master
           self._title = title
           self._icon = icon
           self._x = x
@@ -32,7 +29,6 @@ class CTopLevel(QtWidgets.QWidget):
           self._bg = bg
           self._opacity = opacity
           self._style = style
-          self._theme = theme
 
           self.activateWindow()
           self.setWindowTitle(self._title)
@@ -50,7 +46,7 @@ class CTopLevel(QtWidgets.QWidget):
           else:
                self.resize(self._width, self._height)
 
-          self.changeTheme()
+          self.__change_theme()
 
      @property
      def master(self):
@@ -145,60 +141,35 @@ class CTopLevel(QtWidgets.QWidget):
 
           if self._bg != None:
                if isinstance(self._bg, tuple):
-                    if self._master == None:
-                         if self._theme.lower() == "light":
-                              self.setStyleSheet("QWidget {background-color: " + f"{self._bg[0]}" + "}")
-                         elif self._theme.lower() == "dark":
+                    if ModeManager.mode == "light":
+                         self.setStyleSheet("QWidget {background-color: " + f"{self._bg[0]}" + "}")
+                    elif ModeManager.mode == "dark":
+                         self.setStyleSheet("QWidget {background-color: " + f"{self._bg[1]}" + "}")
+                    else:
+                         if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
                               self.setStyleSheet("QWidget {background-color: " + f"{self._bg[1]}" + "}")
                          else:
-                              if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
-                                   self.setStyleSheet("QWidget {background-color: " + f"{self._bg[1]}" + "}")
-                              else:
-                                   self.setStyleSheet("QWidget {background-color: " + f"{self._bg[0]}" + "}") 
-                    elif isinstance(self._master, CMainWindow):
-                         print("yes")
-                         if self._master._theme.lower() == "light":
-                              self.setStyleSheet("QWidget {background-color: " + f"{self._bg[0]}" + "}")
-                         elif self._master._theme.lower() == "dark":
-                              self.setStyleSheet("QWidget {background-color: " + f"{self._bg[1]}" + "}")
-                         else:
-                              if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
-                                   self.setStyleSheet("QWidget {background-color: " + f"{self._bg[1]}" + "}")
-                              else:
-                                   self.setStyleSheet("QWidget {background-color: " + f"{self._bg[0]}" + "}") 
-
+                             self.setStyleSheet("QWidget {background-color: " + f"{self._bg[0]}" + "}") 
 
                else:
                     self.setStyleSheet("QWidget {background-color: " + f"{self._bg}" + "}")
 
           else:
-               if self._master == None:
-                    if self._theme.lower() == "light":
-                         self.setStyleSheet("QWidget {background-color: rgb(243,243,243)}")
-                    elif self._theme.lower() == "dark":
+               if ModeManager.mode == "light":
+                    self.setStyleSheet("QWidget {background-color: rgb(243,243,243)}")
+               elif ModeManager.mode == "dark":
+                    self.setStyleSheet("QWidget {background-color: rgb(30,30,30)}")
+               else:
+                    if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
                          self.setStyleSheet("QWidget {background-color: rgb(30,30,30)}")
                     else:
-                         if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
-                              self.setStyleSheet("QWidget {background-color: rgb(30,30,30)}")
-                         else:
-                              self.setStyleSheet("QWidget {background-color: rgb(243,243,243)}")
-
-               elif isinstance(self._master, CMainWindow):
-                    if self._master._theme.lower() == "light":
-                         self.setStyleSheet("QWidget {background-color: rgb(243,243,243)}")
-                    elif self._master._theme.lower() == "dark":
-                         self.setStyleSheet("QWidget {background-color: rgb(30,30,30)}")
-                    else:
-                         if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
-                              self.setStyleSheet("QWidget {background-color: rgb(30,30,30)}")
-                         else:
-                              self.setStyleSheet("QWidget {background-color: rgb(243,243,243)}") 
+                         self.setStyleSheet("QWidget {background-color: rgb(243,243,243)}") 
 
      def setWindowTheme(self, theme:str = "system"):
           self._theme = theme
 
           if self._theme != None:
-               self.changeTheme()
+               self.__change_theme()
 
      def setWindowIcon(self, icon:str = None):
           self._icon = icon
@@ -206,42 +177,24 @@ class CTopLevel(QtWidgets.QWidget):
           if self._icon != None:
                self.setWindowIcon(QtGui.QIcon(self._icon))
 
-     def changeTheme(self):
-          if system() == "Windows" and release() == "11":
+     def __change_theme(self):
+          if system() == "Windows" and release() == "11" and self._style != None:
                try:
                     from win32mica import ApplyMica, MicaStyle, MicaTheme
 
-                    if self._master == None:
-                         print("yes")
-                         if self._theme.lower() == "dark":
-                              theme = MicaTheme.DARK
-                         elif self._theme.lower() == "light":
-                              theme = MicaTheme.LIGHT
-                         else:
-                              theme = MicaTheme.AUTO
+                    if ModeManager.mode == "dark":
+                         theme = MicaTheme.DARK
+                    elif ModeManager.mode == "light":
+                         theme = MicaTheme.LIGHT
+                    else:
+                         theme = MicaTheme.AUTO
 
-                         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)
+                    self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)
 
-                         if self._style.lower() == "mica":
-                              ApplyMica(self.winId(), theme, MicaStyle.DEFAULT)
-                         elif self._style.lower() == "alt":
-                              ApplyMica(self.winId(), theme, MicaStyle.ALT)
-
-                    elif isinstance(self._master, CMainWindow):
-                         print("yes")
-                         if self._master._theme.lower() == "dark":
-                              theme = MicaTheme.DARK
-                         elif self._master._theme.lower() == "light":
-                              theme = MicaTheme.LIGHT
-                         else:
-                              theme = MicaTheme.AUTO
-
-                         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)
-
-                         if self._master._style.lower() == "mica":
-                              ApplyMica(self.winId(), theme, MicaStyle.DEFAULT)
-                         elif self._master._style.lower() == "alt":
-                              ApplyMica(self.winId(), theme, MicaStyle.ALT)
+                    if self._style.lower() == "mica":
+                         ApplyMica(self.winId(), theme, MicaStyle.DEFAULT)
+                    elif self._style.lower() == "alt":
+                         ApplyMica(self.winId(), theme, MicaStyle.ALT)
                except:
                     pass
 
@@ -249,4 +202,4 @@ class CTopLevel(QtWidgets.QWidget):
 
      def changeEvent(self, event): 
           if event.type() == QtCore.QEvent.Type.ThemeChange: 
-               self.changeTheme()
+               self.__change_theme()
