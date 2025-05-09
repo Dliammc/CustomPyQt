@@ -1,5 +1,5 @@
-from .windows import CMainWindow
-from .windows import CTopLevel
+from .windows import CMainWindow as CMainWindow
+from .windows import CTopLevel as CTopLevel
 
 from .appearance import ThemeManager
 from .appearance import ModeManager
