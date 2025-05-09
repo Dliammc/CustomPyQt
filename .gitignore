@@ -1,4 +1,5 @@
 CPyQt/windows/__pycache__/
 CPyQt/widgets/__pycache__/
+CPyQt/appearance/__pycache__/
 CPyQt/__pycache__/
 /test.py
