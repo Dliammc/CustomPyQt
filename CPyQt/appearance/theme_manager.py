@@ -18,8 +18,6 @@ class ThemeManager:
             main_path = pathlib.Path(main_directory).parent
             with open(os.path.join(main_path, "widgets", "themes", f"{theme}.json")) as input_file:
                 cls.theme = json.load(input_file)
-                print(theme)
-                print("yes")
         else:
             with open(theme, "r") as input_file:
                 cls.theme = json.load(input_file)
