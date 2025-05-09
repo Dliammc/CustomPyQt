@@ -187,4 +187,9 @@ class CMainWindow(QtWidgets.QWidget):
 
      def changeEvent(self, event): 
           if event.type() == QtCore.QEvent.Type.ThemeChange: 
+               for child in self.children():
+                    try:
+                         child.__change_theme()
+                    except:
+                         pass
                self.__change_theme()
