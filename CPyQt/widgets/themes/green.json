@@ -4,10 +4,21 @@
         "border_width": 0,
         "background_color": ["#62C1A1","#45B08C"],
         "text_color": ["white","white"],
-        "border_color": ["#3E454A", "#949A9F"],
+        "border_color": ["#464646", "#B9B9B9"],
         "hover_color": ["#388F72","#2B6E58"],
         "pressed_color": ["#388F72","#2B6E58"],
         "disabled_background_color": ["",""],
         "disabled_text_color": ["",""]
+    },
+
+    "CLineEdit": {
+        "corner_radius": 6, 
+        "border_width": 2,
+        "background_color": ["#E1E1E1","#1E1E1E"],
+        "text_color": ["black", "white"],
+        "placeholder_text_color": ["#0A0A0A", "#F5F5F5"],
+        "border_color": ["#B9B9B9", "#464646"],
+        "disabled_background_color": ["grey","grey"],
+        "disabled_text_color": ["grey","grey"]
     }
 }
