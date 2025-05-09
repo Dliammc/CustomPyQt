@@ -1,5 +1,4 @@
 #default libraries
-from platform import system, release
 from typing import Union, Tuple, Optional, Any, Callable
 
 #installed libraries
@@ -23,9 +22,11 @@ class CButton(QtWidgets.QWidget):
                 width: int = 140,
                 height: int = 28,
                 text: str = "CButton",
+                tooltip: Optional[str] = None,
                 icon: Optional[str] = None,
-                font_family: str = "Arial",
-                font_size: int = 10,
+                icon_size: Tuple[int, int] = (16, 16),
+                font_family: str = "Calibri",
+                font_size: int = 12,
                 font_style: Optional[str] = None,
                 border_width: Optional[int] = None,
                 corner_radius: Optional[int] = None,
@@ -51,6 +52,8 @@ class CButton(QtWidgets.QWidget):
         #set text, icon and font parameters
         self._text = text
         self._icon = icon
+        self._icon_size = icon_size
+        self._tooltip = tooltip
         self._font_family = font_family
         self._font_size = font_size
         self._font_style = font_style
@@ -97,8 +100,8 @@ class CButton(QtWidgets.QWidget):
         match self._font_style:
             case "bold":
                 self._font.setBold(True)
-            case "underline":
-                self._font.setUnderLine(True)
+            case "Underline":
+                self._font.setUnderline(True)
             case "italic":
                 self._font.setItalic(True)
             case "strikeout":
@@ -106,14 +109,18 @@ class CButton(QtWidgets.QWidget):
 
         #set attributes of class
         self.setParent(self._master), 
-        self.setFixedSize(self._width + 10, self._height + 10)
+        self.setMinimumSize(self._width + 10, self._height + 10)
+        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.resize(self._width + 10, self._height + 10)
 
         #set content margins of layout
         self._layout.setContentsMargins(5,5,5,5)
         
         #set attributes of button
         self._button.setText(self._text)
+        self._button.setToolTip(self._tooltip)
         self._button.setIcon(QtGui.QIcon(self._icon))
+        self._button.setIconSize(QtCore.QSize(self._icon_size[0], self._icon_size[1]))
         self._button.setFont(self._font)
 
         self._button.setSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
@@ -148,8 +155,16 @@ class CButton(QtWidgets.QWidget):
         return self._text
     
     @property
+    def tooltip(self):
+        return self._tooltip
+    
+    @property
     def icon(self):
         return self._icon
+    
+    @property
+    def icon_size(self):
+        return self._icon_size
     
     @property
     def font_family(self):
@@ -213,13 +228,17 @@ class CButton(QtWidgets.QWidget):
     def width(self, width: int = 140):
         self._width = width
 
-        self.setFixedSize(self._width + 10, self._height + 10)
+        self.setMinimumSize(self._width + 10, self._height + 10)
+        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.resize(self._width + 10, self._height + 10)
 
     @height.setter
     def height(self, height: int = 28):
         self._height = height
 
-        self.setFixedSize(self.width + 10, self._height + 10)
+        self.setMinimumSize(self._width + 10, self._height + 10)
+        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.resize(self._width + 10, self._height + 10)
 
     @height.setter
     @width.setter
@@ -227,7 +246,9 @@ class CButton(QtWidgets.QWidget):
         self._width = width
         self._height = height
 
-        self.setFixedSize(self.width + 10, self._height + 10)
+        self.setMinimumSize(self._width + 10, self._height + 10)
+        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.resize(self._width + 10, self._height + 10)
 
     @text.setter
     def text(self, text: str = "CButton"):
@@ -235,11 +256,23 @@ class CButton(QtWidgets.QWidget):
 
         self._button.setText(self._text)
 
+    @tooltip.setter
+    def tooltip(self, tooltip: Optional[str] = None):
+        self._tooltip = tooltip
+
+        self._button.setToolTip(self._tooltip)
+
     @icon.setter
     def icon(self, icon: Optional[str] = None):
         self._icon = icon
 
         self._button.setIcon(QtGui.QIcon(self._icon))
+
+    @icon_size.setter
+    def icon_size(self, icon_size: Tuple[int, int] = (16, 16)):
+        self._icon_size = icon_size
+
+        self._button.setIconSize(QtCore.QSize(self._icon_size[0], self._icon_size[1]))
 
     @font_family.setter
     def font_family(self, font_family: str = "Calibri"):
@@ -307,13 +340,13 @@ class CButton(QtWidgets.QWidget):
 
         self.__change_theme()
 
-    @text_color.setter
+    @pressed_color.setter
     def pressed_color(self, pressed_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._pressed_color = ThemeManager.theme["CButton"]["pressed_color"] if pressed_color is None else pressed_color
 
         self.__change_theme()
 
-    @text_color.setter
+    @disabled_text_color.setter
     def disabled_text_color(self, disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._disabled_text_color = ThemeManager.theme["CButton"]["text_color"] if disabled_text_color is None else disabled_text_color
 
@@ -426,7 +459,7 @@ class CButton(QtWidgets.QWidget):
 
     #method to change theme when system theme changes 
     def changeEvent(self, event): 
-
+        print(event.type())
         #if the system button palette changes and palette is not already changing continue
         if event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing: 
             self._palette_changing = True       #update palette changing flag to true   
