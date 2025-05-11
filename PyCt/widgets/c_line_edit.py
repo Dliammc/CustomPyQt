@@ -105,9 +105,9 @@ class CLineEdit(QtWidgets.QWidget):
 
         #set attributes of class
         self.setParent(self._master), 
+        self.resize(self._width + 10, self._height + 10)
         self.setMinimumSize(self._width + 10, self._height + 10)
         self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
-        self.resize(self._width + 10, self._height + 10)
 
         #set content margins of layout
         self._layout.setContentsMargins(5,5,5,5)
@@ -116,14 +116,13 @@ class CLineEdit(QtWidgets.QWidget):
         self._line_edit.setText(self._text)
         self._line_edit.setPlaceholderText(self._placeholder_text)
         self._line_edit.setToolTip(self._tooltip)
-        self._line_edit.setTextMargins(QtCore.QMargins(5, 3, 5, 3))
         self._line_edit.setFont(self._font)
 
         self._line_edit.setSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
 
         self._line_edit.textChanged.connect(self.__change_text)
 
-        self.__change_theme()
+        self._change_theme()
 
         self._layout.addWidget(self._line_edit)
         self.setLayout(self._layout)
@@ -301,55 +300,55 @@ class CLineEdit(QtWidgets.QWidget):
     def border_width(self, border_width: Optional[int] = None):
         self._border_width = ThemeManager.theme["CLineEdit"]["border_width"] if border_width is None else border_width
 
-        self.__change_theme()
+        self._change_theme()
 
     @corner_radius.setter
     def corner_radius(self, corner_radius: Optional[int] = None):
         self._corner_radius = ThemeManager.theme["CLineEdit"]["corner_radius"] if corner_radius is None else corner_radius
 
-        self.__change_theme()
+        self._change_theme()
 
     @text_color.setter
     def text_color(self, text_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._text_color = ThemeManager.theme["CLineEdit"]["text_color"] if text_color is None else text_color
 
-        self.__change_theme()
+        self._change_theme()
 
     @placeholder_text_color.setter
     def placeholder_text_color(self, placeholder_text_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._placeholder_text_color = ThemeManager.theme["CLineEdit"]["placeholder_text_color"] if placeholder_text_color is None else placeholder_text_color
 
-        self.__change_theme()
+        self._change_theme()
 
     @background_color.setter
     def background_color(self, background_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._background_color = ThemeManager.theme["CLineEdit"]["background_color"] if background_color is None else background_color
 
-        self.__change_theme()
+        self._change_theme()
 
     @border_color.setter
     def border_color(self, border_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._border_color = ThemeManager.theme["CLineEdit"]["border_color"] if border_color is None else border_color
 
-        self.__change_theme()
+        self._change_theme()
 
     @disabled_text_color.setter
     def disabled_text_color(self, disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._disabled_text_color = ThemeManager.theme["CLineEdit"]["text_color"] if disabled_text_color is None else disabled_text_color
 
-        self.__change_theme()
+        self._change_theme()
 
     @disabled_background_color.setter
     def disabled_background_color(self, disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._disabled_background_color = ThemeManager.theme["CLineEdit"]["disabled_background_color"] if disabled_background_color is None else disabled_background_color
 
-        self.__change_theme()
+        self._change_theme()
 
     def __change_text(self):
         self._text = self._line_edit.text()
     
     #method to update the theme of the button
-    def __change_theme(self):
+    def _change_theme(self):
 
         #get styling of line edit and store it in a tuple with keys for variable
         variables = (
@@ -402,11 +401,11 @@ class CLineEdit(QtWidgets.QWidget):
                 f"border-radius: {self._corner_radius}px"
                 "}"
 
-                "QPushButton::placeholder {"
+                "QLineEdit::placeholder {"
                 f"color: {new_colors["_placeholder_text_color"]}"
                 "}"
 
-                "QPushButton:disabled {" 
+                "QLineEdit:disabled {" 
                 f"color: {new_colors["_disabled_text_color"]};"
                 f"background-color: {new_colors["_disabled_background_color"]}"
                 "}"
@@ -418,7 +417,7 @@ class CLineEdit(QtWidgets.QWidget):
         #if the system button palette changes and palette is not already changing continue
         if event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing: 
             self._palette_changing = True       #update palette changing flag to true   
-            self.__change_theme()               #update button theme
+            self._change_theme()               #update button theme
             self._palette_changing = False      #update palette changing flag to false
 
         super().changeEvent(event)

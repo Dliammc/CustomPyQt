@@ -14,11 +14,30 @@
     "CLineEdit": {
         "corner_radius": 6, 
         "border_width": 2,
-        "background_color": ["#E1E1E1","#1E1E1E"],
+        "background_color": ["#E1E1E1","#282828"],
         "text_color": ["black", "white"],
         "placeholder_text_color": ["#0A0A0A", "#F5F5F5"],
         "border_color": ["#B9B9B9", "#464646"],
         "disabled_background_color": ["grey","grey"],
         "disabled_text_color": ["grey","grey"]
+    },
+
+    "CTextEdit": {
+        "corner_radius": 6, 
+        "border_width": 2,
+        "background_color": ["#E1E1E1","#282828"],
+        "text_color": ["black", "white"],
+        "placeholder_text_color": ["#0A0A0A", "#F5F5F5"],
+        "border_color": ["#B9B9B9", "#464646"],
+        "disabled_background_color": ["grey","grey"],
+        "disabled_text_color": ["grey","grey"]
+    },
+
+    "CScrollBar": {
+        "corner_radius": 6,
+        "width": 12,
+        "background_color": ["#8C8C8C", "#666666"],
+        "hover_color": ["#737373", "#808080"],
+        "pressed_color": ["#666666", "#8C8C8C"]
     }
 }

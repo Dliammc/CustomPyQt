@@ -30,6 +30,8 @@ class CMainWindow(QtWidgets.QWidget):
           self._opacity = opacity
           self._style = style
 
+          self._palette_changing = False
+
           self.activateWindow()
           self.setWindowTitle(self._title)
           self.setWindowOpacity(self._opacity)
@@ -46,7 +48,7 @@ class CMainWindow(QtWidgets.QWidget):
           else:
                self.resize(self._width, self._height)
 
-          self.__change_theme()
+          self._change_theme()
 
      @property
      def title(self):
@@ -154,7 +156,7 @@ class CMainWindow(QtWidgets.QWidget):
           self._theme = theme
 
           if self._theme != None:
-               self.__change_theme()
+               self._change_theme()
 
      def setWindowIcon(self, icon:str = None):
           self._icon = icon
@@ -162,7 +164,7 @@ class CMainWindow(QtWidgets.QWidget):
           if self._icon != None:
                self.setWindowIcon(QtGui.QIcon(self._icon))
 
-     def __change_theme(self):
+     def _change_theme(self):
           if system() == "Windows" and release() == "11" and self._style != None:
                try:
                     from win32mica import ApplyMica, MicaStyle, MicaTheme
@@ -186,10 +188,13 @@ class CMainWindow(QtWidgets.QWidget):
           self.setWindowBackground(self._bg)
 
      def changeEvent(self, event): 
-          if event.type() == QtCore.QEvent.Type.ThemeChange: 
+          if event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing: 
+               self._palette_changing = True
                for child in self.children():
                     try:
-                         child.__change_theme()
+                         child._change_theme()
                     except:
-                         pass
-               self.__change_theme()
+                         print("error")
+               self._change_theme()
+               self._palette_changing = False
+

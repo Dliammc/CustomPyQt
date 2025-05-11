@@ -459,7 +459,7 @@ class CButton(QtWidgets.QWidget):
 
     #method to change theme when system theme changes 
     def changeEvent(self, event): 
-        print(event.type())
+        
         #if the system button palette changes and palette is not already changing continue
         if event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing: 
             self._palette_changing = True       #update palette changing flag to true   
