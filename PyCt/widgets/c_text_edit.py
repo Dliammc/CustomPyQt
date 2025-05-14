@@ -8,12 +8,12 @@ from PySide6 import QtWidgets, QtGui, QtCore
 from ..appearance import ThemeManager, ModeManager
 
 # The purpose of this program is to provide a class for styled 
-# line edits using QLineEdit from PySide6 in connection to the 
-# CPyQt library
+# text edits using QTextEdit from PySide6 in connection to the 
+# PyCt library
 #
 # Author: D. Liam Mc.
 # Version: 0.0.2
-# Date: May 9, 2025
+# Date: May 14, 2025
 
 class CTextEdit(QtWidgets.QWidget):
     def __init__(
