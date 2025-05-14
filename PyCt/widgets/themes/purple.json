@@ -1,4 +1,11 @@
 {
+    "CFrame": {
+        "corner_radius": 6,
+        "border_width": 0,
+        "border_color": ["#B9B9B9", "#464646"],
+        "background_color": ["#d9d9d9", "#262626"]
+    },
+    
     "CButton": {
         "corner_radius": 6,
         "border_width": 0,
