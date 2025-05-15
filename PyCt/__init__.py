@@ -7,6 +7,7 @@ from .appearance import ModeManager
 from .widgets import CButton
 from .widgets import CLineEdit
 from .widgets import CTextEdit
+from .widgets import CFrame
 
 def set_color_theme(theme: str):
     ThemeManager.load_theme(theme)
