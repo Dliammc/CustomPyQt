@@ -13,13 +13,13 @@ from ..appearance import ThemeManager, ModeManager
 #
 # Author: D. Liam Mc.
 # Version: 0.0.2
-# Date: May 14, 2025
+# Date: May 15, 2025
 
 class CFrame(QtWidgets.QFrame):
     def __init__(self,
                 master: Any,
-                width: int = 200,
-                height: int = 200,
+                width: Optional[int] = None,
+                height: Optional[int] = None,
                 border_width: Optional[int] = None,
                 corner_radius: Optional[int] = None,
                 border_color: Optional[Union[str, Tuple[str, str]]] = None,
@@ -40,22 +40,28 @@ class CFrame(QtWidgets.QFrame):
         self._border_color = ThemeManager.theme["CFrame"]["border_color"] if border_color is None else border_color
         self._background_color = ThemeManager.theme["CFrame"]["background_color"] if background_color is None else background_color
 
+        #flags
+        self._palette_changing = False
+
         #create layout variable for frame depending on what layout type the user wants
-        if layout_type == "grid":
-            self._layout = QtWidgets.QGridLayout()
-        elif layout_type == "horizontal":
+        if layout_type == "horizontal":
             self._layout = QtWidgets.QHBoxLayout()
         else:
             self._layout = QtWidgets.QVBoxLayout()
 
         #set default attributes for class
         self.setParent(self._master)
-        self.setMinimumSize(self._width, self._height)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
+
+        if not self._width is None:
+            self.setMinimumWidth(self._width)
+        if not self._height is None: 
+            self.setMinimumHeight(self._height)
+        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Maximum)
+        
         self.setLayout(self._layout)
 
         #update theme of frame
-        self.__change_theme()
+        self._change_theme()
 
     @property
     def master(self):
@@ -123,27 +129,27 @@ class CFrame(QtWidgets.QFrame):
     def border_width(self, border_width: Optional[Union[str, Tuple[str, str]]] = None):
         self._border_width = border_width
 
-        self.__change_theme()
+        self._change_theme()
 
     @corner_radius.setter
     def corner_radius(self, corner_radius: Optional[Union[str, Tuple[str, str]]] = None):
         self._corner_radius = corner_radius
 
-        self.__change_theme()
+        self._change_theme()
 
     @border_color.setter
     def border_color(self, border_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._border_color = border_color
 
-        self.__change_theme()
+        self._change_theme()
 
     @background_color.setter
     def background_color(self, background_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._background_color = background_color
 
-        self.__change_theme()
+        self._change_theme()
 
-    def __change_theme(self):
+    def _change_theme(self):
 
         #get styling of frame and store it in a tuple with keys for variable
         variables = (("_border_color", self._border_color),
@@ -184,7 +190,7 @@ class CFrame(QtWidgets.QFrame):
         #set the stylesheet of frame with new colors
         self.setStyleSheet(
             "QFrame {"
-                f"background-color {new_colors["_background_color"]}"
+                f"background-color: {new_colors["_background_color"]};"
                 f"border: {self._border_width}px solid {new_colors["_border_color"]};"
                 f"border-radius: {self._corner_radius}px"
             "}"
