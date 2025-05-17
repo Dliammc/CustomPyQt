@@ -46,7 +46,7 @@ class CTopLevel(QtWidgets.QWidget):
           else:
                self.resize(self._width, self._height)
 
-          self.__change_theme()
+          self._change_theme()
 
      @property
      def master(self):
@@ -169,7 +169,7 @@ class CTopLevel(QtWidgets.QWidget):
           self._theme = theme
 
           if self._theme != None:
-               self.__change_theme()
+               self._change_theme()
 
      def setWindowIcon(self, icon:str = None):
           self._icon = icon
@@ -177,7 +177,7 @@ class CTopLevel(QtWidgets.QWidget):
           if self._icon != None:
                self.setWindowIcon(QtGui.QIcon(self._icon))
 
-     def __change_theme(self):
+     def _change_theme(self):
           if system() == "Windows" and release() == "11" and self._style != None:
                try:
                     from win32mica import ApplyMica, MicaStyle, MicaTheme
@@ -202,4 +202,4 @@ class CTopLevel(QtWidgets.QWidget):
 
      def changeEvent(self, event): 
           if event.type() == QtCore.QEvent.Type.ThemeChange: 
-               self.__change_theme()
+               self._change_theme()
