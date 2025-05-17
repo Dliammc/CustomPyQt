@@ -1,5 +1,5 @@
 from platform import system, release
-from typing import Union, Tuple, Optional
+from typing import Any, Union, Tuple, Optional
 
 from ..appearance import ModeManager
 
@@ -16,7 +16,7 @@ class CMainWindow(QtWidgets.QWidget):
                 y: Optional[int] = None,
                 bg: Union[str, Tuple[str, str]] = None,
                 opacity: float = 1.0,
-                style: Optional[str] = None,
+                style: Optional[str] = None
                 ):
           super().__init__()
 
@@ -35,6 +35,7 @@ class CMainWindow(QtWidgets.QWidget):
           self.activateWindow()
           self.setWindowTitle(self._title)
           self.setWindowOpacity(self._opacity)
+
 
           if self._icon != None:
                self.setWindowIcon(QtGui.QIcon(self._icon))
@@ -194,7 +195,7 @@ class CMainWindow(QtWidgets.QWidget):
                     try:
                          child._change_theme()
                     except:
-                         print("error")
+                         pass
                self._change_theme()
                self._palette_changing = False
 
