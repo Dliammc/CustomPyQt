@@ -20,7 +20,7 @@
 
     "CLineEdit": {
         "corner_radius": 6, 
-        "border_width": 2,
+        "border_width": 1,
         "background_color": ["#E1E1E1","#282828"],
         "text_color": ["black", "white"],
         "placeholder_text_color": ["#0A0A0A", "#F5F5F5"],
@@ -31,7 +31,7 @@
 
     "CTextEdit": {
         "corner_radius": 6, 
-        "border_width": 2,
+        "border_width": 1,
         "background_color": ["#E1E1E1","#282828"],
         "text_color": ["black", "white"],
         "placeholder_text_color": ["#0A0A0A", "#F5F5F5"],
