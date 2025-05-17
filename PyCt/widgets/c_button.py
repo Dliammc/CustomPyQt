@@ -133,7 +133,7 @@ class CButton(QtWidgets.QWidget):
         self._button.pressed.connect(self.__shrink_size)
         self._button.released.connect(self.__grow_size)
 
-        self.__change_theme()
+        self._change_theme()
 
         self._layout.addWidget(self._button)
         self.setLayout(self._layout)
@@ -308,55 +308,55 @@ class CButton(QtWidgets.QWidget):
     def border_width(self, border_width: Optional[int] = None):
         self._border_width = ThemeManager.theme["CButton"]["border_width"] if border_width is None else border_width
 
-        self.__change_theme()
+        self._change_theme()
 
     @corner_radius.setter
     def corner_radius(self, corner_radius: Optional[int] = None):
         self._corner_radius = ThemeManager.theme["CButton"]["corner_radius"] if corner_radius is None else corner_radius
 
-        self.__change_theme()
+        self._change_theme()
 
     @text_color.setter
     def text_color(self, text_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._text_color = ThemeManager.theme["CButton"]["text_color"] if text_color is None else text_color
 
-        self.__change_theme()
+        self._change_theme()
 
     @background_color.setter
     def background_color(self, background_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._background_color = ThemeManager.theme["CButton"]["background_color"] if background_color is None else background_color
 
-        self.__change_theme()
+        self._change_theme()
 
     @border_color.setter
     def border_color(self, border_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._border_color = ThemeManager.theme["CButton"]["border_color"] if border_color is None else border_color
 
-        self.__change_theme()
+        self._change_theme()
 
     @hover_color.setter
     def hover_color(self, hover_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._hover_color = ThemeManager.theme["CButton"]["hover_color"] if hover_color is None else hover_color
 
-        self.__change_theme()
+        self._change_theme()
 
     @pressed_color.setter
     def pressed_color(self, pressed_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._pressed_color = ThemeManager.theme["CButton"]["pressed_color"] if pressed_color is None else pressed_color
 
-        self.__change_theme()
+        self._change_theme()
 
     @disabled_text_color.setter
     def disabled_text_color(self, disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._disabled_text_color = ThemeManager.theme["CButton"]["text_color"] if disabled_text_color is None else disabled_text_color
 
-        self.__change_theme()
+        self._change_theme()
 
     @disabled_background_color.setter
     def disabled_background_color(self, disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None):
         self._disabled_background_color = ThemeManager.theme["CButton"]["disabled_background_color"] if disabled_background_color is None else disabled_background_color
 
-        self.__change_theme()
+        self._change_theme()
 
     @command.setter
     def command(self, command: Union[Callable[[], Any], None] = None):
@@ -374,7 +374,7 @@ class CButton(QtWidgets.QWidget):
 
         self._corner_radius -= 1        #decrease corner radius of button
 
-        self.__change_theme()       #update button theme 
+        self._change_theme()       #update button theme 
 
     #method to resize button to original size when button is released
     def __grow_size(self):
@@ -386,10 +386,10 @@ class CButton(QtWidgets.QWidget):
 
         self._corner_radius += 1        #reset corner radius of button
 
-        self.__change_theme()       #update button theme
+        self._change_theme()       #update button theme
 
     #method to update the theme of the button
-    def __change_theme(self):
+    def _change_theme(self):
 
         #get styling of button and store it in a tuple with keys for variable
         variables = (
@@ -463,7 +463,7 @@ class CButton(QtWidgets.QWidget):
         #if the system button palette changes and palette is not already changing continue
         if event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing: 
             self._palette_changing = True       #update palette changing flag to true   
-            self.__change_theme()               #update button theme
+            self._change_theme()               #update button theme
             self._palette_changing = False      #update palette changing flag to false
 
         super().changeEvent(event)
