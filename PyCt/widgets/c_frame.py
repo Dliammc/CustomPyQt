@@ -13,7 +13,7 @@ from ..appearance import ThemeManager, ModeManager
 #
 # Author: D. Liam Mc.
 # Version: 0.0.2
-# Date: May 15, 2025
+# Date: May 18, 2025
 
 class CFrame(QtWidgets.QFrame):
     def __init__(self,
