@@ -9,11 +9,11 @@ from ..appearance import ThemeManager, ModeManager
 
 # The purpose of this program is to provide a class for styled 
 # buttons using QPushButton from PySide6 in connection to the 
-# CPyQt library
+# PyCt library
 #
 # Author: D. Liam Mc.
 # Version: 0.0.2
-# Date: May 8, 2025
+# Date: May 18, 2025
 
 class CButton(QtWidgets.QWidget):
     def __init__(
