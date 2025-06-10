@@ -8,6 +8,8 @@ from .widgets import CButton
 from .widgets import CLineEdit
 from .widgets import CTextEdit
 from .widgets import CFrame
+from .widgets import CLabel
+from .widgets import CComboBox
 
 def set_color_theme(theme: str):
     ThemeManager.load_theme(theme)
