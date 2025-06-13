@@ -10,6 +10,7 @@ from .widgets import CTextEdit
 from .widgets import CFrame
 from .widgets import CLabel
 from .widgets import CComboBox
+from .widgets import CSlider
 
 def set_color_theme(theme: str):
     ThemeManager.load_theme(theme)
