@@ -66,6 +66,22 @@
         "disabled_text_color": ["grey","grey"]
     },
 
+    "CSlider": {
+        "corner_radius": 2,
+        "border_width": 0,
+        "button_corner_radius": 7,
+        "button_border_width": 0,
+        "background_color": ["#939BA2", "#4A4D50"],
+        "border_color": ["#464646", "#B9B9B9"],
+        "progress_color": ["#666666", "#AAB0B5"],
+        "button_background_color": ["#62C1A1","#45B08C"],
+        "button_border_color": ["#464646", "#B9B9B9"],
+        "button_hover_color": ["#388F72","#2B6E58"],
+        "button_pressed_color": ["#388F72","#2B6E58"],
+        "disabled_background_color": ["grey","grey"],
+        "disabled_button_background_color": ["grey","grey"]
+    },
+
     "CScrollBar": {
         "corner_radius": 6,
         "width": 12,
