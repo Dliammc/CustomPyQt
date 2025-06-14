@@ -20,8 +20,8 @@ class CSlider(QtWidgets.QWidget):
     def __init__(
                 self,
                 master: Any,
-                width: int = 280,
-                height: int = 4,
+                width: Optional[int] = None,
+                height: Optional[int] = None,
                 button_width: int = 14,
                 button_height: int = 14,
                 orientation: str = "horizontal",
@@ -47,6 +47,18 @@ class CSlider(QtWidgets.QWidget):
         super().__init__()
 
         self._master = master
+
+        if width is None:
+            if orientation == "horizontal":
+                width = 280
+            else:
+                width = 4
+        if height is None:
+            if orientation == "horizontal":
+                height = 4
+            else:
+                height = 280
+
         self._width = width
         self._height = height
         self._button_width = button_width
@@ -105,20 +117,24 @@ class CSlider(QtWidgets.QWidget):
         #class variables
         self._layout = QtWidgets.QVBoxLayout()
         self._slider = QtWidgets.QSlider()
+        self._margin_left = 0
+        self._margin_right = 0
 
         #set attributes of class
         self.setParent(self._master), 
-        self.setMinimumSize(self._width, self._height)
+        self.setMinimumSize(self._width + 12, self._height + 12)
         self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
-        self.resize(self._width, self._height)
+        self.resize(self._width + 12, self._height + 12)
 
         #set content margins of layout
         self._layout.setContentsMargins(5,5,5,5)
 
         #set orientation of slider
         if self._orientation == "horizontal":
+            self._margin_left = -5
             self._slider.setOrientation(QtCore.Qt.Orientation.Horizontal)
         else:
+            self._margin_right = -5
             self._slider.setOrientation(QtCore.Qt.Orientation.Vertical)
 
         #set attributes of slider
@@ -455,12 +471,14 @@ class CSlider(QtWidgets.QWidget):
                 "QSlider {"
                     "background: transparent;"
                     f"height: {self._button_height + 2}px;"
+                    f"width: {self._button_width + 2}px;"
                     
                "}"
 
                "QSlider::groove:horizontal, QSlider::groove:vertical {"
                     f"background: {new_colors["_background_color"]};"
                     f"height: {self._height}px;"
+                    f"width: {self._width}px;"
                     f"border: {self._border_width}px solid {new_colors["_border_color"]};"
                     f"border-radius: {self._corner_radius}px;"
                     
@@ -475,7 +493,7 @@ class CSlider(QtWidgets.QWidget):
                     f"border: {self._border_width}px solid {new_colors["_button_border_color"]};"
                     f"width: {self._button_width}px;"
                     f"height: {self._button_height}px;"
-                    "margin: -5px 0;"
+                    f"margin: {self._margin_left} {self._margin_right};"
                     f"border-radius: {self._button_corner_radius}px;"
                 "}"
 
