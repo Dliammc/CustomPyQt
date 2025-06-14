@@ -14,7 +14,7 @@ from ..appearance import ThemeManager, ModeManager
 #
 # Author: D. Liam Mc.
 # Version: 0.0.2
-# Date: June 12, 2025
+# Date: June 14, 2025
 
 class CSlider(QtWidgets.QWidget):
     def __init__(
@@ -43,7 +43,6 @@ class CSlider(QtWidgets.QWidget):
                 button_pressed_color: Optional[Union[str, Tuple[str, str]]] = None,
                 disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None,
                 disabled_button_background_color: Optional[Union[str, Tuple[str, str]]] = None
-
                  ):
         super().__init__()
 
@@ -466,6 +465,10 @@ class CSlider(QtWidgets.QWidget):
                     f"border-radius: {self._corner_radius}px;"
                     
                 "}" 
+
+                "QSlider::groove:horizontal:disabled, QSlider::groove:vertical:disabled {"
+                    f"background: {new_colors["_disabled_background_color"]};"
+                "}"
                 
                 "QSlider::handle:horizontal, QSlider::handle:vertical {"
                     f"background: {new_colors["_button_background_color"]};"
@@ -474,7 +477,10 @@ class CSlider(QtWidgets.QWidget):
                     f"height: {self._button_height}px;"
                     "margin: -5px 0;"
                     f"border-radius: {self._button_corner_radius}px;"
-                    
+                "}"
+
+                "QSlider::handle:horizontal:disabled, QSlider::handle:vertical:disabled {"
+                    f"background: {new_colors["_disabled_button_background_color"]};"
                 "}"
 
                 "QSlider::handle:horizontal:hover, QSlider::handle:vertical:hover {"
