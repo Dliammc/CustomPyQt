@@ -10,7 +10,7 @@
         "corner_radius": 0,
         "border_width": 0,
         "text_color": ["black", "white"],
-        "disabled_text_color": ["grey","grey"] 
+        "disabled_text_color": ["#bcbcbc","#999999"] 
     },
     
     "CButton": {
@@ -21,8 +21,8 @@
         "border_color": ["#464646", "#B9B9B9"],
         "hover_color": ["#D10000","#750000"],
         "pressed_color": ["#D10000","#750000"],
-        "disabled_background_color": ["grey","grey"],
-        "disabled_text_color": ["grey","grey"]
+        "disabled_background_color": ["#b3b3b3","#a6a6a6"],
+        "disabled_text_color": ["#bcbcbc","#999999"]
     },
 
     "CLineEdit": {
@@ -32,8 +32,8 @@
         "text_color": ["black", "white"],
         "placeholder_text_color": ["#0A0A0A", "#F5F5F5"],
         "border_color": ["#B9B9B9", "#464646"],
-        "disabled_background_color": ["grey","grey"],
-        "disabled_text_color": ["grey","grey"]
+        "disabled_background_color": ["#b3b3b3","#a6a6a6"],
+        "disabled_text_color": ["#bcbcbc","#999999"]
     },
 
     "CTextEdit": {
@@ -43,8 +43,8 @@
         "text_color": ["black", "white"],
         "placeholder_text_color": ["#0A0A0A", "#F5F5F5"],
         "border_color": ["#B9B9B9", "#464646"],
-        "disabled_background_color": ["grey","grey"],
-        "disabled_text_color": ["grey","grey"]
+        "disabled_background_color": ["#b3b3b3","#a6a6a6"],
+        "disabled_text_color": ["#bcbcbc","#999999"]
     },
 
     "CComboBox": {
@@ -62,8 +62,8 @@
         "item_text_color": ["white", "white"],
         "item_border_color": ["#464646", "#B9B9B9"],
         "item_hover_color": ["#FF0000","#FF2E2E"],
-        "disabled_background_color": ["grey","grey"],
-        "disabled_text_color": ["grey","grey"]
+        "disabled_background_color": ["#b3b3b3","#a6a6a6"],
+        "disabled_text_color": ["#bcbcbc","#999999"]
     },
 
     "CSlider": {
@@ -78,8 +78,8 @@
         "button_border_color": ["#464646", "#B9B9B9"],
         "button_hover_color": ["#D10000","#750000"],
         "button_pressed_color": ["#D10000","#750000"],
-        "disabled_background_color": ["grey","grey"],
-        "disabled_button_background_color": ["grey","grey"]
+        "disabled_background_color": ["#bfbfbf","#cccccc"],
+        "disabled_button_background_color": ["#b3b3b3","#a6a6a6"]
     },
 
     "CScrollBar": {
