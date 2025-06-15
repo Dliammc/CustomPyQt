@@ -50,7 +50,7 @@ which results in this window on Windows 11
 
 <img src="documentation_images/simple_example_image.png" width="400"/>
 
-You can find more example programs in the [examples folder](https://github.com/Dliammc/CustomPyQt/tree/master/examples)
+You can find more example programs in the [examples folder](https://github.com/Dliammc/CustomPyQt/tree/main/examples)
 
 
 
