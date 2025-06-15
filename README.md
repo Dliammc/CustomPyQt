@@ -15,7 +15,7 @@ pip install pyct
 ```
 
 ## Example Program
-Here is a simple example program to test the CustomPyQt library:
+Here is a simple example program with only one button to test the CustomPyQt library:
 
 ```python
 from PyCt import CMainWindow, CButton, set_appearance_mode, set_color_theme
@@ -49,6 +49,8 @@ app.exec()
 which results in this window on Windows 11
 
 <img src="documentation_images/simple_example_image.png" width="400"/>
+
+You can find more example programs in the [examples folder](https://github.com/Dliammc/CustomPyQt/tree/master/examples)
 
 
 
