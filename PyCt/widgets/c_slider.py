@@ -13,39 +13,42 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt library
 #
 # Author: D. Liam Mc.
-# Version: 0.0.2
-# Date: June 14, 2025
+# Version: 0.0.3
+# Date: June 15, 2025
 
 class CSlider(QtWidgets.QWidget):
     def __init__(
-                self,
-                master: Any,
-                width: Optional[int] = None,
-                height: Optional[int] = None,
-                button_width: int = 14,
-                button_height: int = 14,
-                orientation: str = "horizontal",
-                minimum: int = 0,
-                maximum: int = 100,
-                step: int = 1,
-                value: int = 50,
-                tooltip: Optional[str] = None,
-                border_width: Optional[int] = None,
-                corner_radius: Optional[int] = None,
-                button_border_width: Optional[int] = None,
-                button_corner_radius: Optional[int] = None,
-                background_color: Optional[Union[str, Tuple[str, str]]] = None,
-                progress_color: Optional[Union[str, Tuple[str, str]]] = None,
-                border_color: Optional[Union[str, Tuple[str, str]]] = None,
-                button_background_color: Optional[Union[str, Tuple[str, str]]] = None,
-                button_border_color: Optional[Union[str, Tuple[str, str]]] = None,
-                button_hover_color: Optional[Union[str, Tuple[str, str]]] = None,
-                button_pressed_color: Optional[Union[str, Tuple[str, str]]] = None,
-                disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None,
-                disabled_button_background_color: Optional[Union[str, Tuple[str, str]]] = None
-                 ):
+            self,
+            master: Any,
+            width: Optional[int] = None,
+            height: Optional[int] = None,
+            button_width: int = 14,
+            button_height: int = 14,
+            orientation: str = "horizontal",
+            minimum: int = 0,
+            maximum: int = 100,
+            step: int = 1,
+            value: int = 50,
+            tooltip: Optional[str] = None,
+            border_width: Optional[int] = None,
+            corner_radius: Optional[int] = None,
+            button_border_width: Optional[int] = None,
+            button_corner_radius: Optional[int] = None,
+            background_color: Optional[Union[str, Tuple[str, str]]] = None,
+            progress_color: Optional[Union[str, Tuple[str, str]]] = None,
+            border_color: Optional[Union[str, Tuple[str, str]]] = None,
+            button_background_color: Optional[Union[str, Tuple[str, str]]] = None,
+            button_border_color: Optional[Union[str, Tuple[str, str]]] = None,
+            button_hover_color: Optional[Union[str, Tuple[str, str]]] = None,
+            button_pressed_color: Optional[Union[str, Tuple[str, str]]] = None,
+            disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None,
+            disabled_button_background_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
         super().__init__()
 
+        #initialize variables for class
+
+        #default parameters and dimensions
         self._master = master
 
         if width is None:
@@ -63,6 +66,8 @@ class CSlider(QtWidgets.QWidget):
         self._height = height
         self._button_width = button_width
         self._button_height = button_height
+
+        #set orientation, min, max, step, value and tooltip parameters
         self._orientation = orientation
         self._minimum = minimum
         self._maximum = maximum
@@ -72,43 +77,56 @@ class CSlider(QtWidgets.QWidget):
 
         #set appearance and styling parameters
         self._border_width = (
-            ThemeManager.theme["CSlider"]["border_width"] if border_width is None else border_width
+            ThemeManager.theme["CSlider"]["border_width"] 
+            if border_width is None else border_width
         )
         self._corner_radius = (
-            ThemeManager.theme["CSlider"]["corner_radius"] if corner_radius is None else corner_radius
+            ThemeManager.theme["CSlider"]["corner_radius"] 
+            if corner_radius is None else corner_radius
         )
         self._button_border_width = (
-            ThemeManager.theme["CSlider"]["button_border_width"] if button_border_width is None else button_border_width
+            ThemeManager.theme["CSlider"]["button_border_width"] 
+            if button_border_width is None else button_border_width
         )
         self._button_corner_radius = (
-            ThemeManager.theme["CSlider"]["button_corner_radius"] if button_corner_radius is None else button_corner_radius
+            ThemeManager.theme["CSlider"]["button_corner_radius"] 
+            if button_corner_radius is None else button_corner_radius
         )
         self._background_color = (
-            ThemeManager.theme["CSlider"]["background_color"] if background_color is None else background_color
+            ThemeManager.theme["CSlider"]["background_color"] 
+            if background_color is None else background_color
         )
         self._progress_color = (
-            ThemeManager.theme["CSlider"]["progress_color"] if progress_color is None else progress_color
+            ThemeManager.theme["CSlider"]["progress_color"] 
+            if progress_color is None else progress_color
         )
         self._border_color = (
-            ThemeManager.theme["CSlider"]["border_color"] if border_color is None else border_color
+            ThemeManager.theme["CSlider"]["border_color"] 
+            if border_color is None else border_color
         )
         self._button_background_color = (
-            ThemeManager.theme["CSlider"]["button_background_color"] if button_background_color is None else button_background_color
+            ThemeManager.theme["CSlider"]["button_background_color"] 
+            if button_background_color is None else button_background_color
         )
         self._button_border_color = (
-            ThemeManager.theme["CSlider"]["button_border_color"] if button_border_color is None else button_border_color
+            ThemeManager.theme["CSlider"]["button_border_color"] 
+            if button_border_color is None else button_border_color
         )
         self._button_hover_color = (
-            ThemeManager.theme["CSlider"]["button_hover_color"] if button_hover_color is None else button_hover_color
+            ThemeManager.theme["CSlider"]["button_hover_color"] 
+            if button_hover_color is None else button_hover_color
         )
         self._button_pressed_color = (
-            ThemeManager.theme["CSlider"]["button_pressed_color"] if button_pressed_color is None else button_pressed_color
+            ThemeManager.theme["CSlider"]["button_pressed_color"] 
+            if button_pressed_color is None else button_pressed_color
         )
         self._disabled_background_color = (
-            ThemeManager.theme["CSlider"]["disabled_background_color"] if disabled_background_color is None else disabled_background_color
+            ThemeManager.theme["CSlider"]["disabled_background_color"] 
+            if disabled_background_color is None else disabled_background_color
         )
         self._disabled_button_background_color = (
-            ThemeManager.theme["CSlider"]["disabled_button_background_color"] if disabled_button_background_color is None else disabled_button_background_color
+            ThemeManager.theme["CSlider"]["disabled_button_background_color"] 
+            if disabled_button_background_color is None else disabled_button_background_color
         )
 
         #flags
@@ -123,7 +141,9 @@ class CSlider(QtWidgets.QWidget):
         #set attributes of class
         self.setParent(self._master), 
         self.setMinimumSize(self._width + 12, self._height + 12)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.setSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed
+        )
         self.resize(self._width + 12, self._height + 12)
 
         #set content margins of layout
@@ -144,7 +164,9 @@ class CSlider(QtWidgets.QWidget):
         self._slider.setSingleStep(self._step)
         self._slider.setToolTip(self._tooltip)
 
-        self._slider.setSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        self._slider.setSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding
+        )
 
         self._change_theme()
 
@@ -216,12 +238,12 @@ class CSlider(QtWidgets.QWidget):
         return self._background_color
     
     @property
-    def border_color(self):
-        return self._border_color
-    
-    @property
     def progress_color(self):
         return self._progress_color
+    
+    @property
+    def border_color(self):
+        return self._border_color
     
     @property
     def button_background_color(self):
@@ -233,7 +255,7 @@ class CSlider(QtWidgets.QWidget):
     
     @property
     def button_hover_color(self):
-        return self._hover_color
+        return self._button_hover_color
     
     @property
     def button_pressed_color(self):
@@ -258,7 +280,6 @@ class CSlider(QtWidgets.QWidget):
         self._width = width
 
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.resize(self._width + 10, self._height + 10)
 
     @height.setter
@@ -266,7 +287,6 @@ class CSlider(QtWidgets.QWidget):
         self._height = height
 
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.resize(self._width + 10, self._height + 10)
 
     @height.setter
@@ -276,7 +296,6 @@ class CSlider(QtWidgets.QWidget):
         self._height = height
 
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.resize(self._width + 10, self._height + 10)
 
     @button_width.setter
@@ -340,88 +359,146 @@ class CSlider(QtWidgets.QWidget):
 
     @border_width.setter
     def border_width(self, border_width: Optional[int] = None):
-        self._border_width = ThemeManager.theme["CSlider"]["border_width"] if border_width is None else border_width
-
+        self._border_width = (
+            ThemeManager.theme["CSlider"]["border_width"] 
+            if border_width is None else border_width
+        )
+        
         self._change_theme()
 
     @corner_radius.setter
     def corner_radius(self, corner_radius: Optional[int] = None):
-        self._corner_radius = ThemeManager.theme["CSlider"]["corner_radius"] if corner_radius is None else corner_radius
-
+        self._corner_radius = (
+            ThemeManager.theme["CSlider"]["corner_radius"] 
+            if corner_radius is None else corner_radius
+        )
+        
         self._change_theme()
 
     @button_border_width.setter
     def button_border_width(self, button_border_width: Optional[int] = None):
-        self._button_border_width = ThemeManager.theme["CSlider"]["button_border_width"] if button_border_width is None else button_border_width
+        self._button_border_width = (
+            ThemeManager.theme["CSlider"]["button_border_width"] 
+            if button_border_width is None else button_border_width
+        )
+    
 
         self._change_theme()
 
     @button_corner_radius.setter
     def button_corner_radius(self, button_corner_radius: Optional[int] = None):
-        self._button_corner_radius = ThemeManager.theme["CSlider"]["button_corner_radius"] if button_corner_radius is None else button_corner_radius
+        self._button_corner_radius = (
+            ThemeManager.theme["CSlider"]["button_corner_radius"] 
+            if button_corner_radius is None else button_corner_radius
+        )
 
         self._change_theme()
 
     @background_color.setter
-    def background_color(self, background_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._background_color = ThemeManager.theme["CSlider"]["background_color"] if background_color is None else background_color
-
-        self._change_theme()
-
-    @border_color.setter
-    def border_color(self, border_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._border_color = ThemeManager.theme["CSlider"]["border_color"] if border_color is None else border_color
+    def background_color(
+        self, background_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._background_color = (
+            ThemeManager.theme["CSlider"]["background_color"] 
+            if background_color is None else background_color
+        )
 
         self._change_theme()
 
     @progress_color.setter
-    def progress_color(self, progress_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._progress_color = ThemeManager.theme["CSlider"]["progress_color"] if progress_color is None else progress_color
+    def progress_color(
+        self, progress_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._progress_color = (
+            ThemeManager.theme["CSlider"]["progress_color"] 
+            if progress_color is None else progress_color
+        )
 
         self._change_theme()
 
+    @border_color.setter
+    def border_color(
+        self, border_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._border_color = (
+            ThemeManager.theme["CSlider"]["border_color"] 
+            if border_color is None else border_color
+        )
+        
+        self._change_theme()
+
     @button_background_color.setter
-    def button_background_color(self, button_background_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._button_background_color = ThemeManager.theme["CSlider"]["button_background_color"] if button_background_color is None else button_background_color
+    def button_background_color(
+        self, button_background_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._button_background_color = (
+            ThemeManager.theme["CSlider"]["button_background_color"] 
+            if button_background_color is None else button_background_color
+        )
 
         self._change_theme()
 
     @button_border_color.setter
-    def button_border_color(self, button_border_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._button_border_color = ThemeManager.theme["CSlider"]["button_border_color"] if button_border_color is None else button_border_color
+    def button_border_color(
+        self, button_border_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._button_border_color = (
+            ThemeManager.theme["CSlider"]["button_border_color"] 
+            if button_border_color is None else button_border_color
+        )
 
         self._change_theme()
 
     @button_hover_color.setter
-    def button_hover_color(self, button_hover_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._button_hover_color = ThemeManager.theme["CSlider"]["button_hover_color"] if button_hover_color is None else button_hover_color
+    def button_hover_color(
+        self, button_hover_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._button_hover_color = (
+            ThemeManager.theme["CSlider"]["button_hover_color"] 
+            if button_hover_color is None else button_hover_color
+        )
 
         self._change_theme()
 
     @button_pressed_color.setter
-    def button_pressed_color(self, button_pressed_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._button_pressed_color = ThemeManager.theme["CSlider"]["button_pressed_color"] if button_pressed_color is None else button_pressed_color
-
+    def button_pressed_color(
+        self, button_pressed_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._button_pressed_color = (
+            ThemeManager.theme["CSlider"]["button_pressed_color"] 
+            if button_pressed_color is None else button_pressed_color
+        )
+        
         self._change_theme()
     
 
     @disabled_background_color.setter
-    def disabled_background_color(self, disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._disabled_background_color = ThemeManager.theme["CSlider"]["disabled_background_color"] if disabled_background_color is None else disabled_background_color
+    def disabled_background_color(
+        self, disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._disabled_background_color = (
+            ThemeManager.theme["CSlider"]["disabled_background_color"] 
+            if disabled_background_color is None else disabled_background_color
+        )
 
         self._change_theme()
 
     @disabled_button_background_color.setter
-    def disabled_background_color(self, disabled_button_background_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._disabled_button_background_color = ThemeManager.theme["CSlider"]["disabled_button_background_color"] if disabled_button_background_color is None else disabled_button_background_color
-
+    def disabled_background_color(
+        self, disabled_button_background_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._disabled_button_background_color = (
+            ThemeManager.theme["CSlider"]["disabled_button_background_color"] 
+            if disabled_button_background_color is None else disabled_button_background_color
+        )
+        
         self._change_theme()
 
     
-    #method to update the theme of the button
+    #method to update the theme of the slider
     def _change_theme(self):
 
-        #get styling of button and store it in a tuple with keys for variable
+        #get styling of slider and store it in a tuple with keys for variable
         variables = (
             ("_background_color", self._background_color), 
             ("_border_color", self._border_color), 
@@ -454,7 +531,9 @@ class CSlider(QtWidgets.QWidget):
                 else:
                     #if the system theme is dark, set the new color with the specified
                     #attribute to the dark color
-                    if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
+                    if (
+                        QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark
+                    ):
                         new_colors[attribute] = color[1]
 
                     #otherwise use the light color
@@ -466,7 +545,7 @@ class CSlider(QtWidgets.QWidget):
             else:
                 new_colors[attribute] = color
 
-        #set the stylesheet of button with new colors
+        #set the stylesheet of slider with new colors
         self._slider.setStyleSheet(
                 "QSlider {"
                     "background: transparent;"
@@ -523,10 +602,12 @@ class CSlider(QtWidgets.QWidget):
     #method to change theme when system theme changes 
     def changeEvent(self, event): 
         
-        #if the system button palette changes and palette is not already changing continue
-        if event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing: 
+        #if the system slider palette changes and palette is not already changing continue
+        if (
+            event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing
+        ): 
             self._palette_changing = True       #update palette changing flag to true   
-            self._change_theme()               #update button theme
+            self._change_theme()               #update slider theme
             self._palette_changing = False      #update palette changing flag to false
 
         super().changeEvent(event)

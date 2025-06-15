@@ -12,37 +12,38 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt library
 #
 # Author: D. Liam Mc.
-# Version: 0.0.2
-# Date: June 9, 2025
+# Version: 0.0.3
+# Date: June 15, 2025
 
 class CComboBox(QtWidgets.QWidget):
-    def __init__(self,
-                master: Any,
-                width: int = 140,
-                height: int = 28,
-                values: list = None,
-                current_value: str = str(list[0]) if not None else "CComboBox",
-                tooltip: Optional[str] = None,
-                font_family: str = "Calibri",
-                font_size: int = 12,
-                font_style: Optional[str] = None,
-                border_width: Optional[int] = None,
-                menu_border_width: Optional[int] = None,
-                item_border_width: Optional[int] = None,
-                corner_radius: Optional[int] = None,
-                text_color: Optional[Union[str, Tuple[str, str]]] = None,
-                background_color: Optional[Union[str, Tuple[str, str]]] = None,
-                border_color: Optional[Union[str, Tuple[str, str]]] = None,
-                hover_color: Optional[Union[str, Tuple[str, str]]] = None,
-                menu_background_color: Optional[Union[str, Tuple[str, str]]] = None,
-                menu_border_color: Optional[Union[str, Tuple[str, str]]] = None,
-                item_text_color: Optional[Union[str, Tuple[str, str]]] = None,
-                item_background_color: Optional[Union[str, Tuple[str, str]]] = None,
-                item_border_color: Optional[Union[str, Tuple[str, str]]] = None,
-                item_hover_color: Optional[Union[str, Tuple[str, str]]] = None,
-                disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None,
-                disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None 
-                 ):
+    def __init__(
+            self,
+            master: Any,
+            width: int = 140,
+            height: int = 28,
+            values: list = None,
+            current_value: str = str(list[0]) if not None else "CComboBox",
+            tooltip: Optional[str] = None,
+            font_family: str = "Calibri",
+            font_size: int = 12,
+            font_style: Optional[str] = None,
+            border_width: Optional[int] = None,
+            menu_border_width: Optional[int] = None,
+            item_border_width: Optional[int] = None,
+            corner_radius: Optional[int] = None,
+            text_color: Optional[Union[str, Tuple[str, str]]] = None,
+            background_color: Optional[Union[str, Tuple[str, str]]] = None,
+            border_color: Optional[Union[str, Tuple[str, str]]] = None,
+            hover_color: Optional[Union[str, Tuple[str, str]]] = None,
+            menu_background_color: Optional[Union[str, Tuple[str, str]]] = None,
+            menu_border_color: Optional[Union[str, Tuple[str, str]]] = None,
+            item_text_color: Optional[Union[str, Tuple[str, str]]] = None,
+            item_background_color: Optional[Union[str, Tuple[str, str]]] = None,
+            item_border_color: Optional[Union[str, Tuple[str, str]]] = None,
+            item_hover_color: Optional[Union[str, Tuple[str, str]]] = None,
+            disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None,
+            disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None 
+    ):
         super().__init__()
 
         #initialize variables for class
@@ -62,53 +63,69 @@ class CComboBox(QtWidgets.QWidget):
 
         #set appearance and styling parameters
         self._border_width = (
-            ThemeManager.theme["CComboBox"]["border_width"] if border_width is None else border_width
-            )
+            ThemeManager.theme["CComboBox"]["border_width"] 
+            if border_width is None else border_width
+        )
         self._menu_border_width = (
-            ThemeManager.theme["CComboBox"]["menu_border_width"] if menu_border_width is None else menu_border_width
-            )
+            ThemeManager.theme["CComboBox"]["menu_border_width"] 
+            if menu_border_width is None else menu_border_width
+        )
         self._item_border_width = (
-            ThemeManager.theme["CComboBox"]["item_border_width"] if item_border_width is None else item_border_width
-            )
+            ThemeManager.theme["CComboBox"]["item_border_width"] 
+            if item_border_width is None else item_border_width
+        )
         self._corner_radius = (
-            ThemeManager.theme["CComboBox"]["corner_radius"] if corner_radius is None else corner_radius
-            )
+            ThemeManager.theme["CComboBox"]["corner_radius"] 
+            if corner_radius is None else corner_radius
+        )
         self._text_color = (
-            ThemeManager.theme["CComboBox"]["text_color"] if text_color is None else text_color
-            )
+            ThemeManager.theme["CComboBox"]["text_color"] 
+            if text_color is None else text_color
+        )
         self._background_color = (
-            ThemeManager.theme["CComboBox"]["background_color"] if background_color is None else background_color
-            )
+            ThemeManager.theme["CComboBox"]["background_color"] 
+            if background_color is None else background_color
+        )
         self._hover_color = (
-            ThemeManager.theme["CComboBox"]["hover_color"] if hover_color is None else hover_color
-            )
+            ThemeManager.theme["CComboBox"]["hover_color"] 
+            if hover_color is None else hover_color
+        )
         self._border_color = (
-            ThemeManager.theme["CComboBox"]["border_color"] if border_color is None else border_color
-            )
+            ThemeManager.theme["CComboBox"]["border_color"] 
+            if border_color is None else border_color
+        )
         self._menu_background_color = (
-            ThemeManager.theme["CComboBox"]["menu_background_color"] if menu_background_color is None else menu_background_color
-            )
+            ThemeManager.theme["CComboBox"]["menu_background_color"] 
+            if menu_background_color is None else menu_background_color
+        )
         self._menu_border_color = (
-            ThemeManager.theme["CComboBox"]["menu_border_color"] if menu_border_color is None else menu_border_color
-            )
+            ThemeManager.theme["CComboBox"]["menu_border_color"] 
+            if menu_border_color is None else menu_border_color
+        )
         self._item_text_color = (
-            ThemeManager.theme["CComboBox"]["item_text_color"] if item_text_color is None else item_text_color
-            )
+            ThemeManager.theme["CComboBox"]["item_text_color"] 
+            if item_text_color is None else item_text_color
+        )
         self._item_background_color = (
-            ThemeManager.theme["CComboBox"]["item_background_color"] if item_background_color is None else item_background_color
-            )
+            ThemeManager.theme["CComboBox"]["item_background_color"] 
+            if item_background_color is None else item_background_color
+        )
         self._item_hover_color = (
-            ThemeManager.theme["CComboBox"]["item_hover_color"] if item_hover_color is None else item_hover_color
-            )
+            ThemeManager.theme["CComboBox"]["item_hover_color"] 
+            if item_hover_color is None else item_hover_color
+        )
         self._item_border_color = (
-            ThemeManager.theme["CComboBox"]["border_color"] if item_border_color is None else item_border_color
-            )
+            ThemeManager.theme["CComboBox"]["border_color"] 
+            if item_border_color is None else item_border_color
+        )
         self._disabled_text_color= (
-            ThemeManager.theme["CComboBox"]["disabled_text_color"] if disabled_text_color is None else disabled_text_color
-            )
+            ThemeManager.theme["CComboBox"]["disabled_text_color"] 
+            if disabled_text_color is None else disabled_text_color
+        )
         self._disabled_background_color = (
-            ThemeManager.theme["CComboBox"]["disabled_background_color"] if disabled_background_color is None else disabled_background_color
-            )
+            ThemeManager.theme["CComboBox"]["disabled_background_color"] 
+            if disabled_background_color is None else disabled_background_color
+        )
         
         #flags
         self._palette_changing = False
@@ -133,7 +150,9 @@ class CComboBox(QtWidgets.QWidget):
         #set attributes of class
         self.setParent(self._master), 
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.setSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed
+        )
         self.resize(self._width + 10, self._height + 10)
 
         #set content margins of layout
@@ -147,7 +166,9 @@ class CComboBox(QtWidgets.QWidget):
         self._combobox.setToolTip(self._tooltip)
         self._combobox.setFont(self._font)
 
-        self._combobox.setSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        self._combobox.setSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding
+        )
 
         self._change_theme()
 
@@ -269,7 +290,6 @@ class CComboBox(QtWidgets.QWidget):
         self._width = width
 
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.resize(self._width + 10, self._height + 10)
 
     @height.setter
@@ -277,7 +297,6 @@ class CComboBox(QtWidgets.QWidget):
         self._height = height
 
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.resize(self._width + 10, self._height + 10)
 
     @height.setter
@@ -287,7 +306,6 @@ class CComboBox(QtWidgets.QWidget):
         self._height = height
 
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.resize(self._width + 10, self._height + 10)
 
     @values.setter
@@ -297,7 +315,9 @@ class CComboBox(QtWidgets.QWidget):
         self._combobox.addItems(self._values)
 
     @current_value.setter
-    def current_value(self, current_value:str = str(list[0]) if not None else "CComboBox"):
+    def current_value(
+        self, current_value:str = str(list[0]) if not None else "CComboBox"
+    ):
         self._current_value = current_value
 
         self._combobox.setCurrentText(self._current_value)
@@ -340,95 +360,169 @@ class CComboBox(QtWidgets.QWidget):
 
     @border_width.setter
     def border_width(self, border_width: Optional[int] = None):
-        self._border_width = ThemeManager.theme["CComboBox"]["border_width"] if border_width is None else border_width
+        self._border_width = (
+            ThemeManager.theme["CComboBox"]["border_width"] 
+            if border_width is None else border_width
+        )
 
         self._change_theme()
 
     @menu_border_width.setter
     def menu_border_width(self, menu_border_width: Optional[int] = None):
-        self._menu_border_width = ThemeManager.theme["CComboBox"]["menu_border_width"] if menu_border_width is None else menu_border_width
+        self._menu_border_width = (
+            ThemeManager.theme["CComboBox"]["menu_border_width"] 
+            if menu_border_width is None else menu_border_width
+        )
 
         self._change_theme()
 
     @item_border_width.setter
     def item_border_width(self, item_border_width: Optional[int] = None):
-        self._item_border_width = ThemeManager.theme["CComboBox"]["item_border_width"] if item_border_width is None else item_border_width
+        self._item_border_width = (
+            ThemeManager.theme["CComboBox"]["item_border_width"] 
+            if item_border_width is None else item_border_width
+        )
+
+        self._change_theme()
 
     @corner_radius.setter
     def corner_radius(self, corner_radius: Optional[int] = None):
-        self._corner_radius = ThemeManager.theme["CComboBox"]["corner_radius"] if corner_radius is None else corner_radius
+        self._corner_radius = (
+            ThemeManager.theme["CComboBox"]["corner_radius"] 
+            if corner_radius is None else corner_radius
+        )
 
         self._change_theme()
 
     @text_color.setter
-    def text_color(self, text_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._text_color = ThemeManager.theme["CComboBox"]["text_color"] if text_color is None else text_color
+    def text_color(
+        self, text_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._text_color = (
+            ThemeManager.theme["CComboBox"]["text_color"] 
+            if text_color is None else text_color
+        )
 
         self._change_theme()
 
     @background_color.setter
-    def background_color(self, background_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._background_color = ThemeManager.theme["CComboBox"]["background_color"] if background_color is None else background_color
+    def background_color(
+        self, background_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._background_color = (
+            ThemeManager.theme["CComboBox"]["background_color"] 
+            if background_color is None else background_color
+        )
 
         self._change_theme()
 
     @border_color.setter
-    def border_color(self, border_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._border_color = ThemeManager.theme["CComboBox"]["border_color"] if border_color is None else border_color
+    def border_color(
+        self, border_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._border_color = (
+            ThemeManager.theme["CComboBox"]["border_color"] 
+            if border_color is None else border_color
+        )
 
         self._change_theme()
 
     @hover_color.setter
-    def hover_color(self, hover_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._hover_color = ThemeManager.theme["CComboBox"]["hover_color"] if hover_color is None else hover_color
+    def hover_color(
+        self, hover_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._hover_color = (
+            ThemeManager.theme["CComboBox"]["hover_color"] 
+            if hover_color is None else hover_color
+        )
 
         self._change_theme()
 
     @menu_background_color.setter
-    def menu_background_color(self, menu_background_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._menu_background_color = ThemeManager.theme["CComboBox"]["background_color"] if menu_background_color is None else menu_background_color
+    def menu_background_color(
+        self, menu_background_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._menu_background_color = (
+            ThemeManager.theme["CComboBox"]["background_color"] 
+            if menu_background_color is None else menu_background_color
+        )
 
         self._change_theme()
 
     @menu_border_color.setter
-    def menu_border_color(self, menu_border_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._menu_border_color = ThemeManager.theme["CComboBox"]["border_color"] if menu_border_color is None else menu_border_color
+    def menu_border_color(
+        self, menu_border_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._menu_border_color = (
+            ThemeManager.theme["CComboBox"]["border_color"] 
+            if menu_border_color is None else menu_border_color
+        )
 
         self._change_theme()
 
     @item_text_color.setter
-    def item_text_color(self, item_text_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._item_text_color = ThemeManager.theme["CComboBox"]["item_text_color"] if item_text_color is None else item_text_color
+    def item_text_color(
+        self, item_text_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._item_text_color = (
+            ThemeManager.theme["CComboBox"]["item_text_color"] 
+            if item_text_color is None else item_text_color
+        )
 
         self._change_theme()
 
     @item_background_color.setter
-    def item_background_color(self, item_background_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._item_background_color = ThemeManager.theme["CComboBox"]["item_background_color"] if item_background_color is None else item_background_color
+    def item_background_color(
+        self, item_background_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._item_background_color = (
+            ThemeManager.theme["CComboBox"]["item_background_color"] 
+            if item_background_color is None else item_background_color
+        )
 
         self._change_theme()
 
     @item_border_color.setter
-    def item_border_color(self, item_border_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._item_border_color = ThemeManager.theme["CComboBox"]["border_color"] if item_border_color is None else item_border_color
+    def item_border_color(
+        self, item_border_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._item_border_color = (
+            ThemeManager.theme["CComboBox"]["item_border_color"] 
+            if item_border_color is None else item_border_color
+        )
 
         self._change_theme()
 
     @item_hover_color.setter
-    def item_hover_color(self, item_hover_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._item_hover_color = ThemeManager.theme["CComboBox"]["hover_color"] if item_hover_color is None else item_hover_color
+    def item_hover_color(
+        self, item_hover_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._item_hover_color = (
+            ThemeManager.theme["CComboBox"]["item_hover_color"] 
+            if item_hover_color is None else item_hover_color
+        )
 
         self._change_theme()
 
     @disabled_text_color.setter
-    def disabled_text_color(self, disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._disabled_text_color = ThemeManager.theme["CComboBox"]["text_color"] if disabled_text_color is None else disabled_text_color
+    def disabled_text_color(
+        self, disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._disabled_text_color = (
+            ThemeManager.theme["CComboBox"]["disabled_text_color"] 
+            if disabled_text_color is None else disabled_text_color
+        )
 
         self._change_theme()
 
     @disabled_background_color.setter
-    def disabled_background_color(self, disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._disabled_background_color = ThemeManager.theme["CComboBox"]["disabled_background_color"] if disabled_background_color is None else disabled_background_color
+    def disabled_background_color(
+        self, disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._disabled_background_color = (
+            ThemeManager.theme["CComboBox"]["disabled_background_color"] 
+            if disabled_background_color is None else disabled_background_color
+        )
 
         self._change_theme()
 
@@ -471,7 +565,9 @@ class CComboBox(QtWidgets.QWidget):
                 else:
                     #if the system theme is dark, set the new color with the specified
                     #attribute to the dark color
-                    if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
+                    if (
+                        QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark
+                    ):
                         new_colors[attribute] = color[1]
 
                     #otherwise use the light color
@@ -529,7 +625,9 @@ class CComboBox(QtWidgets.QWidget):
     def changeEvent(self, event): 
         
         #if the system combobox palette changes and palette is not already changing continue
-        if event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing: 
+        if (
+            event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing
+        ): 
             self._palette_changing = True       #update palette changing flag to true   
             self._change_theme()                #update combobox theme
             self._palette_changing = False      #update palette changing flag to false

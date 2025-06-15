@@ -1,5 +1,5 @@
 #default libraries
-from typing import Union, Tuple, Optional, Any, Callable
+from typing import Union, Tuple, Optional, Any
 
 #installed libraries
 from PySide6 import QtWidgets, QtGui, QtCore
@@ -12,60 +12,79 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt library
 #
 # Author: D. Liam Mc.
-# Version: 0.0.2
-# Date: May 18, 2025
+# Version: 0.0.3
+# Date: June 15, 2025
 
 class CLabel(QtWidgets.QWidget):
-    def __init__(self,
-                 master: Any,
-                 width: int = 70,
-                 height: int = 28,
-                 text: str = "CLabel",
-                 tooltip: Optional[str] = None,
-                 icon: Optional[str] = None,
-                 icon_size: Tuple[int, int] = None,
-                 font_family: str = "Calibri",
-                 font_size: int = 12,
-                 font_style: Optional[str] = None,
-                 border_width: Optional[int] = None,
-                 corner_radius: Optional[int] = None,
-                 background_color: Optional[Union[str, Tuple[str, str]]] = None,
-                 text_color: Optional[Union[str, Tuple[str, str]]] = None,
-                 border_color: Optional[Union[str, Tuple[str, str]]] = None,
-                 disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None,
-                 disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None, 
-                 ):
+    def __init__(
+            self,
+            master: Any,
+            width: int = 70,
+            height: int = 28,
+            text: str = "CLabel",
+            tooltip: Optional[str] = None,
+            icon: Optional[str] = None,
+            icon_size: Tuple[int, int] = None,
+            font_family: str = "Calibri",
+            font_size: int = 12,
+            font_style: Optional[str] = None,
+            border_width: Optional[int] = None,
+            corner_radius: Optional[int] = None,
+            background_color: Optional[Union[str, Tuple[str, str]]] = None,
+            text_color: Optional[Union[str, Tuple[str, str]]] = None,
+            border_color: Optional[Union[str, Tuple[str, str]]] = None,
+            disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None,
+            disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None, 
+    ):
 
         super().__init__()
 
+        #initialize variables for class
+
+        #default parameters and dimensions
         self._master = master
         self._width = width
         self._height = height
         
+        #set text, icon, tooltip, and font parameters
         self._text = text
-        self._tooltip = tooltip
         self._icon = icon
+        self._tooltip = tooltip
         self._icon_size = icon_size
         self._font_family = font_family
         self._font_size = font_size
         self._font_style = font_style
 
-        self._border_width = ThemeManager.theme["CLabel"]["border_width"] if border_width is None else border_width
-        self._corner_radius = ThemeManager.theme["CLabel"]["corner_radius"] if corner_radius is None else corner_radius
-        self._text_color = ThemeManager.theme["CLabel"]["text_color"] if text_color is None else text_color
-        self._disabled_text_color = ThemeManager.theme["CLabel"]["disabled_text_color"] if disabled_text_color is None else disabled_text_color
+        #set appearance and styling parameters
+        self._border_width = (
+            ThemeManager.theme["CLabel"]["border_width"] 
+            if border_width is None else border_width
+        )
+        self._corner_radius = (
+            ThemeManager.theme["CLabel"]["corner_radius"] 
+            if corner_radius is None else corner_radius
+        )
+        self._text_color = (
+            ThemeManager.theme["CLabel"]["text_color"] 
+            if text_color is None else text_color
+        )
+        self._disabled_text_color = (
+            ThemeManager.theme["CLabel"]["disabled_text_color"] 
+            if disabled_text_color is None else disabled_text_color
+        )
 
         self._background_color = background_color
-        self._disabled_background_color = disabled_background_color
         self._border_color = border_color
+        self._disabled_background_color = disabled_background_color
 
         #flags
         self._palette_changing = False
 
+        #class variables
         self._layout = QtWidgets.QVBoxLayout()
         self._label = QtWidgets.QLabel()
 
-        #set font of button
+        #set font of label
         self._font = QtGui.QFont(self._font_family, self._font_size)
 
         match self._font_style:
@@ -81,9 +100,12 @@ class CLabel(QtWidgets.QWidget):
         #set content margins of layout
         self._layout.setContentsMargins(5,5,5,5)
 
+        #set attributes of class
         self.setParent(self._master)
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.setSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed
+        )
         self.resize(self._width + 10, self._height + 10)
 
         #set attributes of label
@@ -92,7 +114,9 @@ class CLabel(QtWidgets.QWidget):
         self._label.setFont(self._font)
         self._label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
 
-        self._label.setSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        self._label.setSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding
+        )
 
         self._change_theme()
 
@@ -174,14 +198,14 @@ class CLabel(QtWidgets.QWidget):
         self.setParent(self._master)
 
     @width.setter
-    def width(self, width: int):
+    def width(self, width: int = 70):
         self._width = width
 
         self.setMinimumSize(self._width + 10, self._height + 10)
         self.resize(self._width + 10, self._height + 10)
 
     @height.setter
-    def height(self, height: int):
+    def height(self, height: int = 28):
         self._height = height
 
         self.setMinimumSize(self._width + 10, self._height + 10)
@@ -189,7 +213,7 @@ class CLabel(QtWidgets.QWidget):
 
     @width.setter
     @height.setter
-    def size(self, width: int, height: int):
+    def size(self, width: int = 70, height: int = 28):
         self._width = width
         self._height = height
 
@@ -198,13 +222,13 @@ class CLabel(QtWidgets.QWidget):
 
 
     @text.setter
-    def text(self, text: str):
+    def text(self, text: str = "CLabel"):
         self._text = text
 
         self._label.setText(self._text)
 
     @tooltip.setter
-    def tooltip(self, tooltip: str):
+    def tooltip(self, tooltip: Optional[str] = None):
         self._tooltip = tooltip
 
         self._label.setTooltip(self._tooltip)
@@ -216,13 +240,13 @@ class CLabel(QtWidgets.QWidget):
         self._change_theme()
 
     @icon_size.setter
-    def icon_size(self, icon_size: Tuple[int, int]):
+    def icon_size(self, icon_size: Tuple[int, int] = (16, 16)):
         self._icon_size = icon_size
 
         self._change_theme()
 
     @font_family.setter
-    def font_family(self, font_family: str):
+    def font_family(self, font_family: str = "Calibri"):
         self._font_family = font_family
 
         self._font = QtGui.QFont(self._font_family, self._font_size)
@@ -240,7 +264,7 @@ class CLabel(QtWidgets.QWidget):
         self._label.setFont(self._font)
 
     @font_size.setter
-    def font_size(self, font_size: int):
+    def font_size(self, font_size: int = 12):
         self._font_size = font_size
 
         self._font = QtGui.QFont(self._font_family, self._font_size)
@@ -258,7 +282,7 @@ class CLabel(QtWidgets.QWidget):
         self._label.setFont(self._font)
 
     @font_style.setter
-    def font_style(self, font_style: str):
+    def font_style(self, font_style: Optional[str] = None):
         self._font_style = font_style
 
         self._font = QtGui.QFont(self._font_family, self._font_size)
@@ -276,49 +300,65 @@ class CLabel(QtWidgets.QWidget):
         self._label.setFont(self._font)
 
     @border_width.setter
-    def border_width(self, border_width: int):
-        self._border_width = border_width
+    def border_width(self, border_width: Optional[int] = None):
+        self._border_width = (
+            ThemeManager.theme["CLabel"]["border_width"] 
+            if border_width is None else border_width
+        )
 
         self._change_theme()
 
     @corner_radius.setter
-    def corner_radius(self, corner_radius: int):
-        self._corner_radius = corner_radius
+    def corner_radius(self, corner_radius: Optional[int] = None):
+        self._corner_radius = (
+            ThemeManager.theme["CLabel"]["corner_radius"] 
+            if corner_radius is None else corner_radius
+        )
 
         self._change_theme()
 
     @background_color.setter
-    def background_color(self, background_color: Union[str, Tuple[str, str]]):
+    def background_color(
+        self, background_color: Union[str, Tuple[str, str]] = None
+    ):
         self._background_color = background_color
 
         self._change_theme()
 
     @text_color.setter
-    def text_color(self, text_color: Union[str, Tuple[str, str]]):
+    def text_color(
+        self, text_color: Union[str, Tuple[str, str]] = None
+    ):
         self._text_color = text_color
 
         self._change_theme()
 
     @border_color.setter
-    def border_color(self, border_color: Union[str, Tuple[str, str]]):
+    def border_color(
+        self, border_color: Union[str, Tuple[str, str]] = None
+    ):
         self._border_color = border_color
         
         self._change_theme()
 
     @disabled_background_color.setter
-    def disabled_background_color(self, disabled_background_color: Union[str, Tuple[str, str]]):
+    def disabled_background_color(
+        self, disabled_background_color: Union[str, Tuple[str, str]] = None
+    ):
         self._disabled_background_color = disabled_background_color
 
         self._change_theme()
 
     @disabled_text_color.setter
-    def disabled_text_color(self, disabled_text_color: Union[str, Tuple[str, str]]):
+    def disabled_text_color(
+        self, disabled_text_color: Union[str, Tuple[str, str]] = None
+    ):
         self._disabled_text_color = disabled_text_color
 
-    #method to update the theme of the button
+    #method to update the theme of the label
     def _change_theme(self):
 
-        #get styling of button and store it in a tuple with keys for variable
+        #get styling of label and store it in a tuple with keys for variable
         variables = (
             ("_text_color", self._text_color),
             ("_background_color", self._background_color), 
@@ -347,7 +387,9 @@ class CLabel(QtWidgets.QWidget):
                 else:
                     #if the system theme is dark, set the new color with the specified
                     #attribute to the dark color
-                    if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
+                    if (
+                        QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark
+                    ):
                         new_colors[attribute] = color[1]
 
                     #otherwise use the light color
@@ -359,7 +401,7 @@ class CLabel(QtWidgets.QWidget):
             else:
                 new_colors[attribute] = color
 
-        #set the stylesheet of button with new colors
+        #set the stylesheet of label with new colors
         self._label.setStyleSheet(
                 "QLabel {"
                 f"background-color: {new_colors["_background_color"]};"
@@ -377,25 +419,12 @@ class CLabel(QtWidgets.QWidget):
     #method to change theme when system theme changes 
     def changeEvent(self, event): 
         
-        #if the system button palette changes and palette is not already changing continue
-        if event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing: 
+        #if the system label palette changes and palette is not already changing continue
+        if (
+            event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing
+        ): 
             self._palette_changing = True       #update palette changing flag to true   
-            self._change_theme()               #update button theme
+            self._change_theme()               #update label theme
             self._palette_changing = False      #update palette changing flag to false
 
         super().changeEvent(event)
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-        

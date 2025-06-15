@@ -9,3 +9,4 @@ class ModeManager:
             cls.mode = mode.lower()
         else:
             cls.mode = mode.lower()
+            

@@ -1,18 +1,4 @@
 {
-    "CFrame": {
-        "corner_radius": 6,
-        "border_width": 0,
-        "border_color": ["#B9B9B9", "#464646"],
-        "background_color": ["#d9d9d9", "#262626"]
-    },
-
-    "CLabel": {
-        "corner_radius": 0,
-        "border_width": 0,
-        "text_color": ["black", "white"],
-        "disabled_text_color": ["#bcbcbc","#999999"] 
-    },
-    
     "CButton": {
         "corner_radius": 6,
         "border_width": 0,
@@ -21,17 +7,6 @@
         "border_color": ["#464646", "#B9B9B9"],
         "hover_color": ["#B5B21A","#8D8B15"],
         "pressed_color": ["#2A2ABB","#212196"],
-        "disabled_background_color": ["#b3b3b3","#a6a6a6"],
-        "disabled_text_color": ["#bcbcbc","#999999"]
-    },
-
-    "CLineEdit": {
-        "corner_radius": 6, 
-        "border_width": 1,
-        "background_color": ["#E1E1E1","#282828"],
-        "text_color": ["black", "white"],
-        "placeholder_text_color": ["#0A0A0A", "#F5F5F5"],
-        "border_color": ["#B9B9B9", "#464646"],
         "disabled_background_color": ["#b3b3b3","#a6a6a6"],
         "disabled_text_color": ["#bcbcbc","#999999"]
     },
@@ -53,6 +28,39 @@
         "item_hover_color": ["#DDDA20","#E4E247"],
         "disabled_background_color": ["#b3b3b3","#a6a6a6"],
         "disabled_text_color": ["#bcbcbc","#999999"]
+    },
+
+    "CFrame": {
+        "corner_radius": 6,
+        "border_width": 0,
+        "border_color": ["#B9B9B9", "#464646"],
+        "background_color": ["#d9d9d9", "#262626"]
+    },
+
+    "CLabel": {
+        "corner_radius": 0,
+        "border_width": 0,
+        "text_color": ["black", "white"],
+        "disabled_text_color": ["#bcbcbc","#999999"] 
+    },
+
+    "CLineEdit": {
+        "corner_radius": 6, 
+        "border_width": 1,
+        "background_color": ["#E1E1E1","#282828"],
+        "text_color": ["black", "white"],
+        "placeholder_text_color": ["#0A0A0A", "#F5F5F5"],
+        "border_color": ["#B9B9B9", "#464646"],
+        "disabled_background_color": ["#b3b3b3","#a6a6a6"],
+        "disabled_text_color": ["#bcbcbc","#999999"]
+    },
+
+    "CScrollBar": {
+        "corner_radius": 6,
+        "width": 12,
+        "background_color": ["#8C8C8C", "#666666"],
+        "hover_color": ["#737373", "#808080"],
+        "pressed_color": ["#666666", "#8C8C8C"]
     },
 
     "CSlider": {
@@ -80,13 +88,5 @@
         "border_color": ["#B9B9B9", "#464646"],
         "disabled_background_color": ["#b3b3b3","#a6a6a6"],
         "disabled_text_color": ["#bcbcbc","#999999"]
-    },
-
-    "CScrollBar": {
-        "corner_radius": 6,
-        "width": 12,
-        "background_color": ["#8C8C8C", "#666666"],
-        "hover_color": ["#737373", "#808080"],
-        "pressed_color": ["#666666", "#8C8C8C"]
     }
 }

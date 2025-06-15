@@ -1,5 +1,5 @@
 #default libraries
-from typing import Union, Tuple, Optional, Any, Callable
+from typing import Union, Tuple, Optional, Any
 
 #installed libraries
 from PySide6 import QtWidgets, QtGui, QtCore
@@ -12,8 +12,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt library
 #
 # Author: D. Liam Mc.
-# Version: 0.0.2
-# Date: May 14, 2025
+# Version: 0.0.3
+# Date: June 15, 2025
 
 class CTextEdit(QtWidgets.QWidget):
     def __init__(
@@ -24,8 +24,6 @@ class CTextEdit(QtWidgets.QWidget):
             text: Optional[str] = None,
             placeholder_text: str = "CTextEdit",
             tooltip: Optional[str] = None,
-            icon: Optional[str] = None,
-            icon_size: Tuple[int, int] = (16, 16),
             font_family: str = "Calibri",
             font_size: int = 12,
             font_style: Optional[str] = None,
@@ -47,41 +45,48 @@ class CTextEdit(QtWidgets.QWidget):
         self._width = width
         self._height = height
 
-        #set text, placeholder text, tooltip, icon, icon size, and font parameters
+        #set text, placeholder text, tooltip, and font parameters
         self._text = text
         self._placeholder_text = placeholder_text
         self._tooltip = tooltip
-        self._icon = icon
-        self._icon_size = icon_size
         self._font_family = font_family
         self._font_size = font_size
         self._font_style = font_style
         
         #set appearance and styling parameters
         self._border_width = (
-            ThemeManager.theme["CTextEdit"]["border_width"] if border_width is None else border_width
-            )
+            ThemeManager.theme["CTextEdit"]["border_width"] 
+            if border_width is None else border_width
+        )
         self._corner_radius = (
-            ThemeManager.theme["CTextEdit"]["corner_radius"] if corner_radius is None else corner_radius
-            )
+            ThemeManager.theme["CTextEdit"]["corner_radius"] 
+            if corner_radius is None else corner_radius
+        )
         self._text_color = (
-            ThemeManager.theme["CTextEdit"]["text_color"] if text_color is None else text_color
-            )
+            ThemeManager.theme["CTextEdit"]["text_color"] 
+            if text_color is None else text_color
+        )
         self._placeholder_text_color = (
-            ThemeManager.theme["CTextEdit"]["placeholder_text_color"] if placeholder_text_color is None else placeholder_text_color
-            )
+            ThemeManager.theme["CTextEdit"]["placeholder_text_color"] 
+            if placeholder_text_color is None else placeholder_text_color
+        )
         self._background_color = (
-            ThemeManager.theme["CTextEdit"]["background_color"] if background_color is None else background_color
-            )
+            ThemeManager.theme["CTextEdit"]["background_color"] 
+            if background_color is None else background_color
+        )
         self._border_color = (
-            ThemeManager.theme["CTextEdit"]["border_color"] if border_color is None else border_color
-            )
+            ThemeManager.theme["CTextEdit"]["border_color"] 
+            if border_color is None else border_color
+        )
         self._disabled_text_color= (
-            ThemeManager.theme["CTextEdit"]["disabled_text_color"] if disabled_text_color is None else disabled_text_color
-            )
+            ThemeManager.theme["CTextEdit"]["disabled_text_color"] 
+            if disabled_text_color is None else disabled_text_color
+        )
         self._disabled_background_color = (
-            ThemeManager.theme["CTextEdit"]["disabled_background_color"] if disabled_background_color is None else disabled_background_color
-            )
+            ThemeManager.theme["CTextEdit"]["disabled_background_color"] 
+            if disabled_background_color is None else disabled_background_color
+        )
+
         self._scroll_bar_color = ThemeManager.theme["CScrollBar"]["background_color"]
         self._scroll_bar_hover_color = ThemeManager.theme["CScrollBar"]["hover_color"]
         self._scroll_bar_pressed_color = ThemeManager.theme["CScrollBar"]["pressed_color"]
@@ -93,7 +98,7 @@ class CTextEdit(QtWidgets.QWidget):
         self._layout = QtWidgets.QVBoxLayout()
         self._text_box = QtWidgets.QTextEdit()
 
-        #set font of button
+        #set font of text edit
         self._font = QtGui.QFont(self._font_family, self._font_size)
 
         match self._font_style:
@@ -115,7 +120,7 @@ class CTextEdit(QtWidgets.QWidget):
         #set content margins of layout
         self._layout.setContentsMargins(5,5,5,5)
 
-        #set attributes of line edit
+        #set attributes of text edit
         self._text_box.setText(self._text)
         self._text_box.setPlaceholderText(self._placeholder_text)
         self._text_box.setToolTip(self._tooltip)
@@ -155,14 +160,6 @@ class CTextEdit(QtWidgets.QWidget):
     @property
     def tooltip(self):
         return self._tooltip
-    
-    @property
-    def icon(self):
-        return self._icon
-    
-    @property
-    def icon_size(self):
-        return self._icon_size
     
     @property
     def font_family(self):
@@ -219,7 +216,6 @@ class CTextEdit(QtWidgets.QWidget):
         self._width = width
 
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.resize(self._width + 10, self._height + 10)
 
     @height.setter
@@ -227,7 +223,6 @@ class CTextEdit(QtWidgets.QWidget):
         self._height = height
 
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.resize(self._width + 10, self._height + 10)
 
     @height.setter
@@ -237,7 +232,6 @@ class CTextEdit(QtWidgets.QWidget):
         self._height = height
 
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.resize(self._width + 10, self._height + 10)
 
     @text.setter
@@ -258,18 +252,6 @@ class CTextEdit(QtWidgets.QWidget):
         self._tooltip = tooltip
 
         self._text_box.setToolTip(self._tooltip)
-
-    @icon.setter
-    def icon(self, icon: Optional[str] = None):
-        self._icon = icon
-
-        self._text_box.setIcon(QtGui.QIcon(self._icon))
-
-    @icon_size.setter
-    def icon_size(self, icon_size: Tuple[int, int] = (16, 16)):
-        self._icon_size = icon_size
-
-        self._text_box.setIconSize(QtCore.QSize(self._icon_size[0], self._icon_size[1]))
 
     @font_family.setter
     def font_family(self, font_family: str = "Calibri"):
@@ -303,59 +285,95 @@ class CTextEdit(QtWidgets.QWidget):
 
     @border_width.setter
     def border_width(self, border_width: Optional[int] = None):
-        self._border_width = ThemeManager.theme["CTextEdit"]["border_width"] if border_width is None else border_width
+        self._border_width = (
+            ThemeManager.theme["CTextEdit"]["border_width"] 
+            if border_width is None else border_width
+        )
 
         self._change_theme()
 
     @corner_radius.setter
     def corner_radius(self, corner_radius: Optional[int] = None):
-        self._corner_radius = ThemeManager.theme["CTextEdit"]["corner_radius"] if corner_radius is None else corner_radius
-
+        self._corner_radius = (
+            ThemeManager.theme["CTextEdit"]["corner_radius"] 
+            if corner_radius is None else corner_radius
+        )
+        
         self._change_theme()
 
     @text_color.setter
-    def text_color(self, text_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._text_color = ThemeManager.theme["CTextEdit"]["text_color"] if text_color is None else text_color
-
+    def text_color(
+        self, text_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._text_color = (
+            ThemeManager.theme["CTextEdit"]["text_color"] 
+            if text_color is None else text_color
+        )
+        
         self._change_theme()
 
     @placeholder_text_color.setter
-    def placeholder_text_color(self, placeholder_text_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._placeholder_text_color = ThemeManager.theme["CTextEdit"]["placeholder_text_color"] if placeholder_text_color is None else placeholder_text_color
-
+    def placeholder_text_color(
+        self, placeholder_text_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._placeholder_text_color = (
+            ThemeManager.theme["CTextEdit"]["placeholder_text_color"] 
+            if placeholder_text_color is None else placeholder_text_color
+        )
+        
         self._change_theme()
 
     @background_color.setter
-    def background_color(self, background_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._background_color = ThemeManager.theme["CTextEdit"]["background_color"] if background_color is None else background_color
+    def background_color(
+        self, background_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._background_color = (
+            ThemeManager.theme["CTextEdit"]["background_color"] 
+            if background_color is None else background_color
+        )
 
         self._change_theme()
 
     @border_color.setter
-    def border_color(self, border_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._border_color = ThemeManager.theme["CTextEdit"]["border_color"] if border_color is None else border_color
-
+    def border_color(
+        self, border_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._border_color = (
+            ThemeManager.theme["CTextEdit"]["border_color"] 
+            if border_color is None else border_color
+        )
+        
         self._change_theme()
 
     @disabled_text_color.setter
-    def disabled_text_color(self, disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._disabled_text_color = ThemeManager.theme["CTextEdit"]["text_color"] if disabled_text_color is None else disabled_text_color
-
+    def disabled_text_color(
+        self, disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._disabled_text_color= (
+            ThemeManager.theme["CTextEdit"]["disabled_text_color"] 
+            if disabled_text_color is None else disabled_text_color
+        )
+        
         self._change_theme()
 
     @disabled_background_color.setter
-    def disabled_background_color(self, disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._disabled_background_color = ThemeManager.theme["CTextEdit"]["disabled_background_color"] if disabled_background_color is None else disabled_background_color
+    def disabled_background_color(
+        self, disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._disabled_background_color = (
+            ThemeManager.theme["CTextEdit"]["disabled_background_color"] 
+            if disabled_background_color is None else disabled_background_color
+        )
 
         self._change_theme()
 
     def __change_text(self):
         self._text = self._text_box.toPlainText()
     
-    #method to update the theme of the button
+    #method to update the theme of the text edit
     def _change_theme(self):
 
-        #get styling of line edit and store it in a tuple with keys for variable
+        #get styling of text edit and store it in a tuple with keys for variable
         variables = (
             ("_text_color", self._text_color),
             ("_placeholder_text_color", self._placeholder_text_color),
@@ -368,7 +386,7 @@ class CTextEdit(QtWidgets.QWidget):
             ("_scroll_bar_pressed_color", self._scroll_bar_pressed_color)
             )
         
-        new_colors = {}     #dictionary to store new colors fot styling theme
+        new_colors = {}     #dictionary to store new colors for styling theme
 
         for attribute, color in variables:
 
@@ -388,7 +406,9 @@ class CTextEdit(QtWidgets.QWidget):
                 else:
                     #if the system theme is dark, set the new color with the specified
                     #attribute to the dark color
-                    if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
+                    if (
+                        QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark
+                    ):
                         new_colors[attribute] = color[1]
 
                     #otherwise use the light color
@@ -400,7 +420,7 @@ class CTextEdit(QtWidgets.QWidget):
             else:
                 new_colors[attribute] = color
 
-        #set the stylesheet of button with new colors
+        #set the stylesheet of text edit with new colors
         self._text_box.setStyleSheet(
                 "QTextEdit {"
                     f"background-color: {new_colors["_background_color"]};"
@@ -483,10 +503,12 @@ class CTextEdit(QtWidgets.QWidget):
     #method to change theme when system theme changes 
     def changeEvent(self, event): 
 
-        #if the system button palette changes and palette is not already changing continue
-        if event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing: 
+        #if the system text edit palette changes and palette is not already changing continue
+        if (
+            event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing
+        ): 
             self._palette_changing = True       #update palette changing flag to true   
-            self._change_theme()               #update button theme
+            self._change_theme()               #update text edit theme
             self._palette_changing = False      #update palette changing flag to false
 
         super().changeEvent(event)

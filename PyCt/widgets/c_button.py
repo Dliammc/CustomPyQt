@@ -12,32 +12,32 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt library
 #
 # Author: D. Liam Mc.
-# Version: 0.0.2
-# Date: May 18, 2025
+# Version: 0.0.3
+# Date: June 15, 2025
 
 class CButton(QtWidgets.QWidget):
     def __init__(
-                self,
-                master: Any,
-                width: int = 140,
-                height: int = 28,
-                text: str = "CButton",
-                tooltip: Optional[str] = None,
-                icon: Optional[str] = None,
-                icon_size: Tuple[int, int] = (16, 16),
-                font_family: str = "Calibri",
-                font_size: int = 12,
-                font_style: Optional[str] = None,
-                border_width: Optional[int] = None,
-                corner_radius: Optional[int] = None,
-                text_color: Optional[Union[str, Tuple[str, str]]] = None,
-                background_color: Optional[Union[str, Tuple[str, str]]] = None,
-                border_color: Optional[Union[str, Tuple[str, str]]] = None,
-                hover_color: Optional[Union[str, Tuple[str, str]]] = None,
-                pressed_color: Optional[Union[str, Tuple[str, str]]] = None,
-                disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None,
-                disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None,  
-                command: Union[Callable[[], Any], None] = None      
+            self,
+            master: Any,
+            width: int = 140,
+            height: int = 28,
+            text: str = "CButton",
+            tooltip: Optional[str] = None,
+            icon: Optional[str] = None,
+            icon_size: Tuple[int, int] = (16, 16),
+            font_family: str = "Calibri",
+            font_size: int = 12,
+            font_style: Optional[str] = None,
+            border_width: Optional[int] = None,
+            corner_radius: Optional[int] = None,
+            text_color: Optional[Union[str, Tuple[str, str]]] = None,
+            background_color: Optional[Union[str, Tuple[str, str]]] = None,
+            border_color: Optional[Union[str, Tuple[str, str]]] = None,
+            hover_color: Optional[Union[str, Tuple[str, str]]] = None,
+            pressed_color: Optional[Union[str, Tuple[str, str]]] = None,
+            disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None,
+            disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None,  
+            command: Union[Callable[[], Any], None] = None      
     ):
         super().__init__()
 
@@ -49,7 +49,7 @@ class CButton(QtWidgets.QWidget):
         self._height = height
         self._command = command
 
-        #set text, icon and font parameters
+        #set text, icon, tooltip, and font parameters
         self._text = text
         self._icon = icon
         self._icon_size = icon_size
@@ -60,32 +60,41 @@ class CButton(QtWidgets.QWidget):
 
         #set appearance and styling parameters
         self._border_width = (
-            ThemeManager.theme["CButton"]["border_width"] if border_width is None else border_width
-            )
+            ThemeManager.theme["CButton"]["border_width"] 
+            if border_width is None else border_width
+        )
         self._corner_radius = (
-            ThemeManager.theme["CButton"]["corner_radius"] if corner_radius is None else corner_radius
-            )
+            ThemeManager.theme["CButton"]["corner_radius"] 
+            if corner_radius is None else corner_radius
+        )
         self._text_color = (
-            ThemeManager.theme["CButton"]["text_color"] if text_color is None else text_color
-            )
+            ThemeManager.theme["CButton"]["text_color"] 
+            if text_color is None else text_color
+        )
         self._background_color = (
-            ThemeManager.theme["CButton"]["background_color"] if background_color is None else background_color
-            )
+            ThemeManager.theme["CButton"]["background_color"] 
+            if background_color is None else background_color
+        )
         self._border_color = (
-            ThemeManager.theme["CButton"]["border_color"] if border_color is None else border_color
-            )
+            ThemeManager.theme["CButton"]["border_color"] 
+            if border_color is None else border_color
+        )
         self._hover_color = (
-            ThemeManager.theme["CButton"]["hover_color"] if hover_color is None else hover_color
-            )
+            ThemeManager.theme["CButton"]["hover_color"] 
+            if hover_color is None else hover_color
+        )
         self._pressed_color = (
-            ThemeManager.theme["CButton"]["pressed_color"] if pressed_color is None else pressed_color
-            )
+            ThemeManager.theme["CButton"]["pressed_color"] 
+            if pressed_color is None else pressed_color
+        )
         self._disabled_text_color= (
-            ThemeManager.theme["CButton"]["disabled_text_color"] if disabled_text_color is None else disabled_text_color
-            )
+            ThemeManager.theme["CButton"]["disabled_text_color"] 
+            if disabled_text_color is None else disabled_text_color
+        )
         self._disabled_background_color = (
-            ThemeManager.theme["CButton"]["disabled_background_color"] if disabled_background_color is None else disabled_background_color
-            )
+            ThemeManager.theme["CButton"]["disabled_background_color"] 
+            if disabled_background_color is None else disabled_background_color
+        )
 
         #flags
         self._palette_changing = False
@@ -110,7 +119,9 @@ class CButton(QtWidgets.QWidget):
         #set attributes of class
         self.setParent(self._master), 
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.setSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed
+        )
         self.resize(self._width + 10, self._height + 10)
 
         #set content margins of layout
@@ -123,7 +134,9 @@ class CButton(QtWidgets.QWidget):
         self._button.setIconSize(QtCore.QSize(self._icon_size[0], self._icon_size[1]))
         self._button.setFont(self._font)
 
-        self._button.setSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        self._button.setSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding
+        )
 
         #add commands and methods to button on certain events
         if command != None:
@@ -229,7 +242,6 @@ class CButton(QtWidgets.QWidget):
         self._width = width
 
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.resize(self._width + 10, self._height + 10)
 
     @height.setter
@@ -237,7 +249,6 @@ class CButton(QtWidgets.QWidget):
         self._height = height
 
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.resize(self._width + 10, self._height + 10)
 
     @height.setter
@@ -247,7 +258,6 @@ class CButton(QtWidgets.QWidget):
         self._height = height
 
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         self.resize(self._width + 10, self._height + 10)
 
     @text.setter
@@ -306,55 +316,96 @@ class CButton(QtWidgets.QWidget):
 
     @border_width.setter
     def border_width(self, border_width: Optional[int] = None):
-        self._border_width = ThemeManager.theme["CButton"]["border_width"] if border_width is None else border_width
+        self._border_width = (
+            ThemeManager.theme["CButton"]["border_width"] 
+            if border_width is None else border_width
+        )
 
         self._change_theme()
 
     @corner_radius.setter
     def corner_radius(self, corner_radius: Optional[int] = None):
-        self._corner_radius = ThemeManager.theme["CButton"]["corner_radius"] if corner_radius is None else corner_radius
+        self._corner_radius = (
+            ThemeManager.theme["CButton"]["corner_radius"] 
+            if corner_radius is None else corner_radius
+        )
 
         self._change_theme()
 
     @text_color.setter
-    def text_color(self, text_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._text_color = ThemeManager.theme["CButton"]["text_color"] if text_color is None else text_color
+    def text_color(
+        self, text_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._text_color = (
+            ThemeManager.theme["CButton"]["text_color"] 
+            if text_color is None else text_color
+        )
 
         self._change_theme()
 
     @background_color.setter
-    def background_color(self, background_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._background_color = ThemeManager.theme["CButton"]["background_color"] if background_color is None else background_color
+    def background_color(
+        self, background_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._background_color = (
+            ThemeManager.theme["CButton"]["background_color"] 
+            if background_color is None else background_color
+        )
 
         self._change_theme()
 
     @border_color.setter
-    def border_color(self, border_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._border_color = ThemeManager.theme["CButton"]["border_color"] if border_color is None else border_color
+    def border_color(
+        self, border_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._border_color = (
+            ThemeManager.theme["CButton"]["border_color"] 
+            if border_color is None else border_color
+        )
 
         self._change_theme()
 
     @hover_color.setter
-    def hover_color(self, hover_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._hover_color = ThemeManager.theme["CButton"]["hover_color"] if hover_color is None else hover_color
+    def hover_color(
+        self, hover_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._hover_color = (
+            ThemeManager.theme["CButton"]["hover_color"] 
+            if hover_color is None else hover_color
+        )
 
         self._change_theme()
 
     @pressed_color.setter
-    def pressed_color(self, pressed_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._pressed_color = ThemeManager.theme["CButton"]["pressed_color"] if pressed_color is None else pressed_color
+    def pressed_color(
+        self, pressed_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._pressed_color = (
+            ThemeManager.theme["CButton"]["pressed_color"] 
+            if pressed_color is None else pressed_color
+        )
 
         self._change_theme()
 
     @disabled_text_color.setter
-    def disabled_text_color(self, disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._disabled_text_color = ThemeManager.theme["CButton"]["text_color"] if disabled_text_color is None else disabled_text_color
+    def disabled_text_color(
+        self, disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._disabled_text_color = (
+        ThemeManager.theme["CButton"]["disabled_text_color"] 
+        if disabled_text_color is None else disabled_text_color
+        )
 
         self._change_theme()
 
     @disabled_background_color.setter
-    def disabled_background_color(self, disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._disabled_background_color = ThemeManager.theme["CButton"]["disabled_background_color"] if disabled_background_color is None else disabled_background_color
+    def disabled_background_color(
+        self, disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._disabled_background_color = (
+            ThemeManager.theme["CButton"]["disabled_background_color"] 
+            if disabled_background_color is None else disabled_background_color
+        )
 
         self._change_theme()
 
@@ -422,7 +473,9 @@ class CButton(QtWidgets.QWidget):
                 else:
                     #if the system theme is dark, set the new color with the specified
                     #attribute to the dark color
-                    if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
+                    if (
+                        QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark
+                    ):
                         new_colors[attribute] = color[1]
 
                     #otherwise use the light color
@@ -461,7 +514,9 @@ class CButton(QtWidgets.QWidget):
     def changeEvent(self, event): 
         
         #if the system button palette changes and palette is not already changing continue
-        if event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing: 
+        if (
+            event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing
+        ): 
             self._palette_changing = True       #update palette changing flag to true   
             self._change_theme()               #update button theme
             self._palette_changing = False      #update palette changing flag to false

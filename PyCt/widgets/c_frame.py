@@ -1,5 +1,5 @@
 #default libraries
-from typing import Union, Tuple, Optional, Any, Callable
+from typing import Union, Tuple, Optional, Any
 
 #installed libraries
 from PySide6 import QtWidgets, QtGui, QtCore
@@ -12,19 +12,20 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt library
 #
 # Author: D. Liam Mc.
-# Version: 0.0.2
-# Date: May 18, 2025
+# Version: 0.0.3
+# Date: June 15, 2025
 
 class CFrame(QtWidgets.QFrame):
-    def __init__(self,
-                master: Any,
-                width: Optional[int] = None,
-                height: Optional[int] = None,
-                border_width: Optional[int] = None,
-                corner_radius: Optional[int] = None,
-                border_color: Optional[Union[str, Tuple[str, str]]] = None,
-                background_color: Optional[Union[str, Tuple[str, str]]] = None,
-                layout_type: str = "vertical"
+    def __init__(
+            self,
+            master: Any,
+            width: Optional[int] = None,
+            height: Optional[int] = None,
+            border_width: Optional[int] = None,
+            corner_radius: Optional[int] = None,
+            background_color: Optional[Union[str, Tuple[str, str]]] = None,
+            border_color: Optional[Union[str, Tuple[str, str]]] = None,
+            layout_type: str = "vertical"
     ):
         super().__init__()
 
@@ -35,10 +36,22 @@ class CFrame(QtWidgets.QFrame):
         self._layout_type = layout_type 
 
         #set appearance and styling parameters
-        self._border_width = ThemeManager.theme["CFrame"]["border_width"] if border_width is None else border_width
-        self._corner_radius = ThemeManager.theme["CFrame"]["corner_radius"] if corner_radius is None else corner_radius
-        self._border_color = ThemeManager.theme["CFrame"]["border_color"] if border_color is None else border_color
-        self._background_color = ThemeManager.theme["CFrame"]["background_color"] if background_color is None else background_color
+        self._border_width = (
+            ThemeManager.theme["CFrame"]["border_width"] 
+            if border_width is None else border_width
+        )
+        self._corner_radius = (
+            ThemeManager.theme["CFrame"]["corner_radius"] 
+            if corner_radius is None else corner_radius
+        )
+        self._background_color = (
+            ThemeManager.theme["CFrame"]["background_color"] 
+            if background_color is None else background_color
+        )
+        self._border_color = (
+            ThemeManager.theme["CFrame"]["border_color"] 
+            if border_color is None else border_color
+        )
 
         #flags
         self._palette_changing = False
@@ -56,7 +69,10 @@ class CFrame(QtWidgets.QFrame):
             self.setMinimumWidth(self._width)
         if not self._height is None: 
             self.setMinimumHeight(self._height)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Maximum)
+
+        self.setSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Maximum
+        )
         
         self.setLayout(self._layout)
 
@@ -88,12 +104,12 @@ class CFrame(QtWidgets.QFrame):
         return self._corner_radius
     
     @property
-    def border_color(self):
-        return self._border_color
-    
-    @property
     def background_color(self):
         return self._background_color
+    
+    @property
+    def border_color(self):
+        return self._border_color
     
     @master.setter
     def master(self, master: Any):
@@ -126,26 +142,46 @@ class CFrame(QtWidgets.QFrame):
         self._layout_type = layout_type
 
     @border_width.setter
-    def border_width(self, border_width: Optional[Union[str, Tuple[str, str]]] = None):
-        self._border_width = border_width
-
+    def border_width(
+        self, border_width: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._border_width = (
+            ThemeManager.theme["CFrame"]["border_width"] 
+            if border_width is None else border_width
+        )
+        
         self._change_theme()
 
     @corner_radius.setter
-    def corner_radius(self, corner_radius: Optional[Union[str, Tuple[str, str]]] = None):
-        self._corner_radius = corner_radius
-
-        self._change_theme()
-
-    @border_color.setter
-    def border_color(self, border_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._border_color = border_color
+    def corner_radius(
+        self, corner_radius: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._corner_radius = (
+            ThemeManager.theme["CFrame"]["corner_radius"] 
+            if corner_radius is None else corner_radius
+        )
 
         self._change_theme()
 
     @background_color.setter
-    def background_color(self, background_color: Optional[Union[str, Tuple[str, str]]] = None):
-        self._background_color = background_color
+    def background_color(
+        self, background_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._background_color = (
+            ThemeManager.theme["CFrame"]["background_color"] 
+            if background_color is None else background_color
+        )
+
+        self._change_theme()
+
+    @border_color.setter
+    def border_color(
+        self, border_color: Optional[Union[str, Tuple[str, str]]] = None
+    ):
+        self._border_color = (
+            ThemeManager.theme["CFrame"]["border_color"] 
+            if border_color is None else border_color
+        )
 
         self._change_theme()
 
@@ -175,7 +211,9 @@ class CFrame(QtWidgets.QFrame):
                 else:
                     #if the system theme is dark, set the new color with the specified
                     #attribute to the dark color
-                    if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
+                    if (
+                        QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark
+                    ):
                         new_colors[attribute] = color[1]
 
                     #otherwise use the light color
@@ -204,7 +242,9 @@ class CFrame(QtWidgets.QFrame):
     def changeEvent(self, event): 
 
         #if the system frame palette changes and palette is not already changing continue
-        if event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing: 
+        if (
+            event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing
+        ): 
             self._palette_changing = True       #update palette changing flag to true   
             self._change_theme()               #update frame theme
             self._palette_changing = False      #update palette changing flag to false

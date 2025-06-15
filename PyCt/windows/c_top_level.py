@@ -1,36 +1,61 @@
+#default libraries
 from platform import system, release
 from typing import Union, Tuple, Optional, Any
 
+#local libraries
 from ..appearance import ModeManager
 
+#installed libraries
 from PySide6 import QtWidgets, QtGui, QtCore
+
+# The purpose of this program is to provide a class for styled 
+# main windows using QWidget from PySide6 in connection to the 
+# PyCt library
+#
+# Author: D. Liam Mc.
+# Version: 0.0.3
+# Date: June 15, 2025
 
 class CTopLevel(QtWidgets.QWidget):
      def __init__(
-                self,
-                title: str = "CTopLevel",
-                icon: Optional[str] = None,
-                width: int = 300,
-                height: int = 150,
-                x: Optional[int] = None,
-                y: Optional[int] = None,
-                bg: Union[str, Tuple[str, str]] = None,
-                opacity: float = 1.0,
-                style: Optional[str] = None,
-                ):
+               self,
+               master: Any,
+               width: int = 500,
+               height: int = 300,
+               x: Optional[int] = None,
+               y: Optional[int] = None,
+               title: str = "CMainWindow",
+               icon: Optional[str] = None,
+               background_color: Union[str, Tuple[str, str]] = None,
+               opacity: float = 1.0,
+               style: Optional[str] = None
+     ):
           super().__init__()
 
-          self._title = title
-          self._icon = icon
-          self._x = x
-          self._y = y
+          #initialize variables for class
+
+          #default parameters and dimensions
+          self._master = master
           self._width = width
           self._height = height
-          self._bg = bg
+          self._x = x
+          self._y = y
+
+          #set window title and icon
+          self._title = title
+          self._icon = icon
+
+          #set window background color, opacity, and style
+          self._background_color = background_color
           self._opacity = opacity
           self._style = style
 
+          #flags
+          self._palette_changing = False
+
+          #set attributes for class
           self.activateWindow()
+          self.setParent(self._master)
           self.setWindowTitle(self._title)
           self.setWindowOpacity(self._opacity)
 
@@ -51,15 +76,7 @@ class CTopLevel(QtWidgets.QWidget):
      @property
      def master(self):
           return self._master
-     
-     @property
-     def title(self):
-          return self._title
 
-     @property
-     def icon(self):
-          return self._icon
-     
      @property
      def width(self):
           return self._width
@@ -77,8 +94,16 @@ class CTopLevel(QtWidgets.QWidget):
           return self._y
      
      @property
-     def bg(self):
-          return self._bg
+     def title(self):
+          return self._title
+
+     @property
+     def icon(self):
+          return self._icon
+     
+     @property
+     def background_color(self):
+          return self._background_color
      
      @property
      def opacity(self):
@@ -88,21 +113,9 @@ class CTopLevel(QtWidgets.QWidget):
      def style(self):
           return self._style
      
-     @property
-     def theme(self):
-          return self._theme
-     
      @master.setter
-     def master(self, master:Any = None):
+     def master(self, master: Any):
           self._master = master
-
-     @title.setter
-     def title(self, title:str = "CMainWindow"):
-          self._title = title
-
-     @icon.setter
-     def icon(self, icon:str = None):
-          self._icon = icon
 
      @width.setter
      def width(self, width:int = 300):
@@ -113,16 +126,26 @@ class CTopLevel(QtWidgets.QWidget):
           self._height = height
 
      @x.setter
-     def x(self, x:int = None):
+     def x(self, x:Optional[int] = None):
           self._x = x
 
      @y.setter
-     def y(self, y:int = None):
+     def y(self, y:Optional[int] = None):
           self._y = y
 
-     @bg.setter
-     def bg(self, bg:Union[str, Tuple[str, str]] = None):
-          self._bg = bg
+     @title.setter
+     def title(self, title:str = "CMainWindow"):
+          self._title = title
+
+     @icon.setter
+     def icon(self, icon:Optional[str] = None):
+          self._icon = icon
+
+     @background_color.setter
+     def background_color(
+          self, background_color:Union[str, Tuple[str, str]] = None
+     ):
+          self._background_color = background_color
 
      @opacity.setter
      def opacity(self, opacity:float = 1.0):
@@ -132,27 +155,38 @@ class CTopLevel(QtWidgets.QWidget):
      def style(self, style:str = "mica"):
           self._style = style
 
-     @theme.setter
-     def theme(self, theme:str = "system"):
-          self._theme = theme
+     #method for setting window background color
+     def setWindowBackground(
+               self, background_color:Union[str, Tuple[str, str]] = None
+          ):
+          self._background_color = background_color
 
-     def setWindowBackground(self, bg:Union[str, Tuple[str, str]] = None):
-          self._bg = bg
-
-          if self._bg != None:
-               if isinstance(self._bg, tuple):
+          if self._background_color != None:
+               if isinstance(self._background_color, tuple):
                     if ModeManager.mode == "light":
-                         self.setStyleSheet("QWidget {background-color: " + f"{self._bg[0]}" + "}")
+                         self.setStyleSheet(
+                              "QWidget {background-color: " + f"{self._background_color[0]}" + "}"
+                         )
                     elif ModeManager.mode == "dark":
-                         self.setStyleSheet("QWidget {background-color: " + f"{self._bg[1]}" + "}")
+                         self.setStyleSheet(
+                              "QWidget {background-color: " + f"{self._background_color[1]}" + "}"
+                         )
                     else:
-                         if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
-                              self.setStyleSheet("QWidget {background-color: " + f"{self._bg[1]}" + "}")
+                         if (
+                              QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark
+                         ):
+                              self.setStyleSheet(
+                                   "QWidget {background-color: " + f"{self._background_color[1]}" + "}"
+                              )
                          else:
-                             self.setStyleSheet("QWidget {background-color: " + f"{self._bg[0]}" + "}") 
+                             self.setStyleSheet(
+                                  "QWidget {background-color: " + f"{self._background_color[0]}" + "}"
+                              ) 
 
                else:
-                    self.setStyleSheet("QWidget {background-color: " + f"{self._bg}" + "}")
+                    self.setStyleSheet(
+                         "QWidget {background-color: " + f"{self._background_color}" + "}"
+                    )
 
           else:
                if ModeManager.mode == "light":
@@ -160,10 +194,13 @@ class CTopLevel(QtWidgets.QWidget):
                elif ModeManager.mode == "dark":
                     self.setStyleSheet("QWidget {background-color: rgb(30,30,30)}")
                else:
-                    if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
+                    if (
+                         QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark
+                    ):
                          self.setStyleSheet("QWidget {background-color: rgb(30,30,30)}")
                     else:
                          self.setStyleSheet("QWidget {background-color: rgb(243,243,243)}") 
+
 
      def setWindowTheme(self, theme:str = "system"):
           self._theme = theme
@@ -198,7 +235,7 @@ class CTopLevel(QtWidgets.QWidget):
                except:
                     pass
 
-          self.setWindowBackground(self._bg)
+          self.setWindowBackground(self._background_color)
 
      def changeEvent(self, event): 
           if event.type() == QtCore.QEvent.Type.ThemeChange: 
