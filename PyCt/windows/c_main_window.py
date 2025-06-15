@@ -8,13 +8,13 @@ from PySide6 import QtWidgets, QtGui, QtCore
 class CMainWindow(QtWidgets.QWidget):
      def __init__(
                 self,
-                title: str = "CMainWindow",
-                icon: Optional[str] = None,
                 width: int = 500,
                 height: int = 300,
+                title: str = "CMainWindow",
+                icon: Optional[str] = None,
                 x: Optional[int] = None,
                 y: Optional[int] = None,
-                bg: Union[str, Tuple[str, str]] = None,
+                background_color: Union[str, Tuple[str, str]] = None,
                 opacity: float = 1.0,
                 style: Optional[str] = None
                 ):
@@ -26,7 +26,7 @@ class CMainWindow(QtWidgets.QWidget):
           self._y = y
           self._width = width
           self._height = height
-          self._bg = bg
+          self._background_color = background_color
           self._opacity = opacity
           self._style = style
 
@@ -76,8 +76,8 @@ class CMainWindow(QtWidgets.QWidget):
           return self._y
      
      @property
-     def bg(self):
-          return self._bg
+     def background_color(self):
+          return self._background_color
      
      @property
      def opacity(self):
@@ -111,9 +111,9 @@ class CMainWindow(QtWidgets.QWidget):
      def y(self, y:int = None):
           self._y = y
 
-     @bg.setter
-     def bg(self, bg:Union[str, Tuple[str, str]] = None):
-          self._bg = bg
+     @background_color.setter
+     def background_color(self, background_color:Union[str, Tuple[str, str]] = None):
+          self._background_color = background_color
 
      @opacity.setter
      def opacity(self, opacity:float = 1.0):
@@ -123,23 +123,23 @@ class CMainWindow(QtWidgets.QWidget):
      def style(self, style:str = "mica"):
           self._style = style
 
-     def setWindowBackground(self, bg:Union[str, Tuple[str, str]] = None):
-          self._bg = bg
+     def setWindowBackground(self, background_color:Union[str, Tuple[str, str]] = None):
+          self._background_color = background_color
 
-          if self._bg != None:
-               if isinstance(self._bg, tuple):
+          if self._background_color != None:
+               if isinstance(self._background_color, tuple):
                     if ModeManager.mode == "light":
-                         self.setStyleSheet("QWidget {background-color: " + f"{self._bg[0]}" + "}")
+                         self.setStyleSheet("QWidget {background-color: " + f"{self._background_color[0]}" + "}")
                     elif ModeManager.mode == "dark":
-                         self.setStyleSheet("QWidget {background-color: " + f"{self._bg[1]}" + "}")
+                         self.setStyleSheet("QWidget {background-color: " + f"{self._background_color[1]}" + "}")
                     else:
                          if QtGui.QGuiApplication.styleHints().colorScheme() == QtCore.Qt.ColorScheme.Dark:
-                              self.setStyleSheet("QWidget {background-color: " + f"{self._bg[1]}" + "}")
+                              self.setStyleSheet("QWidget {background-color: " + f"{self._background_color[1]}" + "}")
                          else:
-                             self.setStyleSheet("QWidget {background-color: " + f"{self._bg[0]}" + "}") 
+                             self.setStyleSheet("QWidget {background-color: " + f"{self._background_color[0]}" + "}") 
 
                else:
-                    self.setStyleSheet("QWidget {background-color: " + f"{self._bg}" + "}")
+                    self.setStyleSheet("QWidget {background-color: " + f"{self._background_color}" + "}")
 
           else:
                if ModeManager.mode == "light":
@@ -186,7 +186,7 @@ class CMainWindow(QtWidgets.QWidget):
                except:
                     pass
 
-          self.setWindowBackground(self._bg)
+          self.setWindowBackground(self._background_color)
 
      def changeEvent(self, event): 
           if event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing: 
