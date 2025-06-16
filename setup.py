@@ -20,7 +20,7 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires="<3.14, >=3.9",
+    python_requires="<3.14, >=3.11",
 
     project_urls={                   
         "Source": "https://github.com/Dliammc/CustomPyQt",
