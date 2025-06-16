@@ -13,7 +13,7 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 0.6.0
+# Version: 6.0.0
 # Date: June 16, 2025
 
 class CSlider(QtWidgets.QWidget):
