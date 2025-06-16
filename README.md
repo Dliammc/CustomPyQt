@@ -7,13 +7,6 @@ and dark and light themes; all widget's colors can be styled in
 ("light", "dark") format. CustomPyQt can also be used or integrated 
 with PySide and PyQt versions as long as PySide6 is installed.
 
-## Installation
-Install the module with pip:
-
-```
-pip install pyct
-```
-
 ## Example Program
 Here is a simple example program with only one button to test the CustomPyQt library:
 
@@ -51,8 +44,3 @@ which results in this window on Windows 11
 <img src="documentation_images/simple_example_image.png" width="400"/>
 
 You can find more example programs in the [examples folder](https://github.com/Dliammc/CustomPyQt/tree/main/examples)
-
-
-
-
-
