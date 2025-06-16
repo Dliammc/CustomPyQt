@@ -1,9 +1,9 @@
-PyCt/windows/__pycache__/
-PyCt/widgets/__pycache__/
-PyCt/appearance/__pycache__/
-PyCt/__pycache__/
-PyCt/widgets/c_scrollable_frame.py
-PyCt.egg-info/
+PyCt6/windows/__pycache__/
+PyCt6/widgets/__pycache__/
+PyCt6/appearance/__pycache__/
+PyCt6/__pycache__/
+PyCt6/widgets/c_scrollable_frame.py
+PyCt6.egg-info/
 /test.py
 /build
 /dist

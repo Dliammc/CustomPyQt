@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="PyCt",
-    version="0.0.3",    
+    name="PyCt6",
+    version="0.6.0",    
     author="D. Liam Mc.",
     author_email="dliammc@duck.com",
     description="A modern and customizable python GUI interface library built from the PySide6 library",

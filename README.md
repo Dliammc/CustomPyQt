@@ -11,7 +11,7 @@ with PySide and PyQt versions as long as PySide6 is installed.
 Here is a simple example program with only one button to test the CustomPyQt library:
 
 ```python
-from PyCt import CMainWindow, CButton, set_appearance_mode, set_color_theme
+from PyCt6 import CMainWindow, CButton, set_appearance_mode, set_color_theme
 from PySide6.QtWidgets import QApplication, QVBoxLayout
 from PySide6.QtCore import Qt
 

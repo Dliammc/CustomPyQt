@@ -10,11 +10,11 @@ from ..appearance import ThemeManager, ModeManager
 
 # The purpose of this program is to provide a class for styled 
 # sliders using QSlider from PySide6 in connection to the 
-# PyCt library
+# PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 0.0.3
-# Date: June 15, 2025
+# Version: 0.6.0
+# Date: June 16, 2025
 
 class CSlider(QtWidgets.QWidget):
     def __init__(

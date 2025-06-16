@@ -8,21 +8,21 @@ from PySide6 import QtWidgets, QtGui, QtCore
 from ..appearance import ThemeManager, ModeManager
 
 # The purpose of this program is to provide a class for styled 
-# line edits using QLineEdit from PySide6 in connection to the 
-# PyCt library
+# text edits using QTextEdit from PySide6 in connection to the 
+# PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 0.0.3
-# Date: June 15, 2025
+# Version: 0.6.0
+# Date: June 16, 2025
 
-class CLineEdit(QtWidgets.QWidget):
+class CTextEdit(QtWidgets.QWidget):
     def __init__(
             self,
             master: Any,
-            width: int = 140,
-            height: int = 28,
+            width: int = 280,
+            height: int = 140,
             text: Optional[str] = None,
-            placeholder_text: str = "CLineEdit",
+            placeholder_text: str = "CTextEdit",
             tooltip: Optional[str] = None,
             font_family: str = "Calibri",
             font_size: int = 12,
@@ -45,7 +45,7 @@ class CLineEdit(QtWidgets.QWidget):
         self._width = width
         self._height = height
 
-        #set text, placeholder text, tooltip, icon, icon size, and font parameters
+        #set text, placeholder text, tooltip, and font parameters
         self._text = text
         self._placeholder_text = placeholder_text
         self._tooltip = tooltip
@@ -55,46 +55,50 @@ class CLineEdit(QtWidgets.QWidget):
         
         #set appearance and styling parameters
         self._border_width = (
-            ThemeManager.theme["CLineEdit"]["border_width"] 
+            ThemeManager.theme["CTextEdit"]["border_width"] 
             if border_width is None else border_width
         )
         self._corner_radius = (
-            ThemeManager.theme["CLineEdit"]["corner_radius"] 
+            ThemeManager.theme["CTextEdit"]["corner_radius"] 
             if corner_radius is None else corner_radius
         )
         self._text_color = (
-            ThemeManager.theme["CLineEdit"]["text_color"] 
+            ThemeManager.theme["CTextEdit"]["text_color"] 
             if text_color is None else text_color
         )
         self._placeholder_text_color = (
-            ThemeManager.theme["CLineEdit"]["placeholder_text_color"] 
+            ThemeManager.theme["CTextEdit"]["placeholder_text_color"] 
             if placeholder_text_color is None else placeholder_text_color
         )
         self._background_color = (
-            ThemeManager.theme["CLineEdit"]["background_color"] 
+            ThemeManager.theme["CTextEdit"]["background_color"] 
             if background_color is None else background_color
         )
         self._border_color = (
-            ThemeManager.theme["CLineEdit"]["border_color"] 
+            ThemeManager.theme["CTextEdit"]["border_color"] 
             if border_color is None else border_color
         )
         self._disabled_text_color= (
-            ThemeManager.theme["CLineEdit"]["disabled_text_color"] 
+            ThemeManager.theme["CTextEdit"]["disabled_text_color"] 
             if disabled_text_color is None else disabled_text_color
         )
         self._disabled_background_color = (
-            ThemeManager.theme["CLineEdit"]["disabled_background_color"] 
+            ThemeManager.theme["CTextEdit"]["disabled_background_color"] 
             if disabled_background_color is None else disabled_background_color
         )
+
+        self._scroll_bar_color = ThemeManager.theme["CScrollBar"]["background_color"]
+        self._scroll_bar_hover_color = ThemeManager.theme["CScrollBar"]["hover_color"]
+        self._scroll_bar_pressed_color = ThemeManager.theme["CScrollBar"]["pressed_color"]
         
         #flags
         self._palette_changing = False
 
         #class variables
         self._layout = QtWidgets.QVBoxLayout()
-        self._line_edit = QtWidgets.QLineEdit()
+        self._text_box = QtWidgets.QTextEdit()
 
-        #set font of line edit
+        #set font of text edit
         self._font = QtGui.QFont(self._font_family, self._font_size)
 
         match self._font_style:
@@ -111,28 +115,26 @@ class CLineEdit(QtWidgets.QWidget):
         self.setParent(self._master), 
         self.resize(self._width + 10, self._height + 10)
         self.setMinimumSize(self._width + 10, self._height + 10)
-        self.setSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed
-        )
+        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
 
         #set content margins of layout
         self._layout.setContentsMargins(5,5,5,5)
 
-        #set attributes of line edit
-        self._line_edit.setText(self._text)
-        self._line_edit.setPlaceholderText(self._placeholder_text)
-        self._line_edit.setToolTip(self._tooltip)
-        self._line_edit.setFont(self._font)
+        #set attributes of text edit
+        self._text_box.setText(self._text)
+        self._text_box.setPlaceholderText(self._placeholder_text)
+        self._text_box.setToolTip(self._tooltip)
+        #self._text_box.setTextMargins(QtCore.QMargins(5, 3, 5, 3))
+        self._text_box.setFont(self._font)
+        self._text_box.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
 
-        self._line_edit.setSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding
-        )
+        self._text_box.setSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
 
-        self._line_edit.textChanged.connect(self.__change_text)
+        self._text_box.textChanged.connect(self.__change_text)
 
         self._change_theme()
 
-        self._layout.addWidget(self._line_edit)
+        self._layout.addWidget(self._text_box)
         self.setLayout(self._layout)
 
     @property
@@ -233,23 +235,23 @@ class CLineEdit(QtWidgets.QWidget):
         self.resize(self._width + 10, self._height + 10)
 
     @text.setter
-    def text(self, text: str = "CLineEdit"):
+    def text(self, text: str = "CTextEdit"):
         self._text = text
 
-        self._line_edit.setText(self._text)
+        self._text_box.setText(self._text)
 
     @placeholder_text.setter
     def placeholder_text(self, placeholder_text: Optional[str] = None):
         self._placeholder_text = placeholder_text
 
-        self._line_edit.setPlaceholderText(self._placeholder_text)
+        self._text_box.setPlaceholderText(self._placeholder_text)
 
 
     @tooltip.setter
     def tooltip(self, tooltip: Optional[str] = None):
         self._tooltip = tooltip
 
-        self._line_edit.setToolTip(self._tooltip)
+        self._text_box.setToolTip(self._tooltip)
 
     @font_family.setter
     def font_family(self, font_family: str = "Calibri"):
@@ -284,7 +286,7 @@ class CLineEdit(QtWidgets.QWidget):
     @border_width.setter
     def border_width(self, border_width: Optional[int] = None):
         self._border_width = (
-            ThemeManager.theme["CLineEdit"]["border_width"] 
+            ThemeManager.theme["CTextEdit"]["border_width"] 
             if border_width is None else border_width
         )
 
@@ -293,7 +295,7 @@ class CLineEdit(QtWidgets.QWidget):
     @corner_radius.setter
     def corner_radius(self, corner_radius: Optional[int] = None):
         self._corner_radius = (
-            ThemeManager.theme["CLineEdit"]["corner_radius"] 
+            ThemeManager.theme["CTextEdit"]["corner_radius"] 
             if corner_radius is None else corner_radius
         )
         
@@ -304,7 +306,7 @@ class CLineEdit(QtWidgets.QWidget):
         self, text_color: Optional[Union[str, Tuple[str, str]]] = None
     ):
         self._text_color = (
-            ThemeManager.theme["CLineEdit"]["text_color"] 
+            ThemeManager.theme["CTextEdit"]["text_color"] 
             if text_color is None else text_color
         )
         
@@ -315,10 +317,10 @@ class CLineEdit(QtWidgets.QWidget):
         self, placeholder_text_color: Optional[Union[str, Tuple[str, str]]] = None
     ):
         self._placeholder_text_color = (
-            ThemeManager.theme["CLineEdit"]["placeholder_text_color"] 
+            ThemeManager.theme["CTextEdit"]["placeholder_text_color"] 
             if placeholder_text_color is None else placeholder_text_color
         )
-
+        
         self._change_theme()
 
     @background_color.setter
@@ -326,10 +328,10 @@ class CLineEdit(QtWidgets.QWidget):
         self, background_color: Optional[Union[str, Tuple[str, str]]] = None
     ):
         self._background_color = (
-            ThemeManager.theme["CLineEdit"]["background_color"] 
+            ThemeManager.theme["CTextEdit"]["background_color"] 
             if background_color is None else background_color
         )
-        
+
         self._change_theme()
 
     @border_color.setter
@@ -337,7 +339,7 @@ class CLineEdit(QtWidgets.QWidget):
         self, border_color: Optional[Union[str, Tuple[str, str]]] = None
     ):
         self._border_color = (
-            ThemeManager.theme["CLineEdit"]["border_color"] 
+            ThemeManager.theme["CTextEdit"]["border_color"] 
             if border_color is None else border_color
         )
         
@@ -348,10 +350,10 @@ class CLineEdit(QtWidgets.QWidget):
         self, disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None
     ):
         self._disabled_text_color= (
-            ThemeManager.theme["CLineEdit"]["disabled_text_color"] 
+            ThemeManager.theme["CTextEdit"]["disabled_text_color"] 
             if disabled_text_color is None else disabled_text_color
         )
-
+        
         self._change_theme()
 
     @disabled_background_color.setter
@@ -359,26 +361,29 @@ class CLineEdit(QtWidgets.QWidget):
         self, disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None
     ):
         self._disabled_background_color = (
-            ThemeManager.theme["CLineEdit"]["disabled_background_color"] 
+            ThemeManager.theme["CTextEdit"]["disabled_background_color"] 
             if disabled_background_color is None else disabled_background_color
         )
 
         self._change_theme()
 
     def __change_text(self):
-        self._text = self._line_edit.text()
+        self._text = self._text_box.toPlainText()
     
-    #method to update the theme of the line edit
+    #method to update the theme of the text edit
     def _change_theme(self):
 
-        #get styling of line edit and store it in a tuple with keys for variable
+        #get styling of text edit and store it in a tuple with keys for variable
         variables = (
             ("_text_color", self._text_color),
             ("_placeholder_text_color", self._placeholder_text_color),
             ("_background_color", self._background_color), 
             ("_border_color", self._border_color), 
             ("_disabled_text_color", self._disabled_text_color), 
-            ("_disabled_background_color", self._disabled_background_color)
+            ("_disabled_background_color", self._disabled_background_color),
+            ("_scroll_bar_color", self._scroll_bar_color),
+            ("_scroll_bar_hover_color", self._scroll_bar_hover_color),
+            ("_scroll_bar_pressed_color", self._scroll_bar_pressed_color)
             )
         
         new_colors = {}     #dictionary to store new colors for styling theme
@@ -415,34 +420,95 @@ class CLineEdit(QtWidgets.QWidget):
             else:
                 new_colors[attribute] = color
 
-        #set the stylesheet of line edit with new colors
-        self._line_edit.setStyleSheet(
-                "QLineEdit {"
-                f"background-color: {new_colors["_background_color"]};"
-                f"color: {new_colors["_text_color"]};"
-                f"border: {self._border_width}px solid {new_colors["_border_color"]};"
-                f"border-radius: {self._corner_radius}px"
+        #set the stylesheet of text edit with new colors
+        self._text_box.setStyleSheet(
+                "QTextEdit {"
+                    f"background-color: {new_colors["_background_color"]};"
+                    f"color: {new_colors["_text_color"]};"
+                    f"border: {self._border_width}px solid {new_colors["_border_color"]};"
+                    f"border-radius: {self._corner_radius}px;"
                 "}"
 
-                "QLineEdit::placeholder {"
-                f"color: {new_colors["_placeholder_text_color"]}"
+                "QTextEdit::placeholder {"
+                    f"color: {new_colors["_placeholder_text_color"]}"
                 "}"
 
-                "QLineEdit:disabled {" 
-                f"color: {new_colors["_disabled_text_color"]};"
-                f"background-color: {new_colors["_disabled_background_color"]}"
+                "QTextEdit:disabled {" 
+                    f"color: {new_colors["_disabled_text_color"]};"
+                    f"background-color: {new_colors["_disabled_background_color"]}"
+                "}"
+
+                "QScrollArea {"
+                    f"background-color: {new_colors["_background_color"]};"
+                "}"
+
+                "QScrollBar:vertical {"
+                    "border: none;"
+                    f"background-color: {new_colors["_background_color"]};"
+                    "width: 8px;"
+                    "border-radius: 4px;"
+                "}"
+
+                "QScrollBar::handle:vertical {"	
+                    f"background-color: {new_colors["_scroll_bar_color"]};"
+                    "min-height: 30px;"
+                    "border-radius: 4px;"
+
+                "}"
+
+                "QScrollBar::handle:vertical:hover{"
+                    f"background-color: {new_colors["_scroll_bar_hover_color"]};"
+                "}"
+
+                "QScrollBar::handle:vertical:pressed {"	
+                    f"background-color: {new_colors["_scroll_bar_pressed_color"]};"
+                "}"
+
+                "QScrollBar::sub-line:vertical:hover {"	
+                    f"background-color: {new_colors["_scroll_bar_hover_color"]};"
+                "}"
+
+                "QScrollBar::sub-line:vertical:pressed {"	
+                    f"background-color: {new_colors["_scroll_bar_pressed_color"]};"
+                "}"
+
+                "QScrollBar::add-line:vertical {"
+                    "border: none;"
+                    "background-color: transparent;"
+                    "height: 15px;"
+                    "border-bottom-left-radius: 4px;"
+                    "border-bottom-right-radius: 4px;"
+                    "subcontrol-position: bottom;"
+                    "subcontrol-origin: margin;"
+                    "border-radius: 4px"
+                "}"
+
+                "QScrollBar::add-line:vertical:hover {"	
+                    f"background-color: {new_colors["_scroll_bar_hover_color"]};"
+                "}"
+
+                "QScrollBar::add-line:vertical:pressed {"	
+                    f"background-color: {new_colors["_scroll_bar_pressed_color"]};"
+                "}"
+
+                "QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {"
+                    f"background-color: {new_colors["_background_color"]};"
+                "}"
+
+                "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {"
+                    f"background-color: {new_colors["_background_color"]};"
                 "}"
             )
 
     #method to change theme when system theme changes 
     def changeEvent(self, event): 
 
-        #if the system line edit palette changes and palette is not already changing continue
+        #if the system text edit palette changes and palette is not already changing continue
         if (
             event.type() == QtCore.QEvent.Type.PaletteChange and not self._palette_changing
         ): 
             self._palette_changing = True       #update palette changing flag to true   
-            self._change_theme()               #update line edit theme
+            self._change_theme()               #update text edit theme
             self._palette_changing = False      #update palette changing flag to false
 
         super().changeEvent(event)
