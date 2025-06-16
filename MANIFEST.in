@@ -1,0 +1,2 @@
+recursive-include PyCt/widgets/themes *.json
+recursive-include PyCt/widgets/images/ *.png
