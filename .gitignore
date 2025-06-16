@@ -3,4 +3,7 @@ PyCt/widgets/__pycache__/
 PyCt/appearance/__pycache__/
 PyCt/__pycache__/
 PyCt/widgets/c_scrollable_frame.py
+PyCt.egg-info/
 /test.py
+/build
+/dist
