@@ -7,3 +7,4 @@ PyCt6.egg-info/
 /test.py
 /build
 /dist
+/__pycache__/
