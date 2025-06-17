@@ -11,7 +11,7 @@ with PySide and PyQt versions as long as PySide6 is installed.
 * Python 3.12 or 3.13
 * Pyside6 (you can install with the command ```pip install PySide6```)
     
-# Installation
+## Installation
 ```
 pip install PyCt6
 ```
@@ -54,3 +54,9 @@ which results in this window on Windows 11
 <img src="documentation_images/simple_example_image.png" width="400"/>
 
 You can find more example programs in the [examples folder](https://github.com/Dliammc/CustomPyQt/tree/main/examples)
+
+## Contribution
+
+Feel free to donate with PayPal to help support and contribute to this project :) Thanks!
+
+<a href="https://www.paypal.com/paypalme/DanielMcCraw135"><img src="documentation_images/PayPal Button.png" width=170 alt="Paypal donation button"></a>
