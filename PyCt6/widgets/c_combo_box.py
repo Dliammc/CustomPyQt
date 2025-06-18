@@ -1,5 +1,7 @@
 #default libraries
 from typing import Union, Tuple, Optional, Any
+from os import path
+from pathlib import Path
 
 #installed libraries
 from PySide6 import QtWidgets, QtGui, QtCore
@@ -12,8 +14,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.1
-# Date: June 17, 2025
+# Version: 6.0.2
+# Date: June 18, 2025
 
 class CComboBox(QtWidgets.QWidget):
     def __init__(
@@ -577,6 +579,11 @@ class CComboBox(QtWidgets.QWidget):
             else:
                 new_colors[attribute] = color
 
+        #get image path for down arrow
+        main_directory = path.dirname(path.abspath(__file__))
+        main_path = Path(main_directory).parent
+        image_path = path.join(main_path, "widgets", "images", "down_arrow.png").replace("\\", "/")
+
         #set the stylesheet of combobox with new colors
         self._combobox.setStyleSheet(
                 "QComboBox{"
@@ -596,7 +603,7 @@ class CComboBox(QtWidgets.QWidget):
                 "}"
 
                 "QComboBox::drop-down {"
-                    "image: url('PyCt6/widgets/images/down_arrow.png');"
+                    f"image: url({image_path});"
                     "width: 28px;"
                     "height: 28px;"
                 "}"
