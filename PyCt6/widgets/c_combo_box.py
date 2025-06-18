@@ -596,7 +596,7 @@ class CComboBox(QtWidgets.QWidget):
                 "}"
 
                 "QComboBox::drop-down {"
-                    "image: url('PyCt/widgets/images/down_arrow.png');"
+                    "image: url('PyCt6/widgets/images/down_arrow.png');"
                     "width: 28px;"
                     "height: 28px;"
                 "}"
