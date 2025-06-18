@@ -12,8 +12,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.0
-# Date: June 16, 2025
+# Version: 6.0.1
+# Date: June 17, 2025
 
 class CFrame(QtWidgets.QFrame):
     def __init__(
@@ -228,9 +228,9 @@ class CFrame(QtWidgets.QFrame):
         #set the stylesheet of frame with new colors
         self.setStyleSheet(
             "QFrame {"
-                f"background-color: {new_colors["_background_color"]};"
-                f"border: {self._border_width}px solid {new_colors["_border_color"]};"
-                f"border-radius: {self._corner_radius}px"
+                f"background-color: {new_colors['_background_color']};"
+                f"border: {self._border_width}px solid {new_colors['_border_color']};"
+                f"border-radius: {self._corner_radius}px;"
             "}"
         )
 

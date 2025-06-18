@@ -13,8 +13,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.0
-# Date: June 16, 2025
+# Version: 6.0.1
+# Date: June 17, 2025
 
 class CSlider(QtWidgets.QWidget):
     def __init__(
@@ -555,21 +555,21 @@ class CSlider(QtWidgets.QWidget):
                "}"
 
                "QSlider::groove:horizontal, QSlider::groove:vertical {"
-                    f"background: {new_colors["_background_color"]};"
+                    f"background: {new_colors['_background_color']};"
                     f"height: {self._height}px;"
                     f"width: {self._width}px;"
-                    f"border: {self._border_width}px solid {new_colors["_border_color"]};"
+                    f"border: {self._border_width}px solid {new_colors['_border_color']};"
                     f"border-radius: {self._corner_radius}px;"
                     
                 "}" 
 
                 "QSlider::groove:horizontal:disabled, QSlider::groove:vertical:disabled {"
-                    f"background: {new_colors["_disabled_background_color"]};"
+                    f"background: {new_colors['_disabled_background_color']};"
                 "}"
                 
                 "QSlider::handle:horizontal, QSlider::handle:vertical {"
-                    f"background: {new_colors["_button_background_color"]};"
-                    f"border: {self._border_width}px solid {new_colors["_button_border_color"]};"
+                    f"background: {new_colors['_button_background_color']};"
+                    f"border: {self._border_width}px solid {new_colors['_button_border_color']};"
                     f"width: {self._button_width}px;"
                     f"height: {self._button_height}px;"
                     f"margin: {self._margin_left} {self._margin_right};"
@@ -577,24 +577,24 @@ class CSlider(QtWidgets.QWidget):
                 "}"
 
                 "QSlider::handle:horizontal:disabled, QSlider::handle:vertical:disabled {"
-                    f"background: {new_colors["_disabled_button_background_color"]};"
+                    f"background: {new_colors['_disabled_button_background_color']};"
                 "}"
 
                 "QSlider::handle:horizontal:hover, QSlider::handle:vertical:hover {"
-                    f"background: {new_colors["_button_hover_color"]};"
+                    f"background: {new_colors['_button_hover_color']};"
                 "}"
 
                 "QSlider::handle:horizontal:pressed, QSlider::handle:vertical:pressed {"
-                    f"background: {new_colors["_button_pressed_color"]};"              
+                    f"background: {new_colors['_button_pressed_color']};"              
                 "}"
 
                 "QSlider::add-page:horizontal, QSlider::add-page:vertical {"
-                    f"background: {new_colors["_background_color"]};"
+                    f"background: {new_colors['_background_color']};"
                     f"border-radius: {self._corner_radius}px;"
                 "}"
 
                 "QSlider::sub-page:horizontal, QSlider::sub-page:vertical {"
-                    f"background: {new_colors["_progress_color"]};"
+                    f"background: {new_colors['_progress_color']};"
                     f"border-radius: {self._corner_radius}px;"
                 "}"
             )

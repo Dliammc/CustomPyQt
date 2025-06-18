@@ -12,8 +12,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.0
-# Date: June 16, 2025
+# Version: 6.0.1
+# Date: June 17, 2025
 
 class CComboBox(QtWidgets.QWidget):
     def __init__(
@@ -137,15 +137,14 @@ class CComboBox(QtWidgets.QWidget):
         #set font of combobox
         self._font = QtGui.QFont(self._font_family, self._font_size)
 
-        match self._font_style:
-            case "bold":
-                self._font.setBold(True)
-            case "Underline":
-                self._font.setUnderline(True)
-            case "italic":
-                self._font.setItalic(True)
-            case "strikeout":
-                self._font.setStrikeOut(True)
+        if self._font_style == "bold":
+            self._font.setBold(True)
+        elif self._font_style == "Underline":
+            self._font.setUnderline(True)
+        elif self._font_style == "italic":
+            self._font.setItalic(True)
+        elif self._font_style == "strikeout":
+            self._font.setStrikeOut(True)
 
         #set attributes of class
         self.setParent(self._master), 
@@ -348,15 +347,14 @@ class CComboBox(QtWidgets.QWidget):
     def font_style(self, font_style: Optional[str] = None):
         self._font_style = font_style
 
-        match self._font_style:
-            case "bold":
-                self._font.setBold(True)
-            case "underline":
-                self._font.setUnderLine(True)
-            case "italic":
-                self._font.setItalic(True)
-            case "strikeout":
-                self._font.setStrikeOut(True)
+        if self._font_style == "bold":
+            self._font.setBold(True)
+        elif self._font_style == "Underline":
+            self._font.setUnderline(True)
+        elif self._font_style == "italic":
+            self._font.setItalic(True)
+        elif self._font_style == "strikeout":
+            self._font.setStrikeOut(True)
 
     @border_width.setter
     def border_width(self, border_width: Optional[int] = None):
@@ -582,42 +580,42 @@ class CComboBox(QtWidgets.QWidget):
         #set the stylesheet of combobox with new colors
         self._combobox.setStyleSheet(
                 "QComboBox{"
-                f"background-color: {new_colors["_background_color"]};"
-                f"color: {new_colors["_text_color"]};"
-                f"border: {self._border_width}px solid {new_colors["_border_color"]};"
-                f"border-radius: {self._corner_radius}px"
+                    f"background-color: {new_colors['_background_color']};"
+                    f"color: {new_colors['_text_color']};"
+                    f"border: {self._border_width}px solid {new_colors['_border_color']};"
+                    f"border-radius: {self._corner_radius}px;"
                 "}"
 
                 "QComboBox:hover {"
-                f"background-color: {new_colors["_hover_color"]}"
+                    f"background-color: {new_colors['_hover_color']};"
                 "}"
 
                 "QComboBox:disabled {" 
-                f"color: {new_colors["_disabled_text_color"]};"
-                f"background-color: {new_colors["_disabled_background_color"]}"
+                    f"color: {new_colors['_disabled_text_color']};"
+                    f"background-color: {new_colors['_disabled_background_color']};"
                 "}"
 
                 "QComboBox::drop-down {"
-                "image: url('PyCt/widgets/images/down_arrow.png');"
-                "width: 28px;"
-                "height: 28px"
+                    "image: url('PyCt/widgets/images/down_arrow.png');"
+                    "width: 28px;"
+                    "height: 28px;"
                 "}"
 
                 "QComboBox QAbstractItemView {"
-                f"background-color: {new_colors["_menu_background_color"]};"
-                f"border: {self._item_border_width}px solid {new_colors["_menu_border_color"]};"
-                "outline: none"
+                    f"background-color: {new_colors['_menu_background_color']};"
+                    f"border: {self._item_border_width}px solid {new_colors['_menu_border_color']};"
+                    "outline: none;"
                 "}"
 
                 "QComboBox QAbstractItemView::item {"
-                f"background-color: {new_colors["_item_background_color"]};"
-                f"color: {new_colors["_item_text_color"]};"
-                f"border: {self._item_border_width}px solid {new_colors["_item_border_color"]};"
-                "outline: none"
+                    f"background-color: {new_colors['_item_background_color']};"
+                    f"color: {new_colors['_item_text_color']};"
+                    f"border: {self._item_border_width}px solid {new_colors['_item_border_color']};"
+                "outline: none;"
                 "}"
 
                 "QComboBox QAbstractItemView::item:hover {"
-                f"background-color: {new_colors["_item_hover_color"]}"
+                    f"background-color: {new_colors['_item_hover_color']};"
                 "}"
             )
 

@@ -1,6 +1,6 @@
-__version__ = "6.0.0"
+__version__ = "6.0.1"
 __author__ = "D. Liam Mc."
-__date__ = "June 16, 2025"
+__date__ = "June 17, 2025"
 
 from .windows import CMainWindow
 from .windows import CTopLevel

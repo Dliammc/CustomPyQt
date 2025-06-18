@@ -12,8 +12,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.0
-# Date: June 16, 2025
+# Version: 6.0.1
+# Date: June 17, 2025
 
 class CLineEdit(QtWidgets.QWidget):
     def __init__(
@@ -97,15 +97,14 @@ class CLineEdit(QtWidgets.QWidget):
         #set font of line edit
         self._font = QtGui.QFont(self._font_family, self._font_size)
 
-        match self._font_style:
-            case "bold":
-                self._font.setBold(True)
-            case "underline":
-                self._font.setUnderline(True)
-            case "italic":
-                self._font.setItalic(True)
-            case "strikeout":
-                self._font.setStrikeOut(True)
+        if self._font_style == "bold":
+            self._font.setBold(True)
+        elif self._font_style == "Underline":
+            self._font.setUnderline(True)
+        elif self._font_style == "italic":
+            self._font.setItalic(True)
+        elif self._font_style == "strikeout":
+            self._font.setStrikeOut(True)
 
         #set attributes of class
         self.setParent(self._master), 
@@ -271,15 +270,14 @@ class CLineEdit(QtWidgets.QWidget):
     def font_style(self, font_style: Optional[str] = None):
         self._font_style = font_style
 
-        match self._font_style:
-            case "bold":
-                self._font.setBold(True)
-            case "underline":
-                self._font.setUnderline(True)
-            case "italic":
-                self._font.setItalic(True)
-            case "strikeout":
-                self._font.setStrikeOut(True)
+        if self._font_style == "bold":
+            self._font.setBold(True)
+        elif self._font_style == "Underline":
+            self._font.setUnderline(True)
+        elif self._font_style == "italic":
+            self._font.setItalic(True)
+        elif self._font_style == "strikeout":
+            self._font.setStrikeOut(True)
 
     @border_width.setter
     def border_width(self, border_width: Optional[int] = None):
@@ -418,19 +416,19 @@ class CLineEdit(QtWidgets.QWidget):
         #set the stylesheet of line edit with new colors
         self._line_edit.setStyleSheet(
                 "QLineEdit {"
-                f"background-color: {new_colors["_background_color"]};"
-                f"color: {new_colors["_text_color"]};"
-                f"border: {self._border_width}px solid {new_colors["_border_color"]};"
-                f"border-radius: {self._corner_radius}px"
+                f"background-color: {new_colors['_background_color']};"
+                f"color: {new_colors['_text_color']};"
+                f"border: {self._border_width}px solid {new_colors['_border_color']};"
+                f"border-radius: {self._corner_radius}px;"
                 "}"
 
                 "QLineEdit::placeholder {"
-                f"color: {new_colors["_placeholder_text_color"]}"
+                f"color: {new_colors['_placeholder_text_color']};"
                 "}"
 
                 "QLineEdit:disabled {" 
-                f"color: {new_colors["_disabled_text_color"]};"
-                f"background-color: {new_colors["_disabled_background_color"]}"
+                f"color: {new_colors['_disabled_text_color']};"
+                f"background-color: {new_colors['_disabled_background_color']};"
                 "}"
             )
 

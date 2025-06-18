@@ -12,8 +12,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.0
-# Date: June 16, 2025
+# Version: 6.0.1
+# Date: June 17, 2025
 
 class CTextEdit(QtWidgets.QWidget):
     def __init__(
@@ -101,15 +101,14 @@ class CTextEdit(QtWidgets.QWidget):
         #set font of text edit
         self._font = QtGui.QFont(self._font_family, self._font_size)
 
-        match self._font_style:
-            case "bold":
-                self._font.setBold(True)
-            case "underline":
-                self._font.setUnderline(True)
-            case "italic":
-                self._font.setItalic(True)
-            case "strikeout":
-                self._font.setStrikeOut(True)
+        if self._font_style == "bold":
+            self._font.setBold(True)
+        elif self._font_style == "Underline":
+            self._font.setUnderline(True)
+        elif self._font_style == "italic":
+            self._font.setItalic(True)
+        elif self._font_style == "strikeout":
+            self._font.setStrikeOut(True)
 
         #set attributes of class
         self.setParent(self._master), 
@@ -273,15 +272,14 @@ class CTextEdit(QtWidgets.QWidget):
     def font_style(self, font_style: Optional[str] = None):
         self._font_style = font_style
 
-        match self._font_style:
-            case "bold":
-                self._font.setBold(True)
-            case "underline":
-                self._font.setUnderline(True)
-            case "italic":
-                self._font.setItalic(True)
-            case "strikeout":
-                self._font.setStrikeOut(True)
+        if self._font_style == "bold":
+            self._font.setBold(True)
+        elif self._font_style == "Underline":
+            self._font.setUnderline(True)
+        elif self._font_style == "italic":
+            self._font.setItalic(True)
+        elif self._font_style == "strikeout":
+            self._font.setStrikeOut(True)
 
     @border_width.setter
     def border_width(self, border_width: Optional[int] = None):
@@ -423,53 +421,53 @@ class CTextEdit(QtWidgets.QWidget):
         #set the stylesheet of text edit with new colors
         self._text_box.setStyleSheet(
                 "QTextEdit {"
-                    f"background-color: {new_colors["_background_color"]};"
-                    f"color: {new_colors["_text_color"]};"
-                    f"border: {self._border_width}px solid {new_colors["_border_color"]};"
+                    f"background-color: {new_colors['_background_color']};"
+                    f"color: {new_colors['_text_color']};"
+                    f"border: {self._border_width}px solid {new_colors['_border_color']};"
                     f"border-radius: {self._corner_radius}px;"
                 "}"
 
                 "QTextEdit::placeholder {"
-                    f"color: {new_colors["_placeholder_text_color"]}"
+                    f"color: {new_colors['_placeholder_text_color']};"
                 "}"
 
                 "QTextEdit:disabled {" 
-                    f"color: {new_colors["_disabled_text_color"]};"
-                    f"background-color: {new_colors["_disabled_background_color"]}"
+                    f"color: {new_colors['_disabled_text_color']};"
+                    f"background-color: {new_colors['_disabled_background_color']};"
                 "}"
 
                 "QScrollArea {"
-                    f"background-color: {new_colors["_background_color"]};"
+                    f"background-color: {new_colors['_background_color']};"
                 "}"
 
                 "QScrollBar:vertical {"
                     "border: none;"
-                    f"background-color: {new_colors["_background_color"]};"
+                    f"background-color: {new_colors['_background_color']};"
                     "width: 8px;"
                     "border-radius: 4px;"
                 "}"
 
                 "QScrollBar::handle:vertical {"	
-                    f"background-color: {new_colors["_scroll_bar_color"]};"
+                    f"background-color: {new_colors['_scroll_bar_color']};"
                     "min-height: 30px;"
                     "border-radius: 4px;"
 
                 "}"
 
                 "QScrollBar::handle:vertical:hover{"
-                    f"background-color: {new_colors["_scroll_bar_hover_color"]};"
+                    f"background-color: {new_colors['_scroll_bar_hover_color']};"
                 "}"
 
                 "QScrollBar::handle:vertical:pressed {"	
-                    f"background-color: {new_colors["_scroll_bar_pressed_color"]};"
+                    f"background-color: {new_colors['_scroll_bar_pressed_color']};"
                 "}"
 
                 "QScrollBar::sub-line:vertical:hover {"	
-                    f"background-color: {new_colors["_scroll_bar_hover_color"]};"
+                    f"background-color: {new_colors['_scroll_bar_hover_color']};"
                 "}"
 
                 "QScrollBar::sub-line:vertical:pressed {"	
-                    f"background-color: {new_colors["_scroll_bar_pressed_color"]};"
+                    f"background-color: {new_colors['_scroll_bar_pressed_color']};"
                 "}"
 
                 "QScrollBar::add-line:vertical {"
@@ -480,23 +478,23 @@ class CTextEdit(QtWidgets.QWidget):
                     "border-bottom-right-radius: 4px;"
                     "subcontrol-position: bottom;"
                     "subcontrol-origin: margin;"
-                    "border-radius: 4px"
+                    "border-radius: 4px;"
                 "}"
 
                 "QScrollBar::add-line:vertical:hover {"	
-                    f"background-color: {new_colors["_scroll_bar_hover_color"]};"
+                    f"background-color: {new_colors['_scroll_bar_hover_color']};"
                 "}"
 
                 "QScrollBar::add-line:vertical:pressed {"	
-                    f"background-color: {new_colors["_scroll_bar_pressed_color"]};"
+                    f"background-color: {new_colors['_scroll_bar_pressed_color']};"
                 "}"
 
                 "QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {"
-                    f"background-color: {new_colors["_background_color"]};"
+                    f"background-color: {new_colors['_background_color']};"
                 "}"
 
                 "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {"
-                    f"background-color: {new_colors["_background_color"]};"
+                    f"background-color: {new_colors['_background_color']};"
                 "}"
             )
 
