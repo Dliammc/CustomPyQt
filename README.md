@@ -19,7 +19,7 @@ If there is any issues you can try ```python -m pip install PyCt6``` and if that
 ## Documentation
 The documentation can be found on this wiki page:
 
-[CustomPyQt Documentation and Tutorial](https://github.com/Dliammc/CustomPyQt/wiki)
+[CustomPyQt Documentation and Tutorial](https://github.com/Dliammc/CustomPyQt/wiki/CustomPyQt-Documentation-and-Tutorial)
 
 ## Example Program
 Here is a simple example program with only one button to test the CustomPyQt library:
