@@ -17,7 +17,7 @@ pip install PyCt6
 If there is any issues you can try ```python -m pip install PyCt6``` and if that still doesn't work you can also try ```python3.13 -m pip install PyCt6``` using whatever python version you have
 
 ## Documentation
-The documentation can be found on this wiki page:
+The documentation can be found on this Github Wiki page:
 
 [CustomPyQt Documentation and Tutorial](https://github.com/Dliammc/CustomPyQt/wiki/CustomPyQt-Documentation-and-Tutorial)
 
