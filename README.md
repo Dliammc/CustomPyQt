@@ -7,7 +7,7 @@ and dark and light themes; all widget's colors can be styled in
 with PySide and PyQt versions as long as PySide6 is installed.
 
 ## Requirements
-* Python 3.12 or 3.13
+* Python 3.9, 3.10, 3.11, 3.12, or 3.13
 * Pyside6 (you can install with the command ```pip install PySide6```)
     
 ## Installation
