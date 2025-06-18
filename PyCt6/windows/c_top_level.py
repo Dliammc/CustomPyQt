@@ -13,7 +13,7 @@ from PySide6 import QtWidgets, QtGui, QtCore
 # PyCt library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.1
+# Version: 6.0.2
 # Date: June 15, 2025
 
 class CTopLevel(QtWidgets.QWidget):

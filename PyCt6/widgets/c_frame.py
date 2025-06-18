@@ -12,7 +12,7 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.1
+# Version: 6.0.2
 # Date: June 17, 2025
 
 class CFrame(QtWidgets.QFrame):

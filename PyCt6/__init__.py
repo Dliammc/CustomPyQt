@@ -1,4 +1,4 @@
-__version__ = "6.0.1"
+__version__ = "6.0.2"
 __author__ = "D. Liam Mc."
 __date__ = "June 17, 2025"
 
