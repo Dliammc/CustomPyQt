@@ -1,4 +1,3 @@
-
 <h1 align="center">CustomPyQt</h1>
 
 CustomPyQt is a python GUI interface library built from the PySide6
@@ -6,6 +5,21 @@ library, providing a modern and consistant interface with styled widgets
 and dark and light themes; all widget's colors can be styled in 
 ("light", "dark") format. CustomPyQt can also be used or integrated 
 with PySide and PyQt versions as long as PySide6 is installed.
+
+## Requirements
+* Python 3.12 or 3.13
+* Pyside6 (you can install with the command ```pip install PySide6```)
+    
+## Installation
+```
+pip install PyCt6
+```
+If there is any issues you can try ```python -m pip install PyCt6``` and if that still doesn't work you can also try ```python3.13 -m pip install PyCt6``` using whatever python version you have
+
+## Documentation
+The documentation can be found on this Github Wiki page:
+
+[CustomPyQt Documentation and Tutorial](https://github.com/Dliammc/CustomPyQt/wiki/CustomPyQt-Documentation-and-Tutorial)
 
 ## Example Program
 Here is a simple example program with only one button to test the CustomPyQt library:
@@ -43,4 +57,10 @@ which results in this window on Windows 11
 
 <img src="documentation_images/simple_example_image.png" width="400"/>
 
-You can find more example programs in the [examples folder](https://github.com/Dliammc/CustomPyQt/tree/main/examples)
+You can find more example programs in the [examples folder](https://github.com/Dliammc/CustomPyQt/tree/main/examples) and in the [documentation](https://github.com/Dliammc/CustomPyQt/wiki/CustomPyQt-Documentation-and-Tutorial)
+
+## Contribution
+
+Feel free to donate with PayPal to help support and contribute to this project :) Thanks!
+
+<a href="https://www.paypal.com/paypalme/DanielMcCraw135"><img src="documentation_images/PayPal Button.png" width=170 alt="Paypal donation button"></a>
