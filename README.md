@@ -1,4 +1,3 @@
-
 <h1 align="center">CustomPyQt</h1>
 
 CustomPyQt is a python GUI interface library built from the PySide6
@@ -16,6 +15,11 @@ with PySide and PyQt versions as long as PySide6 is installed.
 pip install PyCt6
 ```
 If there is any issues you can try ```python -m pip install PyCt6``` and if that still doesn't work you can also try ```python3.13 -m pip install PyCt6``` using whatever python version you have
+
+## Documentation
+The documentation can be found on this wiki page:
+
+[CustomPyQt Documentation and Tutorial](https://github.com/Dliammc/CustomPyQt/wiki)
 
 ## Example Program
 Here is a simple example program with only one button to test the CustomPyQt library:
