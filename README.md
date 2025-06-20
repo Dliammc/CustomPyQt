@@ -1,5 +1,12 @@
 <h1 align="center">CustomPyQt</h1>
 
+![PyPI Version](https://img.shields.io/pypi/v/PyCt6)
+![LICENSE](https://img.shields.io/pypi/l/PyCt6)
+![Python Version](https://img.shields.io/pypi/pyversions/PyCt6)
+![Total Downloads](https://img.shields.io/pepy/dt/PyCt6)
+![Monthly Downloads](https://img.shields.io/pypi/dm/PyCt6?label=monthly%20downloads)
+
+
 CustomPyQt is a python GUI interface library built from the PySide6
 library, providing a modern and consistant interface with styled widgets
 and dark and light themes; all widget's colors can be styled in 
