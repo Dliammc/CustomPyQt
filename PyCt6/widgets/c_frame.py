@@ -12,15 +12,15 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.2
+# Version: 6.0.3
 # Date: June 17, 2025
 
 class CFrame(QtWidgets.QFrame):
     def __init__(
             self,
             master: Any,
-            width: Optional[int] = None,
-            height: Optional[int] = None,
+            width: int = 280,
+            height: int = 140,
             border_width: Optional[int] = None,
             corner_radius: Optional[int] = None,
             background_color: Optional[Union[str, Tuple[str, str]]] = None,
@@ -59,8 +59,10 @@ class CFrame(QtWidgets.QFrame):
         #create layout variable for frame depending on what layout type the user wants
         if layout_type == "horizontal":
             self._layout = QtWidgets.QHBoxLayout()
+            self._layout.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeft)
         else:
             self._layout = QtWidgets.QVBoxLayout()
+            self._layout.setAlignment(QtCore.Qt.AlignmentFlag.AlignTop)
 
         #set default attributes for class
         self.setParent(self._master)
@@ -71,7 +73,7 @@ class CFrame(QtWidgets.QFrame):
             self.setMinimumHeight(self._height)
 
         self.setSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Maximum
+            QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding
         )
         
         self.setLayout(self._layout)
@@ -237,6 +239,10 @@ class CFrame(QtWidgets.QFrame):
     #method for adding widgets to layout of frame
     def addWidget(self, widget: Any):
         self._layout.addWidget(widget)
+
+    #method for adding items to layout of frame
+    def addItem(self, item: Any):
+        self._layout.addItem(item)
 
     #method to change theme when system theme changes 
     def changeEvent(self, event): 

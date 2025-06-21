@@ -13,13 +13,12 @@ from PySide6 import QtWidgets, QtGui, QtCore
 # PyCt library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.2
-# Date: June 15, 2025
+# Version: 6.0.3
+# Date: June 21, 2025
 
 class CTopLevel(QtWidgets.QWidget):
      def __init__(
                self,
-               master: Any,
                width: int = 500,
                height: int = 300,
                x: Optional[int] = None,
@@ -35,7 +34,6 @@ class CTopLevel(QtWidgets.QWidget):
           #initialize variables for class
 
           #default parameters and dimensions
-          self._master = master
           self._width = width
           self._height = height
           self._x = x
@@ -55,7 +53,6 @@ class CTopLevel(QtWidgets.QWidget):
 
           #set attributes for class
           self.activateWindow()
-          self.setParent(self._master)
           self.setWindowTitle(self._title)
           self.setWindowOpacity(self._opacity)
 
@@ -72,10 +69,6 @@ class CTopLevel(QtWidgets.QWidget):
                self.resize(self._width, self._height)
 
           self._change_theme()
-
-     @property
-     def master(self):
-          return self._master
 
      @property
      def width(self):
@@ -112,10 +105,6 @@ class CTopLevel(QtWidgets.QWidget):
      @property
      def style(self):
           return self._style
-     
-     @master.setter
-     def master(self, master: Any):
-          self._master = master
 
      @width.setter
      def width(self, width:int = 300):
