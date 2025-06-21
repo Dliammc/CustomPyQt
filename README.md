@@ -70,4 +70,4 @@ You can find more example programs in the [examples folder](https://github.com/D
 
 Feel free to donate with PayPal to help support and contribute to this project :) Thanks!
 
-<a href="https://www.paypal.com/paypalme/DanielMcCraw135"><img src="documentation_images/PayPal Button.png" width=170 alt="Paypal donation button"></a>
+<a href="https://www.paypal.com/paypalme/DanielMcCraw135"><img src="documentation_images/paypal_button_image.png" width=170 alt="Paypal donation button"></a>
