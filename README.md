@@ -13,6 +13,15 @@ and dark and light themes; all widget's colors can be styled in
 ("light", "dark") format. CustomPyQt can also be used or integrated 
 with PySide and PyQt versions as long as PySide6 is installed.
 
+![](documentation_images/complex_example_windows_image.png)
+
+| _`complex_example.py` on Windows 11 with dark mode and "blue" theme_
+
+![](documentation_images/complex_example_ubuntu_image.png)
+
+| _`complex_example.py` on Ubuntu 22.04 with light mode and "blue" theme_
+
+
 ## Requirements
 * Python 3.9, 3.10, 3.11, 3.12, or 3.13
 * Pyside6 (you can install with the command ```pip install PySide6```)
