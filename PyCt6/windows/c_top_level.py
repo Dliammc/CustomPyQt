@@ -23,7 +23,7 @@ class CTopLevel(QtWidgets.QWidget):
                height: int = 300,
                x: Optional[int] = None,
                y: Optional[int] = None,
-               title: str = "CMainWindow",
+               title: str = "CTopLevel",
                icon: Optional[str] = None,
                background_color: Union[str, Tuple[str, str]] = None,
                opacity: float = 1.0,
