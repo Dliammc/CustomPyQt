@@ -24,10 +24,3 @@ app = QApplication()
 win = MainWindow()
 win.show()
 app.exec()
-
-
-
-
-
-
-
