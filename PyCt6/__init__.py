@@ -28,7 +28,7 @@ def update_appearance_mode(mode: str, obj):
     obj._change_theme()
 
 def get_color_theme():
-    return ThemeManager.theme
+    return ThemeManager._currently_loaded_theme
 
 def get_appearance_mode():
     return ModeManager.mode
