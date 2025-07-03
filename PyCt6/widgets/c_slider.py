@@ -13,8 +13,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.3
-# Date: June 17, 2025
+# Version: 6.0.5
+# Date: July 3, 2025
 
 class CSlider(QtWidgets.QWidget):
     def __init__(
@@ -593,9 +593,17 @@ class CSlider(QtWidgets.QWidget):
                     f"border-radius: {self._corner_radius}px;"
                 "}"
 
+                "QSlider::add-page:horizontal:disabled, QSlider::add-page:vertical:disabled {"
+                    f"background: {new_colors['_disabled_background_color']};"
+                "}"
+
                 "QSlider::sub-page:horizontal, QSlider::sub-page:vertical {"
                     f"background: {new_colors['_progress_color']};"
                     f"border-radius: {self._corner_radius}px;"
+                "}"
+
+                "QSlider::sub-page:horizontal:disabled, QSlider::sub-page:vertical:disabled {"
+                    f"background: {new_colors['_disabled_background_color']};"
                 "}"
             )
 

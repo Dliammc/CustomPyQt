@@ -14,8 +14,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.3
-# Date: June 18, 2025
+# Version: 6.0.5
+# Date: July 3, 2025
 
 class CComboBox(QtWidgets.QWidget):
     def __init__(
@@ -26,8 +26,8 @@ class CComboBox(QtWidgets.QWidget):
             values: list = None,
             current_value: str = str(list[0]) if not None else "CComboBox",
             tooltip: Optional[str] = None,
-            font_family: str = "Calibri",
-            font_size: int = 12,
+            font_family: str = "Verdana",
+            font_size: int = 10,
             font_style: Optional[str] = None,
             border_width: Optional[int] = None,
             menu_border_width: Optional[int] = None,
@@ -330,7 +330,7 @@ class CComboBox(QtWidgets.QWidget):
         self._combobox.setToolTip(self._tooltip)
 
     @font_family.setter
-    def font_family(self, font_family: str = "Calibri"):
+    def font_family(self, font_family: str = "Verdana"):
         self._font_family = font_family
 
         self._font = QtGui.QFont(self._font_family, self._font_size)
@@ -618,7 +618,7 @@ class CComboBox(QtWidgets.QWidget):
                     f"background-color: {new_colors['_item_background_color']};"
                     f"color: {new_colors['_item_text_color']};"
                     f"border: {self._item_border_width}px solid {new_colors['_item_border_color']};"
-                "outline: none;"
+                    "outline: none;"
                 "}"
 
                 "QComboBox QAbstractItemView::item:hover {"

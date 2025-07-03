@@ -12,8 +12,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.3
-# Date: June 17, 2025
+# Version: 6.0.5
+# Date: July 3, 2025
 
 class CLabel(QtWidgets.QWidget):
     def __init__(
@@ -25,8 +25,8 @@ class CLabel(QtWidgets.QWidget):
             tooltip: Optional[str] = None,
             icon: Optional[str] = None,
             icon_size: Tuple[int, int] = None,
-            font_family: str = "Calibri",
-            font_size: int = 12,
+            font_family: str = "Verdana",
+            font_size: int = 10,
             font_style: Optional[str] = None,
             border_width: Optional[int] = None,
             corner_radius: Optional[int] = None,
@@ -245,7 +245,7 @@ class CLabel(QtWidgets.QWidget):
         self._change_theme()
 
     @font_family.setter
-    def font_family(self, font_family: str = "Calibri"):
+    def font_family(self, font_family: str = "Verdana"):
         self._font_family = font_family
 
         self._font = QtGui.QFont(self._font_family, self._font_size)
@@ -262,7 +262,7 @@ class CLabel(QtWidgets.QWidget):
         self._label.setFont(self._font)
 
     @font_size.setter
-    def font_size(self, font_size: int = 12):
+    def font_size(self, font_size: int = 10):
         self._font_size = font_size
 
         self._font = QtGui.QFont(self._font_family, self._font_size)

@@ -12,8 +12,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.3
-# Date: June 17, 2025
+# Version: 6.0.5
+# Date: July 3, 2025
 
 class CLineEdit(QtWidgets.QWidget):
     def __init__(
@@ -24,8 +24,8 @@ class CLineEdit(QtWidgets.QWidget):
             text: Optional[str] = None,
             placeholder_text: str = "CLineEdit",
             tooltip: Optional[str] = None,
-            font_family: str = "Calibri",
-            font_size: int = 12,
+            font_family: str = "Verdana",
+            font_size: int = 10,
             font_style: Optional[str] = None,
             border_width: Optional[int] = None,
             corner_radius: Optional[int] = None,
@@ -251,7 +251,7 @@ class CLineEdit(QtWidgets.QWidget):
         self._line_edit.setToolTip(self._tooltip)
 
     @font_family.setter
-    def font_family(self, font_family: str = "Calibri"):
+    def font_family(self, font_family: str = "Verdana"):
         self._font_family = font_family
 
         self._font = QtGui.QFont(self._font_family, self._font_size)

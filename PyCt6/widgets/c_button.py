@@ -12,8 +12,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.3
-# Date: June 17, 2025
+# Version: 6.0.5
+# Date: July 3, 2025
 
 class CButton(QtWidgets.QWidget):
     def __init__(
@@ -25,8 +25,8 @@ class CButton(QtWidgets.QWidget):
             tooltip: Optional[str] = None,
             icon: Optional[str] = None,
             icon_size: Tuple[int, int] = (16, 16),
-            font_family: str = "Calibri",
-            font_size: int = 12,
+            font_family: str = "Verdana",
+            font_size: int = 10,
             font_style: Optional[str] = None,
             border_width: Optional[int] = None,
             corner_radius: Optional[int] = None,
@@ -284,7 +284,7 @@ class CButton(QtWidgets.QWidget):
         self._button.setIconSize(QtCore.QSize(self._icon_size[0], self._icon_size[1]))
 
     @font_family.setter
-    def font_family(self, font_family: str = "Calibri"):
+    def font_family(self, font_family: str = "Verdana"):
         self._font_family = font_family
 
         self._font = QtGui.QFont(self._font_family, self._font_size)
