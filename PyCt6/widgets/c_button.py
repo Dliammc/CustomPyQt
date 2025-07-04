@@ -23,7 +23,7 @@ class CButton(QtWidgets.QWidget):
             height: int = 28,
             text: str = "CButton",
             tooltip: Optional[str] = None,
-            icon: Optional[str] = None,
+            icon: Optional[Union[str, Tuple[str, str]]] = None,
             icon_size: Tuple[int, int] = (16, 16),
             font_family: str = "Verdana",
             font_size: int = 10,
@@ -129,7 +129,6 @@ class CButton(QtWidgets.QWidget):
         #set attributes of button
         self._button.setText(self._text)
         self._button.setToolTip(self._tooltip)
-        self._button.setIcon(QtGui.QIcon(self._icon))
         self._button.setIconSize(QtCore.QSize(self._icon_size[0], self._icon_size[1]))
         self._button.setFont(self._font)
 
@@ -448,7 +447,8 @@ class CButton(QtWidgets.QWidget):
             ("_hover_color", self._hover_color), 
             ("_pressed_color", self._pressed_color), 
             ("_disabled_text_color", self._disabled_text_color), 
-            ("_disabled_background_color", self._disabled_background_color)
+            ("_disabled_background_color", self._disabled_background_color),
+            ("_icon", self._icon)
             )
         
         new_colors = {}     #dictionary to store new colors fot styling theme
@@ -484,6 +484,9 @@ class CButton(QtWidgets.QWidget):
             #new color to that specified color
             else:
                 new_colors[attribute] = color
+
+        #set button icon
+        self._button.setIcon(QtGui.QIcon(new_colors["_icon"]))
 
         #set the stylesheet of button with new colors
         self._button.setStyleSheet(

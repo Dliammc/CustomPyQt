@@ -23,7 +23,7 @@ class CLabel(QtWidgets.QWidget):
             height: int = 28,
             text: str = "CLabel",
             tooltip: Optional[str] = None,
-            icon: Optional[str] = None,
+            icon: Optional[Union[str, Tuple[str, str]]] = None,
             icon_size: Tuple[int, int] = None,
             font_family: str = "Verdana",
             font_size: int = 10,
@@ -360,7 +360,8 @@ class CLabel(QtWidgets.QWidget):
             ("_background_color", self._background_color), 
             ("_border_color", self._border_color),
             ("_disabled_text_color", self._disabled_text_color), 
-            ("_disabled_background_color", self._disabled_background_color)
+            ("_disabled_background_color", self._disabled_background_color),
+            ("_icon", self._icon)
             )
         
         new_colors = {}     #dictionary to store new colors fot styling theme
@@ -396,6 +397,14 @@ class CLabel(QtWidgets.QWidget):
             #new color to that specified color
             else:
                 new_colors[attribute] = color
+
+        #set icon of label and resize label if there is an icon size
+        if self._icon != None:
+            pixmap = QtGui.QPixmap(new_colors["_icon"])
+            self._label.setPixmap(pixmap)
+
+            if self._icon_size != None:
+                self._label.resize(self.icon_size[0], self.icon_size[1])
 
         #set the stylesheet of label with new colors
         self._label.setStyleSheet(
