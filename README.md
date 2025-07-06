@@ -13,11 +13,11 @@ and dark and light themes; all widget's colors can be styled in
 ("light", "dark") format. CustomPyQt can also be used or integrated 
 with PySide and PyQt versions as long as PySide6 is installed.
 
-![](documentation_images/complex_example_windows_image.png)
+![](https://raw.githubusercontent.com/Dliammc/CustomPyQt/refs/heads/main/documentation_images/complex_example_windows_image.png)
 
 | _`complex_example.py` on Windows 11 with dark mode and "blue" theme_
 
-![](documentation_images/complex_example_ubuntu_image.png)
+![](https://raw.githubusercontent.com/Dliammc/CustomPyQt/refs/heads/main/documentation_images/complex_example_ubuntu_image.png)
 
 | _`complex_example.py` on Ubuntu 22.04 with light mode and "blue" theme_
 
@@ -71,7 +71,7 @@ app.exec()
 
 which results in this window on Windows 11
 
-<img src="documentation_images/simple_example_image.png" width="400"/>
+<img src="https://raw.githubusercontent.com/Dliammc/CustomPyQt/8b0fccd3a6229d90266d6222b708c2b5c587c960/documentation_images/simple_example_image.png" width="400"/>
 
 You can find more example programs in the [examples folder](https://github.com/Dliammc/CustomPyQt/tree/main/examples) and in the [documentation](https://github.com/Dliammc/CustomPyQt/wiki/CustomPyQt-Documentation-and-Tutorial)
 
@@ -79,4 +79,4 @@ You can find more example programs in the [examples folder](https://github.com/D
 
 Feel free to donate with PayPal to help support and contribute to this project :) Thanks!
 
-<a href="https://www.paypal.com/paypalme/DanielMcCraw135"><img src="documentation_images/paypal_button_image.png" width=170 alt="Paypal donation button"></a>
+<a href="https://www.paypal.com/paypalme/DanielMcCraw135"><img src="https://raw.githubusercontent.com/Dliammc/CustomPyQt/8b0fccd3a6229d90266d6222b708c2b5c587c960/documentation_images/PayPal%20Button.png" width=170 alt="Paypal donation button"></a>
