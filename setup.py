@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="PyCt6",
-    version="6.0.5",    
+    version="6.0.5.1",    
     author="D. Liam Mc.",
     author_email="dliammc@duck.com",
     long_description=open("README.md").read(),
