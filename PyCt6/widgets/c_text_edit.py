@@ -427,6 +427,10 @@ class CTextEdit(QtWidgets.QWidget):
                     f"border-radius: {self._corner_radius}px;"
                 "}"
 
+                "QTextEdit::verticalScrollBar {"
+                    "margin-right: 10px;  /* Adjust the right margin for the scrollbar */"
+                "}"
+
                 "QTextEdit::placeholder {"
                     f"color: {new_colors['_placeholder_text_color']};"
                 "}"
