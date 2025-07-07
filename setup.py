@@ -1,11 +1,20 @@
+import requests
 from setuptools import setup, find_packages
+
+def fetch_readme(url):
+    response = requests.get(url)
+    response.raise_for_status()  # Raise an error for bad responses
+    return response.text
+
+# URL of the README file
+readme_url = 'https://raw.githubusercontent.com/Dliammc/CustomPyQt/refs/heads/main/README.md'
 
 setup(
     name="PyCt6",
     version="6.0.5",    
     author="D. Liam Mc.",
     author_email="dliammc@duck.com",
-    long_description=open("README.md").read(),
+    long_description=fetch_readme(readme_url),
     long_description_content_type='text/markdown',
     description="A modern and customizable python GUI interface library built from the PySide6 library",
     url="https://github.com/Dliammc/CustomPyQt/",
@@ -31,5 +40,5 @@ setup(
     project_urls={                   
         "Source": "https://github.com/Dliammc/CustomPyQt",
     },
-    
+
 )
