@@ -73,7 +73,7 @@ which results in this window on Windows 11
 
 <img src="https://raw.githubusercontent.com/Dliammc/CustomPyQt/8b0fccd3a6229d90266d6222b708c2b5c587c960/documentation_images/simple_example_image.png" width="400"/>
 
-You can find more example programs in the [examples folder](https://github.com/Dliammc/CustomPyQt/tree/main/examples) and in the [documentation](https://github.com/Dliammc/CustomPyQt/wiki/CustomPyQt-Documentation-and-Tutorial)
+You can find more example programs in the [examples folder](https://github.com/Dliammc/CustomPyQt/tree/main/examples) and in the [documentation](https://github.com/Dliammc/CustomPyQt/wiki/home)
 
 ## Contribution
 
