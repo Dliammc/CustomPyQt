@@ -1,4 +1,10 @@
-<h1 align="center">CustomPyQt</h1>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Dliammc/CustomPyQt/refs/heads/main/documentation_images/custompyqt_dark_logo.png">
+    <img src="https://raw.githubusercontent.com/Dliammc/CustomPyQt/refs/heads/main/documentation_images/custompyqt_light_logo.png">
+  </picture>
+</p>
+
 
 ![PyPI Version](https://img.shields.io/pypi/v/PyCt6)
 ![LICENSE](https://img.shields.io/pypi/l/PyCt6?color=blue)
