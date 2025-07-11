@@ -14,7 +14,7 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.5
+# Version: 6.0.6
 # Date: July 3, 2025
 
 class CComboBox(QtWidgets.QWidget):
@@ -591,6 +591,9 @@ class CComboBox(QtWidgets.QWidget):
                     f"color: {new_colors['_text_color']};"
                     f"border: {self._border_width}px solid {new_colors['_border_color']};"
                     f"border-radius: {self._corner_radius}px;"
+                    f"width: {self._width}px;"
+                    f"width: {self._height}px;"
+                    "padding-left: 5px;"
                 "}"
 
                 "QComboBox:hover {"
