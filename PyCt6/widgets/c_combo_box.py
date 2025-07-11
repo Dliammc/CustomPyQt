@@ -15,7 +15,7 @@ from ..appearance import ThemeManager, ModeManager
 #
 # Author: D. Liam Mc.
 # Version: 6.0.6
-# Date: July 3, 2025
+# Date: July 10, 2025
 
 class CComboBox(QtWidgets.QWidget):
     def __init__(
