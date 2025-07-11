@@ -12,8 +12,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.5
-# Date: July 3, 2025
+# Version: 6.0.6
+# Date: July 10, 2025
 
 class CTextEdit(QtWidgets.QWidget):
     def __init__(
