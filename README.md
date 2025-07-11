@@ -5,12 +5,19 @@
   </picture>
 </p>
 
+<div align="center">
 
 ![PyPI Version](https://img.shields.io/pypi/v/PyCt6)
 ![LICENSE](https://img.shields.io/pypi/l/PyCt6?color=blue)
 ![Python Version](https://img.shields.io/pypi/pyversions/PyCt6)
 ![Total Downloads](https://img.shields.io/pepy/dt/PyCt6)
 ![Monthly Downloads](https://img.shields.io/pypi/dm/PyCt6?label=monthly%20downloads)
+
+Feel free to donate with PayPal to help support and contribute to this project :) Thanks!
+
+<a href="https://www.paypal.com/paypalme/DanielMcCraw135"><img src="https://raw.githubusercontent.com/Dliammc/CustomPyQt/8b0fccd3a6229d90266d6222b708c2b5c587c960/documentation_images/PayPal%20Button.png" width=170 alt="Paypal donation button"></a>
+
+</div>
 
 
 CustomPyQt is a python GUI interface library built from the PySide6
@@ -80,9 +87,3 @@ which results in this window on Windows 11
 <img src="https://raw.githubusercontent.com/Dliammc/CustomPyQt/8b0fccd3a6229d90266d6222b708c2b5c587c960/documentation_images/simple_example_image.png" width="400"/>
 
 You can find more example programs in the [examples folder](https://github.com/Dliammc/CustomPyQt/tree/main/examples) and in the [documentation](https://github.com/Dliammc/CustomPyQt/wiki)
-
-## Contribution
-
-Feel free to donate with PayPal to help support and contribute to this project :) Thanks!
-
-<a href="https://www.paypal.com/paypalme/DanielMcCraw135"><img src="https://raw.githubusercontent.com/Dliammc/CustomPyQt/8b0fccd3a6229d90266d6222b708c2b5c587c960/documentation_images/PayPal%20Button.png" width=170 alt="Paypal donation button"></a>
