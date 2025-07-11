@@ -416,6 +416,7 @@ class CLineEdit(QtWidgets.QWidget):
         #set the stylesheet of line edit with new colors
         self._line_edit.setStyleSheet(
                 "QLineEdit {"
+                "padding-left: 5px;"
                 f"background-color: {new_colors['_background_color']};"
                 f"color: {new_colors['_text_color']};"
                 f"border: {self._border_width}px solid {new_colors['_border_color']};"
