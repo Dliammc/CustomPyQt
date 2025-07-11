@@ -1,2 +1,3 @@
 recursive-include PyCt6/widgets/themes *.json
 recursive-include PyCt6/widgets/images/ *.png
+recursive-include PyCt6/windows/images/ *.png
