@@ -11,7 +11,7 @@ readme_url = 'https://raw.githubusercontent.com/Dliammc/CustomPyQt/refs/heads/ma
 
 setup(
     name="PyCt6",
-    version="6.0.5",    
+    version="6.0.6",    
     author="D. Liam Mc.",
     author_email="dliammc@duck.com",
     long_description=fetch_readme(readme_url),
@@ -22,7 +22,6 @@ setup(
     packages=find_packages(),
     install_requires=[
         "PySide6",
-        "typing",
     ],
     include_package_data=True,
 
