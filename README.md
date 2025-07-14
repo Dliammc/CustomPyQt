@@ -13,9 +13,16 @@
 ![Total Downloads](https://img.shields.io/pepy/dt/PyCt6)
 ![Monthly Downloads](https://img.shields.io/pypi/dm/PyCt6?label=monthly%20downloads)
 
-Feel free to donate with PayPal to help support and contribute to this project :) Thanks!
+Feel free to donate to help support and contribute to this project :) Thanks!
 
-<a href="https://www.paypal.com/paypalme/DanielMcCraw135"><img src="https://raw.githubusercontent.com/Dliammc/CustomPyQt/8b0fccd3a6229d90266d6222b708c2b5c587c960/documentation_images/PayPal%20Button.png" width=170 alt="Paypal donation button"></a>
+<div style="display:flex; flex-direction: row; justify-content: center; align-items: center" align="center>
+  <a href="https://www.paypal.com/paypalme/DanielMcCraw135"><img src="https://raw.githubusercontent.com/Dliammc/CustomPyQt/refs/heads/main/documentation_images/paypal_button_image.png" alt="Paypal donation button" width=217px;</a>
+  
+  <a href="https://www.buymeacoffee.com/dliammccral" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+  
+</div>
+
+
 
 </div>
 
