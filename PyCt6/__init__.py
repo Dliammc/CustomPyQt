@@ -1,6 +1,6 @@
-__version__ = "6.0.6"
+__version__ = "6.1.0"
 __author__ = "D. Liam Mc."
-__date__ = "July 11, 2025"
+__date__ = "October 25, 2025"
 
 from .windows import CMainWindow
 from .windows import CTopLevel
@@ -8,6 +8,7 @@ from .windows import CTopLevel
 from .appearance import ThemeManager
 from .appearance import ModeManager
 
+from .widgets import CApplication
 from .widgets import CButton
 from .widgets import CLineEdit
 from .widgets import CTextEdit
