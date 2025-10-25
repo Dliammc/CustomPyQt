@@ -12,8 +12,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.3
-# Date: June 17, 2025
+# Version: 6.1.0
+# Date: October 23, 2025
 
 class CFrame(QtWidgets.QFrame):
     def __init__(
@@ -79,112 +79,6 @@ class CFrame(QtWidgets.QFrame):
         self.setLayout(self._layout)
 
         #update theme of frame
-        self._change_theme()
-
-    @property
-    def master(self):
-        return self._master
-    
-    @property
-    def width(self):
-        return self._width
-    
-    @property
-    def height(self):
-        return self._height
-    
-    @property
-    def layout_type(self):
-        return self._layout_type
-    
-    @property
-    def border_width(self):
-        return self._border_width
-    
-    @property
-    def corner_radius(self):
-        return self._corner_radius
-    
-    @property
-    def background_color(self):
-        return self._background_color
-    
-    @property
-    def border_color(self):
-        return self._border_color
-    
-    @master.setter
-    def master(self, master: Any):
-        self._master = master
-
-        self.setParent(self._master)
-
-    @width.setter
-    def width(self, width: int = 200):
-        self._width = width
-
-        self.setMinimumSize(self._width, self._height)
-
-    @height.setter
-    def height(self, height: int = 200):
-        self._height = height
-
-        self.setMinimumSize(self._width, self._height)
-
-    @width.setter
-    @height.setter
-    def size(self, width: int = 200, height: int = 200):
-        self._width = width
-        self._height = height
-
-        self.setMinimumSize(self._width, self._height)
-
-    @layout_type.setter
-    def layout_type(self, layout_type: str = "vertical"):
-        self._layout_type = layout_type
-
-    @border_width.setter
-    def border_width(
-        self, border_width: Optional[Union[str, Tuple[str, str]]] = None
-    ):
-        self._border_width = (
-            ThemeManager.theme["CFrame"]["border_width"] 
-            if border_width is None else border_width
-        )
-        
-        self._change_theme()
-
-    @corner_radius.setter
-    def corner_radius(
-        self, corner_radius: Optional[Union[str, Tuple[str, str]]] = None
-    ):
-        self._corner_radius = (
-            ThemeManager.theme["CFrame"]["corner_radius"] 
-            if corner_radius is None else corner_radius
-        )
-
-        self._change_theme()
-
-    @background_color.setter
-    def background_color(
-        self, background_color: Optional[Union[str, Tuple[str, str]]] = None
-    ):
-        self._background_color = (
-            ThemeManager.theme["CFrame"]["background_color"] 
-            if background_color is None else background_color
-        )
-
-        self._change_theme()
-
-    @border_color.setter
-    def border_color(
-        self, border_color: Optional[Union[str, Tuple[str, str]]] = None
-    ):
-        self._border_color = (
-            ThemeManager.theme["CFrame"]["border_color"] 
-            if border_color is None else border_color
-        )
-
         self._change_theme()
 
     def _change_theme(self):

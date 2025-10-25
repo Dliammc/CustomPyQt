@@ -12,8 +12,8 @@ from ..appearance import ThemeManager, ModeManager
 # PyCt6 library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.6
-# Date: July 10, 2025
+# Version: 6.1.0
+# Date: October 23, 2025
 
 class CTextEdit(QtWidgets.QWidget):
     def __init__(
@@ -96,7 +96,7 @@ class CTextEdit(QtWidgets.QWidget):
 
         #class variables
         self._layout = QtWidgets.QVBoxLayout()
-        self._text_box = QtWidgets.QTextEdit()
+        self._text_edit = QtWidgets.QTextEdit()
 
         #set font of text edit
         self._font = QtGui.QFont(self._font_family, self._font_size)
@@ -120,253 +120,27 @@ class CTextEdit(QtWidgets.QWidget):
         self._layout.setContentsMargins(5,5,5,5)
 
         #set attributes of text edit
-        self._text_box.setText(self._text)
-        self._text_box.setPlaceholderText(self._placeholder_text)
-        self._text_box.setToolTip(self._tooltip)
-        #self._text_box.setTextMargins(QtCore.QMargins(5, 3, 5, 3))
-        self._text_box.setFont(self._font)
-        self._text_box.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self._text_edit.setText(self._text)
+        self._text_edit.setPlaceholderText(self._placeholder_text)
+        self._text_edit.setToolTip(self._tooltip)
+        #self._text_edit.setTextMargins(QtCore.QMargins(5, 3, 5, 3))
+        self._text_edit.setFont(self._font)
+        self._text_edit.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
 
-        self._text_box.setSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        self._text_edit.setSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
 
-        self._text_box.textChanged.connect(self.__change_text)
+        self._text_edit.textChanged.connect(self.__change_text)
 
         self._change_theme()
 
-        self._layout.addWidget(self._text_box)
+        self._layout.addWidget(self._text_edit)
         self.setLayout(self._layout)
 
-    @property
-    def master(self):
-        return self._master
-    
-    @property
-    def width(self):
-        return self._width
-    
-    @property
-    def height(self):
-        return self._height
-    
-    @property
-    def text(self):
-        return self._text
-    
-    @property
-    def placeholder_text(self):
-        return self._placeholder_text
-    
-    @property
-    def tooltip(self):
-        return self._tooltip
-    
-    @property
-    def font_family(self):
-        return self._font_family
-    
-    @property
-    def font_size(self):
-        return self._font_size
-    
-    @property
-    def font_style(self):
-        return self._font_style
-    
-    @property
-    def border_width(self):
-        return self._border_width
-    
-    @property
-    def corner_radius(self):
-        return self._corner_radius
-    
-    @property
-    def text_color(self):
-        return self._text_color
-    
-    @property
-    def placeholder_text_color(self):
-        return self._placeholder_text_color
-    
-    @property
-    def background_color(self):
-        return self._background_color
-    
-    @property
-    def border_color(self):
-        return self._border_color
-    
-    @property
-    def disabled_text_color(self):
-        return self._disabled_text_color
-    
-    @property
-    def disabled_background_color(self):
-        return self._disabled_background_color
-    
-    @master.setter
-    def master(self, master: Any):
-        self._master = master
-
-        self.setParent(self._master)
-
-    @width.setter
-    def width(self, width: int = 140):
-        self._width = width
-
-        self.setMinimumSize(self._width + 10, self._height + 10)
-        self.resize(self._width + 10, self._height + 10)
-
-    @height.setter
-    def height(self, height: int = 28):
-        self._height = height
-
-        self.setMinimumSize(self._width + 10, self._height + 10)
-        self.resize(self._width + 10, self._height + 10)
-
-    @height.setter
-    @width.setter
-    def size(self, width: int = 140, height: int = 28):
-        self._width = width
-        self._height = height
-
-        self.setMinimumSize(self._width + 10, self._height + 10)
-        self.resize(self._width + 10, self._height + 10)
-
-    @text.setter
-    def text(self, text: str = "CTextEdit"):
-        self._text = text
-
-        self._text_box.setText(self._text)
-
-    @placeholder_text.setter
-    def placeholder_text(self, placeholder_text: Optional[str] = None):
-        self._placeholder_text = placeholder_text
-
-        self._text_box.setPlaceholderText(self._placeholder_text)
-
-
-    @tooltip.setter
-    def tooltip(self, tooltip: Optional[str] = None):
-        self._tooltip = tooltip
-
-        self._text_box.setToolTip(self._tooltip)
-
-    @font_family.setter
-    def font_family(self, font_family: str = "Verdana"):
-        self._font_family = font_family
-
-        self._font = QtGui.QFont(self._font_family, self._font_size)
-
-        self.setFont(self._font)
-
-    @font_size.setter
-    def font_size(self, font_size: int = 10):
-        self._font_size = font_size
-
-        self._font = QtGui.QFont(self._font_family, self._font_size)
-
-        self.setFont(self._font)
-
-    @font_style.setter
-    def font_style(self, font_style: Optional[str] = None):
-        self._font_style = font_style
-
-        if self._font_style == "bold":
-            self._font.setBold(True)
-        elif self._font_style == "Underline":
-            self._font.setUnderline(True)
-        elif self._font_style == "italic":
-            self._font.setItalic(True)
-        elif self._font_style == "strikeout":
-            self._font.setStrikeOut(True)
-
-    @border_width.setter
-    def border_width(self, border_width: Optional[int] = None):
-        self._border_width = (
-            ThemeManager.theme["CTextEdit"]["border_width"] 
-            if border_width is None else border_width
-        )
-
-        self._change_theme()
-
-    @corner_radius.setter
-    def corner_radius(self, corner_radius: Optional[int] = None):
-        self._corner_radius = (
-            ThemeManager.theme["CTextEdit"]["corner_radius"] 
-            if corner_radius is None else corner_radius
-        )
-        
-        self._change_theme()
-
-    @text_color.setter
-    def text_color(
-        self, text_color: Optional[Union[str, Tuple[str, str]]] = None
-    ):
-        self._text_color = (
-            ThemeManager.theme["CTextEdit"]["text_color"] 
-            if text_color is None else text_color
-        )
-        
-        self._change_theme()
-
-    @placeholder_text_color.setter
-    def placeholder_text_color(
-        self, placeholder_text_color: Optional[Union[str, Tuple[str, str]]] = None
-    ):
-        self._placeholder_text_color = (
-            ThemeManager.theme["CTextEdit"]["placeholder_text_color"] 
-            if placeholder_text_color is None else placeholder_text_color
-        )
-        
-        self._change_theme()
-
-    @background_color.setter
-    def background_color(
-        self, background_color: Optional[Union[str, Tuple[str, str]]] = None
-    ):
-        self._background_color = (
-            ThemeManager.theme["CTextEdit"]["background_color"] 
-            if background_color is None else background_color
-        )
-
-        self._change_theme()
-
-    @border_color.setter
-    def border_color(
-        self, border_color: Optional[Union[str, Tuple[str, str]]] = None
-    ):
-        self._border_color = (
-            ThemeManager.theme["CTextEdit"]["border_color"] 
-            if border_color is None else border_color
-        )
-        
-        self._change_theme()
-
-    @disabled_text_color.setter
-    def disabled_text_color(
-        self, disabled_text_color: Optional[Union[str, Tuple[str, str]]] = None
-    ):
-        self._disabled_text_color= (
-            ThemeManager.theme["CTextEdit"]["disabled_text_color"] 
-            if disabled_text_color is None else disabled_text_color
-        )
-        
-        self._change_theme()
-
-    @disabled_background_color.setter
-    def disabled_background_color(
-        self, disabled_background_color: Optional[Union[str, Tuple[str, str]]] = None
-    ):
-        self._disabled_background_color = (
-            ThemeManager.theme["CTextEdit"]["disabled_background_color"] 
-            if disabled_background_color is None else disabled_background_color
-        )
-
-        self._change_theme()
+    def text_edit(self):
+        return self._text_edit
 
     def __change_text(self):
-        self._text = self._text_box.toPlainText()
+        self._text = self._text_edit.toPlainText()
     
     #method to update the theme of the text edit
     def _change_theme(self):
@@ -419,7 +193,7 @@ class CTextEdit(QtWidgets.QWidget):
                 new_colors[attribute] = color
 
         #set the stylesheet of text edit with new colors
-        self._text_box.setStyleSheet(
+        self._text_edit.setStyleSheet(
                 "QTextEdit {"
                     f"background-color: {new_colors['_background_color']};"
                     f"color: {new_colors['_text_color']};"

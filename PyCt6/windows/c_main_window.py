@@ -15,8 +15,8 @@ from PySide6 import QtWidgets, QtGui, QtCore
 # PyCt library
 #
 # Author: D. Liam Mc.
-# Version: 6.0.6
-# Date: July 10, 2025
+# Version: 6.1.0
+# Date: October 23, 2025
 
 class CMainWindow(QtWidgets.QWidget):
      def __init__(
@@ -75,148 +75,6 @@ class CMainWindow(QtWidgets.QWidget):
                self.setGeometry(self._x, self._y, self._width, self._height)
           else:
                self.resize(self._width, self._height)
-
-          self._change_theme()
-     
-     @property
-     def width(self):
-          return self._width
-     
-     @property
-     def height(self):
-          return self._height
-     
-     @property
-     def x(self):
-          return self._x
-
-     @property
-     def y(self):
-          return self._y
-     
-     @property
-     def title(self):
-          return self._title
-
-     @property
-     def icon(self):
-          return self._icon
-     
-     @property
-     def background_color(self):
-          return self._background_color
-     
-     @property
-     def opacity(self):
-          return self._opacity
-     
-     @property
-     def style(self):
-          return self._style
-
-     @width.setter
-     def width(self, width:int = 300):
-          self._width = width
-
-          if self._x != None and self._y == None:
-              self.setGeometry(self._x, self.pos().y(), self._width, self._height)
-          elif self._y != None and self._x == None:
-              self.setGeometry(self.pos().x(), self._y, self._width, self._height)
-          elif self._x != None and self._y != None:
-               self.setGeometry(self._x, self._y, self._width, self._height)
-          else:
-               self.resize(self._width, self._height)
-
-     @height.setter
-     def height(self, height:int = 150):
-          self._height = height
-
-          if self._x != None and self._y == None:
-              self.setGeometry(self._x, self.pos().y(), self._width, self._height)
-          elif self._y != None and self._x == None:
-              self.setGeometry(self.pos().x(), self._y, self._width, self._height)
-          elif self._x != None and self._y != None:
-               self.setGeometry(self._x, self._y, self._width, self._height)
-          else:
-               self.resize(self._width, self._height)
-
-     @width.setter
-     @height.setter
-     def size(self, width:int = 300, height=150):
-          self._width = width
-          self._height = height
-          
-          if self._x != None and self._y == None:
-              self.setGeometry(self._x, self.pos().y(), self._width, self._height)
-          elif self._y != None and self._x == None:
-              self.setGeometry(self.pos().x(), self._y, self._width, self._height)
-          elif self._x != None and self._y != None:
-               self.setGeometry(self._x, self._y, self._width, self._height)
-          else:
-               self.resize(self._width, self._height)
-
-     @x.setter
-     def x(self, x:Optional[int] = None):
-          self._x = x
-
-          if self._x != None and self._y == None:
-              self.setGeometry(self._x, self.pos().y(), self._width, self._height)
-          elif self._y != None and self._x == None:
-              self.setGeometry(self.pos().x(), self._y, self._width, self._height)
-          elif self._x != None and self._y != None:
-               self.setGeometry(self._x, self._y, self._width, self._height)
-          else:
-               self.resize(self._width, self._height)
-
-     @y.setter
-     def y(self, y:Optional[int] = None):
-          self._y = y
-
-          if self._x != None and self._y == None:
-              self.setGeometry(self._x, self.pos().y(), self._width, self._height)
-          elif self._y != None and self._x == None:
-              self.setGeometry(self.pos().x(), self._y, self._width, self._height)
-          elif self._x != None and self._y != None:
-               self.setGeometry(self._x, self._y, self._width, self._height)
-          else:
-               self.resize(self._width, self._height)
-
-     @title.setter
-     def title(self, title:str = "CMainWindow"):
-          self._title = title
-
-          self.setWindowTitle(self._title)
-
-     @icon.setter
-     def icon(self, icon:Optional[str] = None):
-          self._icon = icon
-
-          if not self._icon:
-               main_directory = path.dirname(path.abspath(__file__))
-               main_path = Path(main_directory).parent
-               image_path = path.join(main_path, "windows", "images", "logo.png").replace("\\", "/")
-
-               self.setWindowIcon(QtGui.QIcon(image_path))
-          else:
-               self.setWindowIcon(QtGui.QIcon(self._icon))
-
-     @background_color.setter
-     def background_color(
-          self, background_color:Union[str, Tuple[str, str]] = None
-     ):
-          self._background_color = background_color
-
-          self._change_theme()
-
-     @opacity.setter
-     def opacity(self, opacity:float = 1.0):
-          self._opacity = opacity
-
-          self.setWindowOpacity(self._opacity)
-
-     @style.setter
-     def style(self, style:str = "mica"):
-          self._style = style
 
           self._change_theme()
 
