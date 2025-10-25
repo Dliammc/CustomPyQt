@@ -13,12 +13,21 @@
 ![Total Downloads](https://img.shields.io/pepy/dt/PyCt6)
 ![Monthly Downloads](https://img.shields.io/pypi/dm/PyCt6?label=monthly%20downloads)
 
-Feel free to donate with PayPal to help support and contribute to this project :) Thanks!
+</div>
 
-<a href="https://www.paypal.com/paypalme/DanielMcCraw135"><img src="https://raw.githubusercontent.com/Dliammc/CustomPyQt/8b0fccd3a6229d90266d6222b708c2b5c587c960/documentation_images/PayPal%20Button.png" width=170 alt="Paypal donation button"></a>
+<div align="center"> 
+
+Feel free to donate to help support and contribute to this project :) Thanks!
+
+<a href="https://www.paypal.com/paypalme/DanielMcCraw135" target="_blank">
+<img src="https://raw.githubusercontent.com/Dliammc/CustomPyQt/refs/heads/main/documentation_images/paypal_button_image.png" alt="Paypal donation button" width=250 style="margin: 10px;"></a>
+
+<a href="https://www.buymeacoffee.com/dliammccral" target="_blank">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 250px !important; margin:10px;"></a>
 
 </div>
 
+<p> <br> </p>
 
 CustomPyQt is a python GUI interface library built from the PySide6
 library, providing a modern and consistant interface with styled widgets
