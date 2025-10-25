@@ -63,8 +63,8 @@ The documentation can be found on this Github Wiki page:
 Here is a simple example program with only one button to test the CustomPyQt library:
 
 ```python
-from PyCt6 import CMainWindow, CButton, set_appearance_mode, set_color_theme
-from PySide6.QtWidgets import QApplication, QVBoxLayout
+from PyCt6 import CApplication, CMainWindow, CButton, set_appearance_mode, set_color_theme
+from PySide6.QtWidgets import QVBoxLayout
 from PySide6.QtCore import Qt
 
 set_appearance_mode("system")
@@ -85,7 +85,7 @@ class MainWindow(CMainWindow):
     def command(self):
         print("Button Clicked!")
 
-app = QApplication()
+app = CApplication()
 win = MainWindow()
 win.show()
 app.exec()
