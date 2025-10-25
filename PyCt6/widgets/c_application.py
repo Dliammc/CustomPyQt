@@ -21,4 +21,3 @@ class CApplication(QApplication):
 
         # Set the application style
         self.setStyle(style)
-
