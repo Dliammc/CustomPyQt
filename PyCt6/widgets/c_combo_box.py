@@ -177,7 +177,7 @@ class CComboBox(QtWidgets.QWidget):
         self.setLayout(self._layout)
 
     #method to access widget
-    def combobox(self):
+    def combo_box(self):
         return self._combobox
 
     #method to update the theme of the combobox
