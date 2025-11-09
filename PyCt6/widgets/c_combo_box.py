@@ -27,7 +27,7 @@ class CComboBox(QtWidgets.QWidget):
             current_value: str = str(list[0]) if not None else "CComboBox",
             tooltip: Optional[str] = None,
             font_family: str = "Verdana",
-            font_size: int = 12,
+            font_size: int = 11,
             font_style: Optional[str] = None,
             border_width: Optional[int] = None,
             menu_border_width: Optional[int] = None,

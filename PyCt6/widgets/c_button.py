@@ -26,7 +26,7 @@ class CButton(QtWidgets.QWidget):
             icon: Optional[Union[str, Tuple[str, str]]] = None,
             icon_size: Tuple[int, int] = (16, 16),
             font_family: str = "Verdana",
-            font_size: int = 12,
+            font_size: int = 11,
             font_style: Optional[str] = None,
             border_width: Optional[int] = None,
             corner_radius: Optional[int] = None,

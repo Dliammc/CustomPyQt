@@ -25,7 +25,7 @@ class CLineEdit(QtWidgets.QWidget):
             placeholder_text: str = "CLineEdit",
             tooltip: Optional[str] = None,
             font_family: str = "Verdana",
-            font_size: int = 12,
+            font_size: int = 11,
             font_style: Optional[str] = None,
             border_width: Optional[int] = None,
             corner_radius: Optional[int] = None,
