@@ -13,7 +13,7 @@ from ..appearance import ThemeManager, ModeManager
 #
 # Author: D. Liam Mc.
 # Version: 6.1.0
-# Date: October 23, 2025
+# Date: November 8, 2025
 
 class CLabel(QtWidgets.QWidget):
     def __init__(
@@ -26,7 +26,7 @@ class CLabel(QtWidgets.QWidget):
             icon: Optional[Union[str, Tuple[str, str]]] = None,
             icon_size: Tuple[int, int] = None,
             font_family: str = "Verdana",
-            font_size: int = 10,
+            font_size: int = 12,
             font_style: Optional[str] = None,
             border_width: Optional[int] = None,
             corner_radius: Optional[int] = None,
@@ -116,8 +116,6 @@ class CLabel(QtWidgets.QWidget):
         self._label.setSizePolicy(
             QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding
         )
-
-        self._change_theme()
 
         self._layout.addWidget(self._label)
         self.setLayout(self._layout)

@@ -14,7 +14,7 @@ from ..appearance import ThemeManager, ModeManager
 #
 # Author: D. Liam Mc.
 # Version: 6.1.0
-# Date: October 23, 2025
+# Date: November 8, 2025
 
 class CSlider(QtWidgets.QWidget):
     def __init__(
@@ -167,8 +167,6 @@ class CSlider(QtWidgets.QWidget):
         self._slider.setSizePolicy(
             QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding
         )
-
-        self._change_theme()
 
         self._layout.addWidget(self._slider)
         self.setLayout(self._layout)

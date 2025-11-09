@@ -13,7 +13,7 @@ from ..appearance import ThemeManager, ModeManager
 #
 # Author: D. Liam Mc.
 # Version: 6.1.0
-# Date: October 23, 2025
+# Date: November 8, 2025
 
 class CTextEdit(QtWidgets.QWidget):
     def __init__(
@@ -25,7 +25,7 @@ class CTextEdit(QtWidgets.QWidget):
             placeholder_text: str = "CTextEdit",
             tooltip: Optional[str] = None,
             font_family: str = "Verdana",
-            font_size: int = 10,
+            font_size: int = 12,
             font_style: Optional[str] = None,
             border_width: Optional[int] = None,
             corner_radius: Optional[int] = None,
@@ -130,8 +130,6 @@ class CTextEdit(QtWidgets.QWidget):
         self._text_edit.setSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
 
         self._text_edit.textChanged.connect(self.__change_text)
-
-        self._change_theme()
 
         self._layout.addWidget(self._text_edit)
         self.setLayout(self._layout)

@@ -13,7 +13,7 @@ from ..appearance import ThemeManager, ModeManager
 #
 # Author: D. Liam Mc.
 # Version: 6.1.0
-# Date: October 23, 2025
+# Date: November 8, 2025
 
 class CLineEdit(QtWidgets.QWidget):
     def __init__(
@@ -25,7 +25,7 @@ class CLineEdit(QtWidgets.QWidget):
             placeholder_text: str = "CLineEdit",
             tooltip: Optional[str] = None,
             font_family: str = "Verdana",
-            font_size: int = 10,
+            font_size: int = 12,
             font_style: Optional[str] = None,
             border_width: Optional[int] = None,
             corner_radius: Optional[int] = None,
@@ -128,8 +128,6 @@ class CLineEdit(QtWidgets.QWidget):
         )
 
         self._line_edit.textChanged.connect(self.__change_text)
-
-        self._change_theme()
 
         self._layout.addWidget(self._line_edit)
         self.setLayout(self._layout)

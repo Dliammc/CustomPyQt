@@ -78,9 +78,6 @@ class CFrame(QtWidgets.QFrame):
         
         self.setLayout(self._layout)
 
-        #update theme of frame
-        self._change_theme()
-
     def _change_theme(self):
 
         #get styling of frame and store it in a tuple with keys for variable

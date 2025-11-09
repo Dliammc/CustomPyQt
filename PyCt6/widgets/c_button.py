@@ -13,7 +13,7 @@ from ..appearance import ThemeManager, ModeManager
 #
 # Author: D. Liam Mc.
 # Version: 6.1.0
-# Date: October 23, 2025
+# Date: November 8, 2025
 
 class CButton(QtWidgets.QWidget):
     def __init__(
@@ -26,7 +26,7 @@ class CButton(QtWidgets.QWidget):
             icon: Optional[Union[str, Tuple[str, str]]] = None,
             icon_size: Tuple[int, int] = (16, 16),
             font_family: str = "Verdana",
-            font_size: int = 10,
+            font_size: int = 12,
             font_style: Optional[str] = None,
             border_width: Optional[int] = None,
             corner_radius: Optional[int] = None,
@@ -144,8 +144,6 @@ class CButton(QtWidgets.QWidget):
         self._button.pressed.connect(self.__shrink_size)
         self._button.released.connect(self.__grow_size)
 
-        self._change_theme()
-
         self._layout.addWidget(self._button)
         self.setLayout(self._layout)
 
@@ -163,8 +161,6 @@ class CButton(QtWidgets.QWidget):
 
         self._corner_radius -= 1        #decrease corner radius of button
 
-        self._change_theme()       #update button theme 
-
     #method to resize button to original size when button is released
     def __grow_size(self):
         self._layout.setContentsMargins(5,5,5,5)        #reset contents margins of button
@@ -174,8 +170,6 @@ class CButton(QtWidgets.QWidget):
         self._button.setFont(self._font)        #update font of button
 
         self._corner_radius += 1        #reset corner radius of button
-
-        self._change_theme()       #update button theme
 
     #method to update the theme of the button
     def _change_theme(self):
