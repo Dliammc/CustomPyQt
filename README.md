@@ -91,8 +91,9 @@ win.show()
 app.exec()
 ```
 
-which results in this window on Windows 11
+which results in these windows on Windows 11 depending on the default mode
 
-<img src="https://raw.githubusercontent.com/Dliammc/CustomPyQt/8b0fccd3a6229d90266d6222b708c2b5c587c960/documentation_images/simple_example_image.png" width="400"/>
+<img src="https://github.com/Dliammc/CustomPyQt/blob/main/documentation_images/wiki_c_button_image_light.png" width=45% hspace="10px" vspace="10px" alt="CButton Image" class="center">
+<img src="https://github.com/Dliammc/CustomPyQt/blob/main/documentation_images/wiki_c_button_image_dark.png" width=45% hspace="10px" vspace="10px" alt="CButton Image" class="center">
 
 You can find more example programs in the [examples folder](https://github.com/Dliammc/CustomPyQt/tree/main/examples) and in the [documentation](https://github.com/Dliammc/CustomPyQt/wiki)
